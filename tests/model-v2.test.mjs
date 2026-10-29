@@ -55,10 +55,11 @@ test('xG must be actual explicit numeric value, zero is valid, unknown stays nul
 });
 
 test('reported confirmed player absences cause only bounded changes',()=>{
- const base=calculateMatchV2(fixture,hist);
+ const neutral={...fixture,homeName:'Mid A',homeId:'Mid A',awayName:'Mid B',awayId:'Mid B'};
+ const base=calculateMatchV2(neutral,hist);
  const availability={injuries:{verified:true,source:'test verified provider',home:[{name:'A',status:'Out',confirmedOut:true,suspended:false}],away:[]},
    suspensions:{verified:false,home:[],away:[]},predictedLineups:{verified:false}};
- const changed=calculateMatchV2(fixture,hist,availability);
+ const changed=calculateMatchV2(neutral,hist,availability);
  assert.ok(changed.lambdaHome<base.lambdaHome);
  assert.ok(changed.availabilityAdjustments.homeAttack<1);
  assert.ok(changed.availabilityAdjustments.homeAttack>.90);
