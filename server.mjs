@@ -37,7 +37,7 @@ async function remote(url,ms=600000,force=false,timeoutMs=9500){
  try{
   const r=await fetch(url,{headers:{accept:'application/json'},signal:AbortSignal.timeout(timeoutMs)});
   if(!r.ok)throw Error('HTTP '+r.status);
-  const t=await r.text();if(t.length>4500000)throw Error('provider oversized response');
+  const t=await r.text();if(t.length>18000000)throw Error('provider oversized response');
   const v=JSON.parse(t);cache.set(url,{body:v,until:Date.now()+ms});return v;
  }catch(e){if(old?.body)return old.body;throw Error(new URL(url).hostname+': '+e.message);}
 }
