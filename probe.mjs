@@ -6,11 +6,11 @@ async function probe() {
       const j=await fetchJson(base+l+'/scoreboard?dates=2026&limit=1000');
       const ev=(j.events||[]).filter(e=>e.status?.type?.completed||e.competitions?.[0]?.status?.type?.completed).slice(-1)[0];
       const team=ev?.competitions?.[0]?.competitors?.[0];
-      console.log('TIPSTER SCHEMA PROBE',JSON.stringify({league:l,event:ev?.id,team:team?.team?.id,compKeys:Object.keys(ev?.competitions?.[0]||{}),teamKeys:Object.keys(team||{}),teamStatistics:team?.statistics?.slice?.(0,8)}).slice(0,1300));
+      console.log('TIPSTER SCHEMA PROBE',JSON.stringify({league:l,event:ev?.id,team:team?.team?.id,compKeys:Object.keys(ev?.competitions?.[0]||{}),teamKeys:Object.keys(team||{}),teamXgStats:team?.statistics?.filter?.(x=>/expected|xg|xga/i.test(x.name+' '+x.label)).slice(0,6),teamStatistics:team?.statistics?.slice?.(0,5)}).slice(0,1300));
       if(ev){
         const s=await fetchJson(base+l+'/summary?event='+ev.id);
         const teams=s.boxscore?.teams||[];
-        console.log('TIPSTER SUMMARY PROBE',JSON.stringify({league:l,keys:Object.keys(s),boxTeams:teams.map(x=>({team:x.team?.displayName,stats:x.statistics?.slice?.(0,24),keys:Object.keys(x)})),statsKeys:s.statistics&&Object.keys(s.statistics),injuryShape:s.injuries&&Object.keys(s.injuries)}).slice(0,2300));
+        console.log('TIPSTER SUMMARY PROBE',JSON.stringify({league:l,keys:Object.keys(s),boxTeams:teams.map(x=>({team:x.team?.displayName,xgStats:x.statistics?.filter?.(y=>/expected|xg|xga/i.test(y.name+' '+y.label)),stats:x.statistics?.slice?.(0,4),keys:Object.keys(x)})),statsKeys:s.statistics&&Object.keys(s.statistics),injuryShape:s.injuries&&Object.keys(s.injuries)}).slice(0,2300));
         if(team?.team?.id){
           try{
            const z=await fetchJson(base+l+'/teams/'+team.team.id+'/injuries');
@@ -20,7 +20,7 @@ async function probe() {
       }
       try{
         const z=await fetchJson(base+l+'/injuries');
-        console.log('TIPSTER LEAGUE INJURY PROBE',JSON.stringify({league:l,keys:Object.keys(z),first:(z.injuries||z.teams||[])[0]}).slice(0,1300));
+        console.log('TIPSTER LEAGUE INJURY PROBE',JSON.stringify({league:l,keys:Object.keys(z),count:z.injuries?.length,first:(z.injuries||z.teams||[])[0]}).slice(0,1300));
       }catch(e){console.log('TIPSTER LEAGUE INJURY PROBE ERROR '+l+' '+e.message)}
     }catch(e){console.log('TIPSTER SCHEMA PROBE ERROR '+l+' '+e.message)}
   }
