@@ -1,3 +1,4 @@
+import {availabilityGoalFactors} from './features.mjs';
 /**
  * TIPSTER V2: opponent-adjusted attack/defence + recency + Elo + Dixon–Coles.
  * Only observed, source-tagged xG is ever treated as xG. No team-name ratings,
@@ -124,8 +125,9 @@ export function calculateMatchV2(match,history,availability={}){
  }
  const venueH=venueFactor(gamesH,'home','scored',leagueHome);
  const venueA=venueFactor(gamesA,'away','scored',leagueAway);
- const lambdaHome=clip(leagueHome*(attack.get(hKey)??1)*(defence.get(aKey)??1)*eloFactor*venueH,.25,4.6);
- const lambdaAway=clip(leagueAway*(attack.get(aKey)??1)*(defence.get(hKey)??1)/eloFactor*venueA,.25,4.6);
+ const availabilityFactors=availabilityGoalFactors(availability);
+ const lambdaHome=clip(leagueHome*(attack.get(hKey)??1)*(defence.get(aKey)??1)*eloFactor*venueH*availabilityFactors.homeAttack*availabilityFactors.awayDefence,.25,4.6);
+ const lambdaAway=clip(leagueAway*(attack.get(aKey)??1)*(defence.get(hKey)??1)/eloFactor*venueA*availabilityFactors.awayAttack*availabilityFactors.homeDefence,.25,4.6);
  const grid=scoreMatrix(lambdaHome,lambdaAway);
  const p1=grid.filter(v=>v.home>v.away).reduce((s,v)=>s+v.p,0);
  const px=grid.filter(v=>v.home===v.away).reduce((s,v)=>s+v.p,0);
@@ -144,16 +146,17 @@ export function calculateMatchV2(match,history,availability={}){
    .map(r=>({date:r.date,homeName:r.homeName,awayName:r.awayName,score:r.homeScore+'-'+r.awayScore}));
  };
  for(const r of league)if(validXg(r.homeXg)!==null&&validXg(r.awayXg)!==null)verifiedXgMatches++;
- const avgXg=(games,side,forAgainst)=>{
+ const avgXg=(games,forAgainst)=>{
   let total=0,w=0;
   for(const x of games){
-   const r=x.r,home=side==='home';const chosen=forAgainst==='for'?(home?r.homeXg:r.awayXg):(home?r.awayXg:r.homeXg);
+   const r=x.r,home=x.side==='home';
+   const chosen=forAgainst==='for'?(home?r.homeXg:r.awayXg):(home?r.awayXg:r.homeXg);
    const value=validXg(chosen);if(value!==null){w+=x.w;total+=x.w*value;}
   }
   return w>0?total/w:null;
  };
- const homeXg=avgXg(gamesH,'home','for'),homeXga=avgXg(gamesH,'home','against');
- const awayXg=avgXg(gamesA,'away','for'),awayXga=avgXg(gamesA,'away','against');
+ const homeXg=avgXg(gamesH,'for'),homeXga=avgXg(gamesH,'against');
+ const awayXg=avgXg(gamesA,'for'),awayXga=avgXg(gamesA,'against');
  const enough=nH>=5&&nA>=5&&league.length>=30;
  const quality=enough?'RESULTS + ELO':'LIMITED SAMPLE';
  const issues=[];
@@ -173,8 +176,8 @@ export function calculateMatchV2(match,history,availability={}){
   homeAttack:attack.get(hKey)??1,awayAttack:attack.get(aKey)??1,
   homeDefence:defence.get(hKey)??1,awayDefence:defence.get(aKey)??1,
   formHome:recent(hKey),formAway:recent(aKey),homeXg,homeXga,awayXg,awayXga,
-  verifiedXgMatches,availability,missing:issues,
-  reasoning:'All recent league results are weighted by recency. Attack and defence are fitted iteratively against opponent quality, then blended with match-result Elo and conservative venue adjustments. Verified xG influences the fit only where a source reports actual xG.',
+  verifiedXgMatches,availability,availabilityAdjustments:availabilityFactors,missing:issues,
+  reasoning:'All recent league results are weighted by recency. Attack and defence are fitted iteratively against opponent quality, then blended with match-result Elo and conservative venue adjustments. Verified xG influences the fit only where a source reports actual xG; explicitly reported confirmed absences receive small, capped heuristic adjustments.',
   confidenceCalibration:'Not independently calibrated',leagueHomeGoals:leagueHome,leagueAwayGoals:leagueAway
  };
 }
