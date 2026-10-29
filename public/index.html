@@ -46,13 +46,13 @@ details.diagnostics{margin:30px 0;border:1px solid var(--line);border-radius:8px
 <div class="toolbar">
 <nav class="tabs" aria-label="Date filter"><button data-range="today">Today</button><button data-range="tomorrow">Tomorrow</button><button class="active" data-range="week">Next 7 days</button></nav>
 <div class="controls"><select class="control" id="league" aria-label="Competition"><option value="all">All competitions</option></select>
-<select class="control" id="sort" aria-label="Sort"><option value="kickoff">Kickoff time</option><option value="value">Expected value</option></select>
+<select class="control" id="sort" aria-label="Sort"><option value="kickoff">Kickoff time</option><option value="confidence">Sample strength</option></select>
 <button class="control toggle" id="value" aria-pressed="false">Value bets only</button><button class="control refresh" id="refresh">↻ Refresh</button></div></div>
 <div class="hint"><span id="countLabel">Retrieving verified fixtures…</span><span>Timezone: Athens (EET/EEST)</span></div>
 <div id="cards" class="cards" aria-live="polite"><div class="message">Connecting to football data providers. Real fixtures will appear when the server responds.</div></div>
 <details class="diagnostics"><summary>Data sources and coverage</summary><section id="diagnostics">Checking sources…</section></details>
 </main>
-<footer><div class="wrap"><strong style="color:var(--txt)">TIPSTER</strong> · Independent probability estimates; no bet is guaranteed.<p>Fair odds = 1 / model probability. Value-bet minimum price includes a conservative probability adjustment and a 5% required expected return. No bookmaker odds are displayed unless verified. Historical goals-based modelling is not a substitute for verified xG, injuries or lineups. Data may be incomplete, particularly where unofficial or limited provider endpoints are used.</p></div></footer>
+<footer><div class="wrap"><strong style="color:var(--txt)">TIPSTER</strong> · Independent probability estimates; no bet is guaranteed.<p>Model V2 uses opponent-adjusted attack and defence, Elo, recency and verified xG where available. Reported confirmed absences receive small, capped heuristic adjustments. Projected XIs appear only with a named data source. Fair odds = 1 / model probability. Value-bet minimum price includes a conservative probability adjustment and a 5% required expected return. No bookmaker odds are displayed unless verified. Historical goals-based modelling is not a substitute for verified xG, injuries or lineups. Data may be incomplete, particularly where unofficial or limited provider endpoints are used.</p></div></footer>
 <script>
 (function(){
 'use strict';
@@ -67,6 +67,10 @@ function time(d){return new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Athens
 function img(url){return typeof url==='string'&&url.startsWith('https://')?'<img src="'+esc(url)+'" loading="lazy" alt="">':'<div style="height:39px"></div>';}
 function formatRows(items){return (items||[]).map(r=>'<p><time>'+esc(athens(r.date))+'</time> · '+esc(r.homeName)+' '+esc(r.score)+' '+esc(r.awayName)+'</p>').join('')||'<p>Verified recent results not available.</p>';}
 function card(m){var x=m.model,p=x.probabilities,fo=x.fairOdds,pr=x.prediction,od=x.requiredOdds,labels=['1','X','2'];
+var availability=x.availability||{},inj=availability.injuries||{},sus=availability.suspensions||{},xi=availability.predictedLineups||{};
+function statusList(items){return items&&items.length?items.map(i=>'<p>'+esc(i.name)+' · '+esc(i.status)+(i.detail?' · '+esc(i.detail):'')+'</p>').join(''):'<p>No source-verified report. Absence of a report does not mean every player is fit.</p>';}
+function lineupList(players){return Array.isArray(players)&&players.length===11?'<p>'+players.map(esc).join(' · ')+'</p>':'<p>Not published by a verified predicted-XI provider.</p>';}
+function xgValue(n){return Number.isFinite(n)?dec(n):'Not available';}
 var cols=(label,values,chosen)=>'<tr><td>'+label+'</td>'+labels.map(k=>'<td'+(chosen===k?' class="chosen"':'')+'>'+esc(values[k])+'</td>').join('')+'</tr>';
 var scores=(x.topScores||[]).map(s=>'<div class="score"><b>'+esc(s.score)+'</b><span>'+pct(s.probability)+'</span></div>').join('');
 return '<article class="card"><div class="top"><div class="meta"><span>'+esc(m.league)+'</span><time>'+esc(time(m.date))+'</time></div><div class="teams"><div class="team">'+img(m.homeLogo)+'<span>'+esc(m.homeName)+'</span></div><div class="vs">VS</div><div class="team">'+img(m.awayLogo)+'<span>'+esc(m.awayName)+'</span></div></div><div class="picks"><div class="pick"><span>Model prediction</span><strong class="ice">'+esc(pr)+' · '+pct(p[pr])+'</strong></div><div class="pick"><span>Betting tip</span><strong class="neutral">'+esc(x.tip)+'</strong></div></div></div>'
@@ -76,8 +80,13 @@ return '<article class="card"><div class="top"><div class="meta"><span>'+esc(m.l
 +cols('Bookmaker odds',{'1':'—','X':'—','2':'—'})
 +cols('Minimum value price',Object.fromEntries(labels.map(k=>[k,dec(od[k])])))
 +'</tbody></table></div><details><summary>Detailed analysis</summary><div class="details"><div class="section-head">Modelled expected goals</div><div class="goals"><div class="data-tile">'+esc(m.homeName)+'<b>'+dec(x.lambdaHome)+'</b></div><div class="data-tile">'+esc(m.awayName)+'<b>'+dec(x.lambdaAway)+'</b></div></div>'
++'<div class="section-head">Team strength · opponent-adjusted Elo</div><div class="goals"><div class="data-tile">'+esc(m.homeName)+'<b>'+esc(x.eloHome)+'</b></div><div class="data-tile">'+esc(m.awayName)+'<b>'+esc(x.eloAway)+'</b></div></div>'
++'<div class="section-head">Verified recent xG / xGA (if published)</div><div class="goals"><div class="data-tile">'+esc(m.homeName)+' xG<b style="font-size:13px">'+xgValue(x.homeXg)+'</b>xGA: '+xgValue(x.homeXga)+'</div><div class="data-tile">'+esc(m.awayName)+' xG<b style="font-size:13px">'+xgValue(x.awayXg)+'</b>xGA: '+xgValue(x.awayXga)+'</div></div><p class="detailsline">'+(x.verifiedXgMatches||0)+' historical matches carry source-reported xG.</p>'
 +'<div class="section-head">Five most likely exact scores</div><div class="scores">'+scores+'</div><div class="section-head">Other markets · model only</div><div class="goals"><div class="data-tile">Over 2.5<b>'+pct(x.over25)+'</b></div><div class="data-tile">Under 2.5<b>'+pct(1-x.over25)+'</b></div><div class="data-tile">BTTS Yes<b>'+pct(x.btts)+'</b></div></div>'
 +'<div class="section-head">Methodology and confidence</div><p class="reason">'+esc(x.reasoning)+'</p><p class="detailsline"><span class="pill">'+esc(x.quality)+'</span> · League results: '+x.leagueSample+' · Home samples: '+x.homeSample+' · Away samples: '+x.awaySample+'</p><p class="warning">Missing: '+esc(x.missing.join(', '))+'. Confidence is not independently calibrated.</p>'
++'<div class="section-head">Reported injuries / unavailable players</div><p class="detailsline">'+esc(inj.source||'No independently verified injury report for this fixture')+'</p><div class="form"><b>'+esc(m.homeName)+'</b>'+statusList(inj.home)+'<b>'+esc(m.awayName)+'</b>'+statusList(inj.away)+'</div>'
++'<div class="section-head">Verified suspensions</div><p class="detailsline">'+esc(sus.verified?'Source-reported: '+sus.source:'No confirmed suspensions feed for this fixture')+'</p>'+(sus.verified?'<div class="form"><b>'+esc(m.homeName)+'</b>'+statusList(sus.home)+'<b>'+esc(m.awayName)+'</b>'+statusList(sus.away)+'</div>':'')
++'<div class="section-head">Predicted starting XIs</div><p class="detailsline">'+esc(xi.verified?'Published projection: '+xi.source:'No verified predicted lineup published')+'</p>'+(xi.verified?'<div class="form"><b>'+esc(m.homeName)+'</b>'+lineupList(xi.home)+'<b>'+esc(m.awayName)+'</b>'+lineupList(xi.away)+'</div>':'')
 +'<div class="section-head">Recent verified results · '+esc(m.homeName)+'</div><div class="form">'+formatRows(x.formHome)+'</div>'
 +'<div class="section-head">Recent verified results · '+esc(m.awayName)+'</div><div class="form">'+formatRows(x.formAway)+'</div>'
 +'<div class="source">Fixture source: '+esc(m.source)+' · <a rel="noopener noreferrer" target="_blank" href="'+esc(m.sourceUrl)+'">View match</a> · Updated '+esc(time(data.meta.updatedAt))+'</div></div></details></article>';
@@ -87,7 +96,7 @@ function draw(){
  var nowDay=athens(new Date()),day=range==='today'?nowDay:range==='tomorrow'?add(nowDay,1):null;
  var league=$('league').value;
  var rows=(data.matches||[]).filter(m=>(!day||athens(m.date)===day)&&(league==='all'||m.leagueId===league)&&(!onlyValue||/^BET [1X2]$/.test(m.model.tip)));
- rows.sort((a,b)=>a.date.localeCompare(b.date));
+ rows.sort((a,b)=>$('sort').value==='confidence'?(b.model.homeSample+b.model.awaySample)-(a.model.homeSample+a.model.awaySample):a.date.localeCompare(b.date));
  $('numMatches').textContent=rows.length;
  $('numValue').textContent=rows.filter(m=>/^BET [1X2]$/.test(m.model.tip)).length;
  $('numHistory').textContent=data.meta.historyMatches;
