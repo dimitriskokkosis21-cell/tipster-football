@@ -89,15 +89,21 @@ async function leagueFetch(l,today,end,force){
  }
  try{
   if(process.env.DISABLE_UNOFFICIAL_ESPN==='1')throw Error('ESPN disabled');
-  const range=compact(today)+'-'+compact(end),rangePast=compact(past)+'-'+compact(last);
-  const rows=await Promise.allSettled([
-   remote(ESPN+l.id+'/scoreboard?dates='+range+'&limit=500',420000,force),
-   remote(ESPN+l.id+'/scoreboard?dates='+rangePast+'&limit=500',21600000,force)
-  ]);
-  if(rows[0].status==='fulfilled'&&Array.isArray(rows[0].value.events))fixtures=rows[0].value.events.map(x=>fromESPN(x,l)).filter(x=>x&&!x.complete&&athens(new Date(x.date))>=today&&athens(new Date(x.date))<=end);
-  else throw Error(rows[0].reason?.message||'ESPN fixtures unavailable');
-  if(rows[1].status==='fulfilled'&&Array.isArray(rows[1].value.events))history=rows[1].value.events.map(x=>fromESPN(x,l)).filter(x=>x&&x.complete);
-  else warning=(warning?warning+'; ':'')+'Historical ESPN results unavailable';
+  // ESPN retired dashed date ranges in September 2026 (HTTP 400).
+  // A year-scoped scoreboard query works and covers both recent completed results
+  // and scheduled fixtures. Filter all returned events against the Athens calendar.
+  const years=[...new Set([past.slice(0,4),today.slice(0,4),end.slice(0,4)])];
+  const responses=await Promise.allSettled(years.map(year=>
+   remote(ESPN+l.id+'/scoreboard?dates='+year+'&limit=1000',21600000,force)));
+  const good=responses.filter(r=>r.status==='fulfilled'&&Array.isArray(r.value?.events));
+  if(!good.length)throw Error(responses.map(r=>r.reason?.message||'malformed scoreboard data').join('; '));
+  const ev=new Map();
+  for(const r of good)for(const e of r.value.events)if(e.id!=null)ev.set(String(e.id),e);
+  const all=[...ev.values()].map(e=>fromESPN(e,l)).filter(Boolean);
+  fixtures=all.filter(x=>!x.complete&&athens(new Date(x.date))>=today&&athens(new Date(x.date))<=end);
+  history=all.filter(x=>x.complete&&athens(new Date(x.date))>=past&&athens(new Date(x.date))<today);
+  if(good.length<years.length)warning=(warning?warning+'; ':'')+'Some ESPN year queries failed; coverage may be incomplete';
+  if(good.some(r=>r.value.events.length>=1000))warning=(warning?warning+'; ':'')+'Scoreboard reached event limit; coverage may be truncated';
   provider='ESPN (unofficial)';
   if(!history.length)warning=(warning?warning+'; ':'')+'No historical results; league priors only';
   return {fixtures,history,report:{league:l.name,provider,fixtures:fixtures.length,history:history.length,warning}};
