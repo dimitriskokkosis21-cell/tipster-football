@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: tipster-football
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: "node --version"
+    startCommand: "node server.mjs"
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
