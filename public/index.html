@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101820">
+<title>TIPSTER | Football Intelligence</title>
+<style>
+:root{color-scheme:dark;--bg:#0e151d;--pane:#151f29;--pane2:#19242e;--line:#2b3843;--txt:#e9f0f3;--sub:#8fa2ae;--ice:#9edada;--teal:#5cb8ae;--green:#a6d9bd}
+*{box-sizing:border-box}body{background:var(--bg);color:var(--txt);margin:0;font:14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif}
+button,select{font:inherit;cursor:pointer}button:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+a{color:var(--ice)}header{border-bottom:1px solid var(--line);background:#111a23}.wrap{max-width:1150px;margin:auto;padding:0 20px}
+.header{padding:21px 0 16px;display:flex;justify-content:space-between;gap:16px;align-items:center}.brand{display:flex;gap:11px;align-items:center}
+.symbol{width:35px;height:35px;display:grid;place-items:center;background:#1b353a;border:1px solid #3d7777;border-radius:7px;color:var(--ice);font-weight:850;font-size:22px}
+.brandtext{font-size:23px;font-weight:850;letter-spacing:.055em;line-height:1}.subtitle{font-size:10px;font-weight:700;letter-spacing:.17em;color:var(--sub);margin-top:6px}
+.status{text-align:right;font-size:11px;color:var(--sub)}.status b{font-weight:600;color:var(--ice);font-size:11px}
+.intro{padding:31px 0 22px}.eyebrow{text-transform:uppercase;color:var(--teal);font-weight:750;font-size:10px;letter-spacing:.18em}.intro h1{font-size:clamp(23px,4vw,31px);letter-spacing:-.035em;line-height:1.1;margin:9px 0 8px;font-weight:760}.intro p{max-width:750px;color:var(--sub);margin:0}
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0 25px}.stat{border:1px solid var(--line);background:var(--pane);border-radius:9px;padding:15px 17px}.stat .lab{font-size:11px;letter-spacing:.055em;text-transform:uppercase;color:var(--sub)}.stat .num{font-size:27px;font-weight:750;letter-spacing:-.03em;margin-top:3px;font-variant-numeric:tabular-nums}
+.toolbar{display:flex;flex-wrap:wrap;gap:11px;justify-content:space-between;align-items:center;margin:0 0 15px}.tabs{display:flex;gap:4px;padding:3px;background:#151f29;border:1px solid var(--line);border-radius:8px}.tabs button{border:0;color:var(--sub);background:none;padding:9px 13px;border-radius:6px;font-size:12px;font-weight:700}.tabs button.active{background:#2b4045;color:#dbf1ef}
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.control{border:1px solid var(--line);border-radius:7px;background:var(--pane);color:var(--txt);padding:10px 12px;font-size:12px;min-height:38px}
+.control:hover{border-color:#52747a}.refresh{color:var(--ice);font-weight:650}.refresh:disabled{opacity:.5;cursor:wait}.toggle.active{border-color:#60a9a2;color:var(--ice)}
+.hint{color:var(--sub);font-size:12px;margin:13px 0 15px;display:flex;gap:8px;justify-content:space-between}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;align-items:start}
+.card{border:1px solid var(--line);border-radius:10px;background:var(--pane);overflow:hidden}.card:hover{border-color:#45616a}
+.top{padding:17px 18px 8px}.meta{color:var(--sub);font-size:10px;letter-spacing:.03em;font-weight:650;display:flex;justify-content:space-between;gap:8px}.teams{display:flex;align-items:center;gap:11px;margin:14px 0 19px}.team{min-width:0;flex:1;text-align:center;font-size:15px;font-weight:720;line-height:1.3}
+.team img{display:block;margin:0 auto 9px;width:30px;height:30px;object-fit:contain}.team span{display:block;overflow-wrap:anywhere}
+.vs{color:#687985;font-weight:600;font-size:10px}.picks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px}.pick{background:#1b2833;border:1px solid #2d4149;padding:10px;border-radius:6px}.pick span{display:block;text-transform:uppercase;color:var(--sub);font-size:9px;letter-spacing:.1em;font-weight:750}.pick strong{display:block;font-size:17px;font-weight:800;margin-top:4px}.pick .ice{color:var(--ice)}.pick .neutral{font-size:12px;font-weight:700;color:#c8d4da;line-height:1.8}
+.table-wrap{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--pane2);padding:12px 17px}.prob{width:100%;table-layout:fixed;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}
+.prob th,.prob td{text-align:center;padding:6px 2px}.prob th:first-child,.prob td:first-child{text-align:left;color:var(--sub);width:42%}.prob th{color:#afc1c9;font-size:12px}.prob tbody tr:not(:last-child){border-bottom:1px solid #293743}
+.prob tbody tr:first-child td:not(:first-child){font-size:15px;font-weight:760;color:#d7e9eb}.prob .chosen{color:var(--ice)!important}
+details{border-top:0}summary{padding:14px 18px;list-style:none;display:flex;justify-content:space-between;color:var(--ice);font-size:12px;font-weight:700;cursor:pointer}
+summary::-webkit-details-marker{display:none}summary:after{content:"+";font-size:17px;line-height:1}details[open] summary:after{content:"−"}
+.details{padding:4px 18px 19px;border-top:1px solid var(--line)}.section-head{font-size:10px;color:var(--sub);text-transform:uppercase;letter-spacing:.1em;font-weight:750;margin:18px 0 8px}
+.goals{display:flex;gap:8px}.data-tile{background:#1b2833;border:1px solid var(--line);border-radius:6px;padding:11px;flex:1;font-size:11px;color:var(--sub)}
+.data-tile b{font-size:19px;display:block;color:var(--txt);font-variant-numeric:tabular-nums}.scores{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.score{padding:9px 2px;border:1px solid var(--line);text-align:center;border-radius:6px}.score b{font-size:13px;display:block}.score span{font-size:10px;color:var(--sub)}
+.reason{font-size:12px;color:#b2c2cc;margin:10px 0}.warning{color:#d3bb8c;font-size:11px}.form{display:grid;gap:5px;font-size:11px;color:#bdcbd3}.form p{margin:0;padding:6px 8px;background:#1b2833;border-radius:5px}.form time{color:var(--sub)}
+.source{word-break:break-word;color:var(--sub);font-size:10px;margin-top:13px}.source a{font-weight:600}.pill{font-weight:750;letter-spacing:.05em;color:var(--ice);font-size:10px}
+.message{border:1px solid var(--line);padding:22px;border-radius:9px;background:var(--pane);line-height:1.7}.message p{margin-bottom:0;color:var(--sub)}.message.error{border-color:#856357}.detailsline{margin:0;color:var(--sub);font-size:12px}
+footer{border-top:1px solid var(--line);margin-top:35px;padding:25px 0 45px;color:var(--sub);font-size:11px}footer p{max-width:850px}
+details.diagnostics{margin:30px 0;border:1px solid var(--line);border-radius:8px;background:var(--pane)}.diagnostics section{padding:0 16px 16px;font-size:11px;color:var(--sub)}
+.diagrow{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--line)}.diagrow b{color:var(--txt)}.diagrow small{display:block}
+@media(max-width:760px){.cards{grid-template-columns:1fr}.intro{padding-top:26px}.summary{margin-top:17px}.header{padding:18px 0}.status{font-size:10px}.subtitle{max-width:200px}.toolbar{align-items:stretch}.controls{flex:1;justify-content:space-between}.controls select{flex:1;min-width:145px}.tabs{width:100%;justify-content:space-between}.tabs button{flex:1}.wrap{padding:0 14px}.teams{margin:13px 0 18px}}
+@media(max-width:360px){.picks{grid-template-columns:1fr 1fr}.top{padding:14px 12px 5px}.team{font-size:13px}.stat{padding:12px 10px}.stat .num{font-size:21px}.stat .lab{font-size:9px}.table-wrap{padding:11px}.prob th:first-child,.prob td:first-child{width:40%}}
+</style></head>
+<body><header><div class="wrap header"><div class="brand"><div class="symbol">T</div><div><div class="brandtext">TIPSTER<span style="color:var(--teal)">.</span></div><div class="subtitle">MODEL-LED FOOTBALL INTELLIGENCE</div></div></div><div class="status"><b id="state">CONNECTING TO LIVE DATA</b><div id="updated">Europe/Athens</div></div></div></header>
+<main class="wrap">
+<section class="intro"><div class="eyebrow">Independent probability research</div><h1>Football. Quantified.</h1><p>Real fixtures, transparent model probabilities and independent fair odds. A predicted winner is not the same thing as a qualifying value bet.</p></section>
+<section class="summary"><div class="stat"><div class="lab">Fixtures displayed</div><div id="numMatches" class="num">—</div></div><div class="stat"><div class="lab">Value opportunities</div><div id="numValue" class="num">—</div></div><div class="stat"><div class="lab">Verified results</div><div id="numHistory" class="num">—</div></div></section>
+<div class="toolbar">
+<nav class="tabs" aria-label="Date filter"><button data-range="today">Today</button><button data-range="tomorrow">Tomorrow</button><button class="active" data-range="week">Next 7 days</button></nav>
+<div class="controls"><select class="control" id="league" aria-label="Competition"><option value="all">All competitions</option></select>
+<select class="control" id="sort" aria-label="Sort"><option value="kickoff">Kickoff time</option><option value="value">Expected value</option></select>
+<button class="control toggle" id="value" aria-pressed="false">Value bets only</button><button class="control refresh" id="refresh">↻ Refresh</button></div></div>
+<div class="hint"><span id="countLabel">Retrieving verified fixtures…</span><span>Timezone: Athens (EET/EEST)</span></div>
+<div id="cards" class="cards" aria-live="polite"><div class="message">Connecting to football data providers. Real fixtures will appear when the server responds.</div></div>
+<details class="diagnostics"><summary>Data sources and coverage</summary><section id="diagnostics">Checking sources…</section></details>
+</main>
+<footer><div class="wrap"><strong style="color:var(--txt)">TIPSTER</strong> · Independent probability estimates; no bet is guaranteed.<p>Fair odds = 1 / model probability. Value-bet minimum price includes a conservative probability adjustment and a 5% required expected return. No bookmaker odds are displayed unless verified. Historical goals-based modelling is not a substitute for verified xG, injuries or lineups. Data may be incomplete, particularly where unofficial or limited provider endpoints are used.</p></div></footer>
+<script>
+(function(){
+'use strict';
+var data=null,range='week',onlyValue=false,loading=false;
+var $=id=>document.getElementById(id);
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function pct(x){return Number.isFinite(x)?(x*100).toFixed(1)+'%':'—';}
+function dec(x){return Number.isFinite(x)?x.toFixed(2):'—';}
+function athens(d){var p=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Athens',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date(d));var v=Object.fromEntries(p.map(x=>[x.type,x.value]));return v.year+'-'+v.month+'-'+v.day;}
+function add(day,n){return new Date(Date.parse(day+'T12:00:00Z')+n*864e5).toISOString().slice(0,10);}
+function time(d){return new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Athens',hour:'2-digit',minute:'2-digit',day:'2-digit',month:'short',hour12:false}).format(new Date(d));}
+function img(url){return typeof url==='string'&&url.startsWith('https://')?'<img src="'+esc(url)+'" loading="lazy" alt="">':'<div style="height:39px"></div>';}
+function formatRows(items){return (items||[]).map(r=>'<p><time>'+esc(athens(r.date))+'</time> · '+esc(r.homeName)+' '+esc(r.score)+' '+esc(r.awayName)+'</p>').join('')||'<p>Verified recent results not available.</p>';}
+function card(m){var x=m.model,p=x.probabilities,fo=x.fairOdds,pr=x.prediction,od=x.requiredOdds,labels=['1','X','2'];
+var cols=(label,values,chosen)=>'<tr><td>'+label+'</td>'+labels.map(k=>'<td'+(chosen===k?' class="chosen"':'')+'>'+esc(values[k])+'</td>').join('')+'</tr>';
+var scores=(x.topScores||[]).map(s=>'<div class="score"><b>'+esc(s.score)+'</b><span>'+pct(s.probability)+'</span></div>').join('');
+return '<article class="card"><div class="top"><div class="meta"><span>'+esc(m.league)+'</span><time>'+esc(time(m.date))+'</time></div><div class="teams"><div class="team">'+img(m.homeLogo)+'<span>'+esc(m.homeName)+'</span></div><div class="vs">VS</div><div class="team">'+img(m.awayLogo)+'<span>'+esc(m.awayName)+'</span></div></div><div class="picks"><div class="pick"><span>Model prediction</span><strong class="ice">'+esc(pr)+' · '+pct(p[pr])+'</strong></div><div class="pick"><span>Betting tip</span><strong class="neutral">'+esc(x.tip)+'</strong></div></div></div>'
++'<div class="table-wrap"><table class="prob"><thead><tr><th></th><th>1</th><th>X</th><th>2</th></tr></thead><tbody>'
++cols('Probability',Object.fromEntries(labels.map(k=>[k,pct(p[k])])),pr)
++cols('Fair odds',Object.fromEntries(labels.map(k=>[k,dec(fo[k])])))
++cols('Bookmaker odds',{'1':'—','X':'—','2':'—'})
++cols('Minimum value price',Object.fromEntries(labels.map(k=>[k,dec(od[k])])))
++'</tbody></table></div><details><summary>Detailed analysis</summary><div class="details"><div class="section-head">Modelled expected goals</div><div class="goals"><div class="data-tile">'+esc(m.homeName)+'<b>'+dec(x.lambdaHome)+'</b></div><div class="data-tile">'+esc(m.awayName)+'<b>'+dec(x.lambdaAway)+'</b></div></div>'
++'<div class="section-head">Five most likely exact scores</div><div class="scores">'+scores+'</div><div class="section-head">Other markets · model only</div><div class="goals"><div class="data-tile">Over 2.5<b>'+pct(x.over25)+'</b></div><div class="data-tile">Under 2.5<b>'+pct(1-x.over25)+'</b></div><div class="data-tile">BTTS Yes<b>'+pct(x.btts)+'</b></div></div>'
++'<div class="section-head">Methodology and confidence</div><p class="reason">'+esc(x.reasoning)+'</p><p class="detailsline"><span class="pill">'+esc(x.quality)+'</span> · League results: '+x.leagueSample+' · Home samples: '+x.homeSample+' · Away samples: '+x.awaySample+'</p><p class="warning">Missing: '+esc(x.missing.join(', '))+'. Confidence is not independently calibrated.</p>'
++'<div class="section-head">Recent verified results · '+esc(m.homeName)+'</div><div class="form">'+formatRows(x.formHome)+'</div>'
++'<div class="section-head">Recent verified results · '+esc(m.awayName)+'</div><div class="form">'+formatRows(x.formAway)+'</div>'
++'<div class="source">Fixture source: '+esc(m.source)+' · <a rel="noopener noreferrer" target="_blank" href="'+esc(m.sourceUrl)+'">View match</a> · Updated '+esc(time(data.meta.updatedAt))+'</div></div></details></article>';
+}
+function draw(){
+ if(!data)return;
+ var nowDay=athens(new Date()),day=range==='today'?nowDay:range==='tomorrow'?add(nowDay,1):null;
+ var league=$('league').value;
+ var rows=(data.matches||[]).filter(m=>(!day||athens(m.date)===day)&&(league==='all'||m.leagueId===league)&&(!onlyValue||/^BET [1X2]$/.test(m.model.tip)));
+ rows.sort((a,b)=>a.date.localeCompare(b.date));
+ $('numMatches').textContent=rows.length;
+ $('numValue').textContent=rows.filter(m=>/^BET [1X2]$/.test(m.model.tip)).length;
+ $('numHistory').textContent=data.meta.historyMatches;
+ $('countLabel').textContent=rows.length+' upcoming modelled matches'+(data.meta.coverageIncomplete?' · Coverage may be incomplete':'');
+ $('cards').innerHTML=rows.length?rows.map(card).join(''):'<div class="message">No matching upcoming fixtures with verified data were returned for this filter.<p>Try Next 7 days or All competitions. Provider coverage may be incomplete; no fixture has been invented.</p></div>';
+}
+function diagnostic(){
+ if(!data)return;
+ $('diagnostics').innerHTML=(data.meta.sourceStatus||[]).map(s=>'<div class="diagrow"><div><b>'+esc(s.league)+'</b><small>'+esc(s.provider)+'</small>'+(s.warning?'<small class="warning">'+esc(s.warning)+'</small>':'')+'</div><div>'+s.fixtures+' fixtures<br>'+s.history+' results</div></div>').join('');
+}
+async function load(force){
+ if(loading)return;loading=true;$('refresh').disabled=true;$('refresh').textContent='Loading…';$('state').textContent='SYNCING SOURCES';
+ try{
+  var res=await fetch('/api/matches'+(force?'?refresh=1':''),{cache:'no-store'});
+  var x=await res.json();if(!res.ok)throw Error(x.error||'HTTP '+res.status);
+  if(!Array.isArray(x.matches))throw Error('Provider returned unexpected data');
+  data=x;
+  $('state').textContent=x.meta.coverageIncomplete?'LIVE · PARTIAL COVERAGE':'LIVE · RESULTS-BASED';
+  $('updated').textContent='Updated '+time(x.meta.updatedAt)+' Athens';
+  var old=$('league').value,opts=[...new Map(x.matches.map(m=>[m.leagueId,m.league])).entries()];
+  $('league').innerHTML='<option value="all">All competitions</option>'+opts.map(v=>'<option value="'+esc(v[0])+'">'+esc(v[1])+'</option>').join('');
+  if(opts.some(v=>v[0]===old))$('league').value=old;
+  diagnostic();draw();
+ }catch(e){
+  $('state').textContent='DATA CONNECTION ERROR';$('updated').textContent='Retry available';
+  $('cards').innerHTML='<div class="message error"><strong>Football data is unavailable.</strong><p>'+esc(e.message)+'. Tap Refresh to retry. No fictional matches or betting prices are shown.</p></div>';
+  $('countLabel').textContent='Request failed';$('numMatches').textContent='—';$('numValue').textContent='—';
+ }finally{loading=false;$('refresh').disabled=false;$('refresh').textContent='↻ Refresh';}
+}
+document.querySelectorAll('[data-range]').forEach(b=>b.addEventListener('click',function(){
+ range=b.dataset.range;document.querySelectorAll('[data-range]').forEach(t=>t.classList.toggle('active',t===b));draw();
+}));
+$('league').addEventListener('change',draw);$('sort').addEventListener('change',draw);
+$('value').addEventListener('click',function(){onlyValue=!onlyValue;this.classList.toggle('active',onlyValue);this.setAttribute('aria-pressed',String(onlyValue));draw();});
+$('refresh').addEventListener('click',()=>load(true));load(false);
+})();
+</script></body></html>
