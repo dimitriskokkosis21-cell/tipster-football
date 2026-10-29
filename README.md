@@ -2,6 +2,18 @@
 
 TIPSTER is a Node.js football analytics web application for mobile Safari and desktop browsers.
 
+## Model V2 — 29 October 2026
+
+The live forecast model now uses **420 days of past league results**, sequential match-result **Elo**, conservative home advantage, exponential recency weights, and an iterative team attack/defence estimate adjusted for opponent quality. Venue-only results are a small supplementary influence, not the primary team-strength estimate. Dixon–Coles correction and fully normalized 1X2 probabilities remain. Fair decimal prices are reciprocals of independently computed probabilities, never bookmaker-driven.
+
+**Verified-data handling:** A matching, explicitly sourced xG/xGA observation enters the attack/defence fit with 70% weighting against 30% actual goals for that historical match. ESPN match statistics are used only if the exact expected-goals field and both team values are present. Unknown is null, never zero. The ESPN league injuries feed is checked; only explicitly reported, confirmed-absent players receive small, capped heuristic adjustments (1.2% attack and 0.8% defence per absent player, max 7.5% / 6%). Unconfirmed, doubtful players are displayed but not automatically considered absent. Suspensions are never inferred from cards without an explicit published status.
+
+Projected starting lineups are only labelled verified if provided by an explicitly configured licensed third-party feed with source, observation date, team identity, kickoff and exactly 11 named players per team. **The current no-key free data sources do not guarantee verified xG, injuries, suspensions or predicted XI for every fixture**. When a field is missing it is visibly labelled unavailable rather than populated with fictional players or artificial xG values. Public FotMob APIs are **not** used because access permissions have not been obtained.
+
+A privately licensed enrichment service can be configured using `TIPSTER_DATA_FEED_URL` (HTTPS only) and optional server-only `TIPSTER_DATA_FEED_TOKEN`. Its response may include validated match-specific injuries, suspended players, predicted starting XIs and historical xG observations. Deploying without these optional variables continues to function with results and Elo only. Do not claim the presence of a paid feed until it is configured and checked.
+
+The app runs eight model regression tests at startup. Test failures prevent an untested revision from replacing the live service. These regression checks are not a substitute for walk-forward probability calibration.
+
 ## What works
 - Server-side football fixtures and recent completed results via public JSON interfaces: ESPN (unofficial), OpenLigaDB for Bundesliga, and a limited TheSportsDB fallback.
 - Today, Tomorrow, and Next 7 days in Europe/Athens, league filtering, independent match details, refresh, data coverage diagnostics.
