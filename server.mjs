@@ -31,11 +31,11 @@ function athens(d=new Date()){
 const compact=s=>s.replaceAll('-','');
 const valid=s=>s && !Number.isNaN(Date.parse(s));
 function json(res,status,obj){res.writeHead(status,{'content-type':'application/json; charset=utf-8','cache-control':'no-store','access-control-allow-origin':'*'});res.end(JSON.stringify(obj));}
-async function remote(url,ms=600000,force=false){
+async function remote(url,ms=600000,force=false,timeoutMs=9500){
  const old=cache.get(url);
  if(!force&&old&&old.until>Date.now())return old.body;
  try{
-  const r=await fetch(url,{headers:{accept:'application/json'},signal:AbortSignal.timeout(9500)});
+  const r=await fetch(url,{headers:{accept:'application/json'},signal:AbortSignal.timeout(timeoutMs)});
   if(!r.ok)throw Error('HTTP '+r.status);
   const t=await r.text();if(t.length>4500000)throw Error('provider oversized response');
   const v=JSON.parse(t);cache.set(url,{body:v,until:Date.now()+ms});return v;
@@ -100,18 +100,29 @@ async function leagueFetch(l,today,end,force){
   // ESPN retired dashed date ranges in September 2026 (HTTP 400).
   // A year-scoped scoreboard query works and covers both recent completed results
   // and scheduled fixtures. Filter all returned events against the Athens calendar.
-  const years=[...new Set([past.slice(0,4),today.slice(0,4),end.slice(0,4)])];
-  const responses=await Promise.allSettled(years.map(year=>
-   remote(ESPN+l.id+'/scoreboard?dates='+year+'&limit=1000',21600000,force)));
-  const good=responses.filter(r=>r.status==='fulfilled'&&Array.isArray(r.value?.events));
-  if(!good.length)throw Error(responses.map(r=>r.reason?.message||'malformed scoreboard data').join('; '));
-  const ev=new Map();
-  for(const r of good)for(const e of r.value.events)if(e.id!=null)ev.set(String(e.id),e);
-  const all=[...ev.values()].map(e=>fromESPN(e,l)).filter(Boolean);
-  fixtures=all.filter(x=>!x.complete&&athens(new Date(x.date))>=today&&athens(new Date(x.date))<=end);
-  history=all.filter(x=>x.complete&&athens(new Date(x.date))>=past&&athens(new Date(x.date))<today);
-  if(good.length<years.length)warning=(warning?warning+'; ':'')+'Some ESPN year queries failed; coverage may be incomplete';
-  if(good.some(r=>r.value.events.length>=1000))warning=(warning?warning+'; ':'')+'Scoreboard reached event limit; coverage may be truncated';
+  // Prioritize the current year's fixture query. The older archive is
+  // supplementary and must never cause current fixtures to disappear.
+  const currentYears=[...new Set([today.slice(0,4),end.slice(0,4)])];
+  const currentResponses=await Promise.allSettled(currentYears.map(year=>
+   remote(ESPN+l.id+'/scoreboard?dates='+year+'&limit=1000',21600000,force,16000)));
+  const currentGood=currentResponses.filter(r=>r.status==='fulfilled'&&Array.isArray(r.value?.events));
+  if(!currentGood.length)throw Error(currentResponses.map(r=>r.reason?.message||'scoreboard unavailable').join('; '));
+  const currentEvents=new Map();
+  for(const r of currentGood)for(const e of r.value.events)if(e.id!=null)currentEvents.set(String(e.id),e);
+  const currentData=[...currentEvents.values()].map(e=>fromESPN(e,l)).filter(Boolean);
+  fixtures=currentData.filter(x=>!x.complete&&athens(new Date(x.date))>=today&&athens(new Date(x.date))<=end);
+  let all=currentData;
+  const olderYears=[...new Set([past.slice(0,4)])].filter(y=>!currentYears.includes(y));
+  if(fixtures.length&&olderYears.length){
+   const older=await Promise.allSettled(olderYears.map(y=>
+    remote(ESPN+l.id+'/scoreboard?dates='+y+'&limit=1000',86400000,force,13000)));
+   const historic=older.filter(r=>r.status==='fulfilled'&&Array.isArray(r.value?.events));
+   if(historic.length<olderYears.length)warning=(warning?warning+'; ':'')+'Earlier-season history was partially unavailable';
+   for(const r of historic)all.push(...r.value.events.map(e=>fromESPN(e,l)).filter(Boolean));
+  }
+  history=unique(all).filter(x=>x.complete&&athens(new Date(x.date))>=past&&athens(new Date(x.date))<today);
+  if(currentGood.length<currentYears.length)warning=(warning?warning+'; ':'')+'Some current-year requests failed';
+  if(currentGood.some(r=>r.value.events.length>=1000))warning=(warning?warning+'; ':'')+'Event pagination limit reached';
   provider='ESPN (unofficial)';
   let injuries=null;
   try{injuries=await remote(ESPN+l.id+'/injuries',7200000,force);}catch{}
