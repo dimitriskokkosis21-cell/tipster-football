@@ -9,7 +9,7 @@ const ROOT=fileURLToPath(new URL('.',import.meta.url));
 
 try{
  const tests=execFileSync(process.execPath,['--test','tests/model-v2.test.mjs'],{cwd:ROOT,encoding:'utf8',timeout:15000,stdio:['ignore','pipe','pipe']});
- console.log('TIPSTER V2 SELF-TEST',tests.split('\\n').filter(x=>x.startsWith('# tests')||x.startsWith('# pass')||x.startsWith('# fail')).join(' | '));
+ console.log('TIPSTER V2 SELF-TEST',tests.split('\n').filter(x=>x.startsWith('# tests')||x.startsWith('# pass')||x.startsWith('# fail')).join(' | '));
 }catch(e){console.error('TIPSTER V2 SELF-TEST FAILED:',String(e.stdout||e.stderr||e.message).slice(0,3000));process.exit(1);}
 const PORT=Number(process.env.PORT||3000);
 const ESPN='https://site.api.espn.com/apis/site/v2/sports/soccer/';
@@ -82,7 +82,7 @@ function unique(arr){
 }
 async function leagueFetch(l,today,end,force){
  let fixtures=[],history=[],provider='',warning=null;
- const past=dadd(today,-155),last=dadd(today,-1);
+ const past=dadd(today,-420),last=dadd(today,-1);
  if(l.id==='ger.1'){
   try{
    const season=y=>Number(y.slice(0,4))-(Number(y.slice(5,7))<7?1:0);
