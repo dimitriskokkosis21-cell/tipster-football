@@ -1,10 +1,16 @@
 import http from 'node:http';
+import {execFileSync} from 'node:child_process';
 import {calculateMatchV2,validXg} from './model-v2.mjs';
 import {extractESPNxG,espnAvailability,mergeLicensedMatchData} from './features.mjs';
 import {readFile} from 'node:fs/promises';
 import {resolve,extname,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
 const ROOT=fileURLToPath(new URL('.',import.meta.url));
+
+try{
+ const tests=execFileSync(process.execPath,['--test','tests/model-v2.test.mjs'],{cwd:ROOT,encoding:'utf8',timeout:15000,stdio:['ignore','pipe','pipe']});
+ console.log('TIPSTER V2 SELF-TEST',tests.split('\\n').filter(x=>x.startsWith('# tests')||x.startsWith('# pass')||x.startsWith('# fail')).join(' | '));
+}catch(e){console.error('TIPSTER V2 SELF-TEST FAILED:',String(e.stdout||e.stderr||e.message).slice(0,3000));process.exit(1);}
 const PORT=Number(process.env.PORT||3000);
 const ESPN='https://site.api.espn.com/apis/site/v2/sports/soccer/';
 const SDB='https://www.thesportsdb.com/api/v1/json/123/';
@@ -121,67 +127,6 @@ async function leagueFetch(l,today,end,force){
   warning+='; free tier returns only limited events and does not guarantee all fixtures';
  }catch(e){provider='UNAVAILABLE';warning+='; TheSportsDB failed: '+e.message;}
  return {fixtures,history,report:{league:l.name,provider,fixtures:fixtures.length,history:history.length,warning}};
-}
-function poisson(lambda){
- const a=[Math.exp(-lambda)];
- for(let i=1;i<=12;i++)a.push(a[i-1]*lambda/i);
- return a;
-}
-function scoreGrid(h,a,rho=-0.075){
- const hp=poisson(h),ap=poisson(a),list=[];let sum=0;
- for(let x=0;x<hp.length;x++)for(let y=0;y<ap.length;y++){
-  let tau=1;
-  if(x===0&&y===0)tau=1-h*a*rho;
-  if(x===0&&y===1)tau=1+h*rho;
-  if(x===1&&y===0)tau=1+a*rho;
-  if(x===1&&y===1)tau=1-rho;
-  const v=Math.max(0,hp[x]*ap[y]*tau);sum+=v;list.push({home:x,away:y,p:v});
- }
- list.forEach(x=>x.p/=sum);
- return list;
-}
-function outcome(h,a){return h>a?'1':h<a?'2':'X';}
-const norm=s=>String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');
-function model(match,results){
- const rows=results.filter(r=>r.complete&&r.leagueId===match.leagueId&&new Date(r.date)<new Date(match.date)&&Number.isFinite(r.homeScore)&&Number.isFinite(r.awayScore));
- const leagueH=rows.length>=12?rows.reduce((s,r)=>s+r.homeScore,0)/rows.length:1.45;
- const leagueA=rows.length>=12?rows.reduce((s,r)=>s+r.awayScore,0)/rows.length:1.15;
- const baseH=Math.max(.5,Math.min(3,leagueH)),baseA=Math.max(.5,Math.min(3,leagueA));
- const same=(r,id,name,side)=>String(r[side+'Id'])===id||norm(r[side+'Name'])===norm(name);
- function samples(side,id,name){
-  return rows.filter(r=>same(r,id,name,side)).map(r=>{
-   const days=Math.max(0,(new Date(match.date)-new Date(r.date))/86400000);
-   const weight=Math.exp(-Math.LN2*days/65);
-   return {r,w:weight};
-  });
- }
- const home=samples('home',match.homeId,match.homeName),away=samples('away',match.awayId,match.awayName);
- function shrunk(list,prop,prior){
-  const total=list.reduce((s,x)=>s+x.w,0);
-  return {v:(list.reduce((s,x)=>s+x.w*prop(x.r),0)+prior*5)/(total+5),effective:total};
- }
- const hgf=shrunk(home,r=>r.homeScore,baseH),hga=shrunk(home,r=>r.awayScore,baseA);
- const agf=shrunk(away,r=>r.awayScore,baseA),aga=shrunk(away,r=>r.homeScore,baseH);
- const lambdaH=Math.max(.2,Math.min(5.5,baseH*(hgf.v/baseH)*(aga.v/baseH)));
- const lambdaA=Math.max(.2,Math.min(5.5,baseA*(agf.v/baseA)*(hga.v/baseA)));
- const grid=scoreGrid(lambdaH,lambdaA);
- const p1=grid.filter(g=>g.home>g.away).reduce((s,g)=>s+g.p,0),px=grid.filter(g=>g.home===g.away).reduce((s,g)=>s+g.p,0),p2=1-p1-px;
- const probs={'1':p1,'X':px,'2':p2},fair=Object.fromEntries(Object.entries(probs).map(([k,p])=>[k,1/p]));
- const predicted=Object.entries(probs).sort((a,b)=>b[1]-a[1])[0][0];
- const minEff=Math.min(hgf.effective,agf.effective),uncertainty=Math.min(.13,.02+.095*Math.exp(-minEff/6));
- const thresholds=Object.fromEntries(Object.entries(probs).map(([k,p])=>[k,1.05/Math.max(.005,p-uncertainty)]));
- const top=grid.slice().sort((a,b)=>b.p-a.p).slice(0,5).map(v=>({score:v.home+'-'+v.away,probability:v.p}));
- const recent=(side,id,name)=>rows.filter(r=>same(r,id,name,'home')||same(r,id,name,'away')).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,5).map(r=>({
-  date:r.date,homeName:r.homeName,awayName:r.awayName,score:r.homeScore+'-'+r.awayScore
- }));
- const quality=rows.length<12||home.length<4||away.length<4?'LOW':'RESULTS-BASED';
- return {probabilities:probs,fairOdds:fair,prediction:predicted,tip:'NO VERIFIED PRICE',bookmakerOdds:null,requiredOdds:thresholds,
-  lambdaHome:lambdaH,lambdaAway:lambdaA,topScores:top,over25:grid.filter(g=>g.home+g.away>=3).reduce((s,g)=>s+g.p,0),
-  btts:grid.filter(g=>g.home>0&&g.away>0).reduce((s,g)=>s+g.p,0),quality,
-  homeSample:home.length,awaySample:away.length,leagueSample:rows.length,uncertaintyPenalty:uncertainty,
-  formHome:recent('home',match.homeId,match.homeName),formAway:recent('away',match.awayId,match.awayName),
-  reasoning:home.length&&away.length?'Home and away goal rates are time-weighted and shrunk toward competition averages.':'Limited verified results: conservative league-average goal priors have increased influence.',
-  missing:['Verified xG/xGA','Injuries and suspensions','Predicted/confirmed lineups','Verified bookmaker prices']};
 }
 async function fetchAll(force=false){
  const now=Date.now(),today=athens(),end=dadd(today,7);
