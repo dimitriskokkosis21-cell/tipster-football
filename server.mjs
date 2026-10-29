@@ -1,3 +1,4 @@
+import './probe.mjs';
 import http from 'node:http';
 import {readFile} from 'node:fs/promises';
 import {resolve,extname,sep} from 'node:path';
