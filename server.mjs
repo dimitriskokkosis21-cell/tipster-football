@@ -207,3 +207,20 @@ http.createServer(async(req,res)=>{
   catch{json(res,404,{error:'Not found'});}
  }catch(e){json(res,500,{error:'Unexpected server error'});}
 }).listen(PORT,'0.0.0.0',()=>console.log('TIPSTER serving on '+PORT));
+
+
+// Non-blocking production verification: logs real provider coverage, never invents data.
+setTimeout(async()=>{
+ try{
+  const result=await fetchAll(false);
+  const stats={fixtures:result.matches.length,historicalResults:result.meta.historyMatches,
+   leagues:result.meta.sourceStatus.map(s=>({name:s.league,provider:s.provider,fixtures:s.fixtures,history:s.history,warning:s.warning?.slice(0,110)}))};
+  let errors=0;
+  for(const match of result.matches){
+   const p=match.model.probabilities,f=match.model.fairOdds;
+   const sum=p['1']+p.X+p['2'];
+   if(!Number.isFinite(sum)||Math.abs(sum-1)>1e-9||Object.keys(p).some(k=>Math.abs(f[k]*p[k]-1)>1e-8)){errors++;}
+  }
+  console.log('TIPSTER LIVE DATA DIAGNOSTIC',JSON.stringify({fixtures:stats.fixtures,historicalResults:stats.historicalResults,leagues:stats.leagues,modelValidationErrors:errors}));
+ }catch(e){console.error('TIPSTER LIVE DATA DIAGNOSTIC FAILED:',e.message);}
+},1100);
