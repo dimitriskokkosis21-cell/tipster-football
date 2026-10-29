@@ -1,5 +1,6 @@
-import './probe.mjs';
 import http from 'node:http';
+import {calculateMatchV2,validXg} from './model-v2.mjs';
+import {extractESPNxG,espnAvailability,mergeLicensedMatchData} from './features.mjs';
 import {readFile} from 'node:fs/promises';
 import {resolve,extname,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -45,7 +46,7 @@ function fromESPN(e,l){
   awayId:String(a.team.id||a.team.displayName),homeLogo:h.team.logo||null,awayLogo:a.team.logo||null,
   homeScore:hs,awayScore:as,complete:done&&Number.isFinite(hs)&&Number.isFinite(as),
   status:done?'FINAL':st.state==='in'?'LIVE':'SCHEDULED',
-  source:'ESPN (unofficial)',sourceUrl:'https://www.espn.com/soccer/match/_/gameId/'+e.id};
+  ...extractESPNxG(c),source:'ESPN (unofficial)',sourceUrl:'https://www.espn.com/soccer/match/_/gameId/'+e.id};
 }
 function fromSDB(e,l){
  if(!e.strHomeTeam||!e.strAwayTeam)return null;
@@ -106,8 +107,10 @@ async function leagueFetch(l,today,end,force){
   if(good.length<years.length)warning=(warning?warning+'; ':'')+'Some ESPN year queries failed; coverage may be incomplete';
   if(good.some(r=>r.value.events.length>=1000))warning=(warning?warning+'; ':'')+'Scoreboard reached event limit; coverage may be truncated';
   provider='ESPN (unofficial)';
+  let injuries=null;
+  try{injuries=await remote(ESPN+l.id+'/injuries',7200000,force);}catch{}
   if(!history.length)warning=(warning?warning+'; ':'')+'No historical results; league priors only';
-  return {fixtures,history,report:{league:l.name,provider,fixtures:fixtures.length,history:history.length,warning}};
+  return {fixtures,history,injuries,report:{league:l.name,provider,fixtures:fixtures.length,history:history.length,warning}};
  }catch(e){warning=(warning?warning+'; ':'')+'ESPN failed: '+e.message;}
  try{
   const a=await Promise.allSettled([remote(SDB+'eventsnextleague.php?id='+l.sdb,600000,force),remote(SDB+'eventspastleague.php?id='+l.sdb,21600000,force)]);
@@ -186,13 +189,57 @@ async function fetchAll(force=false){
  const reports=await Promise.all(LEAGUES.map(async l=>{try{return await leagueFetch(l,today,end,force)}catch(e){return {fixtures:[],history:[],report:{league:l.name,provider:'UNAVAILABLE',fixtures:0,history:0,warning:String(e)}}}}));
  const fixtures=unique(reports.flatMap(r=>r.fixtures)).filter(r=>new Date(r.date)>new Date()&&athens(new Date(r.date))>=today&&athens(new Date(r.date))<=end);
  const history=unique(reports.flatMap(r=>r.history)).filter(x=>x.complete);
- const matches=fixtures.map(m=>({...m,model:model(m,history)}));
+
+ // Optional licensed private data feed: matching must be anchored by competition,
+ // kickoff, home and away identity and explicit data-source provenance.
+ let licensed=null;
+ if(process.env.TIPSTER_DATA_FEED_URL){
+  try{
+   const url=new URL(process.env.TIPSTER_DATA_FEED_URL);
+   if(url.protocol!=='https:')throw Error('Feed URL must use HTTPS');
+   const headers={accept:'application/json'};
+   if(process.env.TIPSTER_DATA_FEED_TOKEN)headers.authorization='Bearer '+process.env.TIPSTER_DATA_FEED_TOKEN;
+   const response=await fetch(url,{headers,signal:AbortSignal.timeout(12000)});
+   if(!response.ok)throw Error('HTTP '+response.status);
+   const raw=await response.text();if(raw.length>4000000)throw Error('Feed too large');
+   licensed=JSON.parse(raw);
+   if(!Array.isArray(licensed?.matches)||!licensed?.source)throw Error('Invalid feed provenance or matches');
+  }catch(e){console.log('TIPSTER OPTIONAL ENRICHMENT UNAVAILABLE:',e.message);licensed=null;}
+ }
+ const eligibleRecords=licensed?.matches||[];
+ const findLicensed=(m)=>eligibleRecords.find(r=>
+  String(r.leagueId)===String(m.leagueId)&&
+  String(r.homeName||'').toLowerCase()===String(m.homeName||'').toLowerCase()&&
+  String(r.awayName||'').toLowerCase()===String(m.awayName||'').toLowerCase()&&
+  Math.abs(Date.parse(r.date)-Date.parse(m.date))<=7200000);
+ // Historical xG is accepted ONLY when the feed includes explicit scores, time,
+ // identity, two numeric xG values and a named originating source.
+ if(Array.isArray(licensed?.history)&&licensed?.source){
+  for(const record of licensed.history){
+   if(!record?.source||!record?.observedAt||validXg(record.homeXg)===null||validXg(record.awayXg)===null)continue;
+   const matched=history.find(h=>h.leagueId===record.leagueId&&
+    String(h.homeName).toLowerCase()===String(record.homeName).toLowerCase()&&
+    String(h.awayName).toLowerCase()===String(record.awayName).toLowerCase()&&
+    Math.abs(Date.parse(h.date)-Date.parse(record.date))<7200000);
+   if(matched){matched.homeXg=validXg(record.homeXg);matched.awayXg=validXg(record.awayXg);matched.xgSource=record.source;}
+  }
+ }
+ const leagueInjuries=new Map(reports.map((r,i)=>[LEAGUES[i].id,r.injuries]));
+ const matches=fixtures.map(m=>{
+  const base=espnAvailability(leagueInjuries.get(m.leagueId),m);
+  const rich=findLicensed(m);
+  const custom=rich?mergeLicensedMatchData(m,rich):null;
+  const avail=custom??base;
+  return {...m,model:calculateMatchV2(m,history,avail)};
+ });
  const sourceStatus=reports.map(r=>r.report);
  const data={matches,meta:{updatedAt:new Date().toISOString(),today,end,timezone:'Europe/Athens',historyMatches:history.length,
   sourceStatus,coverageIncomplete:sourceStatus.some(s=>s.provider==='UNAVAILABLE'||s.provider.includes('limited')||s.warning),
-  notice:'ESPN endpoints are unofficial and may change. No bookmaker, injury, xG or lineup data is being invented. Predictions are not validated betting advice.'}};
+  notice:'ESPN endpoints are unofficial and may change. xG, injuries, suspensions and projected XIs are included only if verified by named sources; otherwise they are explicitly unavailable. Probabilities are not independently calibrated.'}};
  if(sourceStatus.every(s=>s.provider==='UNAVAILABLE')&&!lastSuccessful)throw Error('All football data sources are currently unavailable. Retry later.');
  if(sourceStatus.some(s=>s.provider!=='UNAVAILABLE'))lastSuccessful={data,expires:now+7*60000,date:today};
+ const caseStudy=matches.filter(m=>/kifisia/i.test(m.homeName+' '+m.awayName)&&/olymp/i.test(m.homeName+' '+m.awayName));
+ if(caseStudy.length)console.log('TIPSTER KIFISIA / OLYMPIACOS V2 CHECK',JSON.stringify(caseStudy.map(x=>({match:x.homeName+' vs '+x.awayName,probabilities:x.model.probabilities,xgSource:x.model.verifiedXgMatches,homeElo:x.model.eloHome,awayElo:x.model.eloAway,lambdaHome:x.model.lambdaHome,lambdaAway:x.model.lambdaAway}))));
  if(!matches.length&&sourceStatus.every(s=>s.provider==='UNAVAILABLE')&&lastSuccessful)return lastSuccessful.data;
  return data;
 }
