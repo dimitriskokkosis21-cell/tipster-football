@@ -31,15 +31,24 @@ function athens(d=new Date()){
 const compact=s=>s.replaceAll('-','');
 const valid=s=>s && !Number.isNaN(Date.parse(s));
 function json(res,status,obj){res.writeHead(status,{'content-type':'application/json; charset=utf-8','cache-control':'no-store','access-control-allow-origin':'*'});res.end(JSON.stringify(obj));}
+const pendingRemote=new Map();
 async function remote(url,ms=600000,force=false,timeoutMs=9500){
  const old=cache.get(url);
  if(!force&&old&&old.until>Date.now())return old.body;
- try{
-  const r=await fetch(url,{headers:{accept:'application/json'},signal:AbortSignal.timeout(timeoutMs)});
-  if(!r.ok)throw Error('HTTP '+r.status);
-  const t=await r.text();if(t.length>18000000)throw Error('provider oversized response');
-  const v=JSON.parse(t);cache.set(url,{body:v,until:Date.now()+ms});return v;
- }catch(e){if(old?.body)return old.body;throw Error(new URL(url).hostname+': '+e.message);}
+ // Prevent parallel browser refreshes and startup warming from repeatedly
+ // downloading the same large provider response.
+ if(pendingRemote.has(url))return pendingRemote.get(url);
+ const promise=(async()=>{
+  try{
+   const r=await fetch(url,{headers:{accept:'application/json'},signal:AbortSignal.timeout(timeoutMs)});
+   if(!r.ok)throw Error('HTTP '+r.status);
+   const t=await r.text();
+   if(t.length>18000000)throw Error('provider oversized response');
+   const v=JSON.parse(t);cache.set(url,{body:v,until:Date.now()+ms});return v;
+  }catch(e){if(old?.body)return old.body;throw Error(new URL(url).hostname+': '+e.message);}
+ })();
+ pendingRemote.set(url,promise);
+ try{return await promise;}finally{if(pendingRemote.get(url)===promise)pendingRemote.delete(url);}
 }
 function fromESPN(e,l){
  const c=e.competitions?.[0],t=c?.competitors||[];
@@ -86,9 +95,17 @@ async function leagueFetch(l,today,end,force){
  if(l.id==='ger.1'){
   try{
    const season=y=>Number(y.slice(0,4))-(Number(y.slice(5,7))<7?1:0);
-   const years=[...new Set([season(today),season(end),season(past)])];
-   const res=await Promise.all(years.map(y=>remote('https://api.openligadb.de/getmatchdata/bl1/'+y,21600000,force)));
-   const all=unique(res.flatMap(r=>Array.isArray(r)?r.map(e=>fromOpen(e,l)):[]));
+   const currentYear=season(today);
+   const current=await remote('https://api.openligadb.de/getmatchdata/bl1/'+currentYear,21600000,force,11000);
+   const olderYears=[...new Set([season(end),season(past)])].filter(y=>y!==currentYear);
+   let seasonData=Array.isArray(current)?current:[];
+   for(const year of olderYears){
+    const url='https://api.openligadb.de/getmatchdata/bl1/'+year;
+    const old=cache.get(url)?.body;
+    if(Array.isArray(old))seasonData=seasonData.concat(old);
+    else void remote(url,86400000,false,9000).catch(()=>{});
+   }
+   const all=unique(seasonData.map(e=>fromOpen(e,l)));
    fixtures=all.filter(x=>!x.complete&&athens(new Date(x.date))>=today&&athens(new Date(x.date))<=end);
    history=all.filter(x=>x.complete&&athens(new Date(x.date))>=past&&athens(new Date(x.date))<today);
    provider='OpenLigaDB (ODbL)';
@@ -104,7 +121,7 @@ async function leagueFetch(l,today,end,force){
   // supplementary and must never cause current fixtures to disappear.
   const currentYears=[...new Set([today.slice(0,4),end.slice(0,4)])];
   const currentResponses=await Promise.allSettled(currentYears.map(year=>
-   remote(ESPN+l.id+'/scoreboard?dates='+year+'&limit=1000',21600000,force,16000)));
+   remote(ESPN+l.id+'/scoreboard?dates='+year+'&limit=1000',21600000,force,11500)));
   const currentGood=currentResponses.filter(r=>r.status==='fulfilled'&&Array.isArray(r.value?.events));
   if(!currentGood.length)throw Error(currentResponses.map(r=>r.reason?.message||'scoreboard unavailable').join('; '));
   const currentEvents=new Map();
@@ -112,25 +129,27 @@ async function leagueFetch(l,today,end,force){
   const currentData=[...currentEvents.values()].map(e=>fromESPN(e,l)).filter(Boolean);
   fixtures=currentData.filter(x=>!x.complete&&athens(new Date(x.date))>=today&&athens(new Date(x.date))<=end);
   let all=currentData;
-  const olderYears=[...new Set([past.slice(0,4)])].filter(y=>!currentYears.includes(y));
-  if(fixtures.length&&olderYears.length){
-   const older=await Promise.allSettled(olderYears.map(y=>
-    remote(ESPN+l.id+'/scoreboard?dates='+y+'&limit=1000',86400000,force,13000)));
-   const historic=older.filter(r=>r.status==='fulfilled'&&Array.isArray(r.value?.events));
-   if(historic.length<olderYears.length)warning=(warning?warning+'; ':'')+'Earlier-season history was partially unavailable';
-   for(const r of historic)all.push(...r.value.events.map(e=>fromESPN(e,l)).filter(Boolean));
+  const olderYears=[past.slice(0,4)].filter(y=>!currentYears.includes(y));
+  for(const year of olderYears){
+   const url=ESPN+l.id+'/scoreboard?dates='+year+'&limit=1000';
+   const archived=cache.get(url)?.body;
+   if(Array.isArray(archived?.events))all.push(...archived.events.map(e=>fromESPN(e,l)).filter(Boolean));
+   // Older seasons are enrichment, NEVER an on-demand fixture blocker.
+   else void remote(url,86400000,false,11500).catch(()=>{});
   }
   history=unique(all).filter(x=>x.complete&&athens(new Date(x.date))>=past&&athens(new Date(x.date))<today);
   if(currentGood.length<currentYears.length)warning=(warning?warning+'; ':'')+'Some current-year requests failed';
   if(currentGood.some(r=>r.value.events.length>=1000))warning=(warning?warning+'; ':'')+'Event pagination limit reached';
   provider='ESPN (unofficial)';
-  let injuries=null;
-  try{injuries=await remote(ESPN+l.id+'/injuries',7200000,force);}catch{}
+  // Injury data enriches a second refresh; it cannot hold up all fixtures.
+  const injuryUrl=ESPN+l.id+'/injuries';
+  const injuries=cache.get(injuryUrl)?.body||null;
+  if(!injuries)void remote(injuryUrl,7200000,false,5500).catch(()=>{});
   if(!history.length)warning=(warning?warning+'; ':'')+'No historical results; league priors only';
   return {fixtures,history,injuries,report:{league:l.name,provider,fixtures:fixtures.length,history:history.length,warning}};
  }catch(e){warning=(warning?warning+'; ':'')+'ESPN failed: '+e.message;}
  try{
-  const a=await Promise.allSettled([remote(SDB+'eventsnextleague.php?id='+l.sdb,600000,force),remote(SDB+'eventspastleague.php?id='+l.sdb,21600000,force)]);
+  const a=await Promise.allSettled([remote(SDB+'eventsnextleague.php?id='+l.sdb,600000,force,5500),remote(SDB+'eventspastleague.php?id='+l.sdb,21600000,force,5500)]);
   if(a[0].status==='fulfilled')fixtures=(a[0].value.events||[]).map(x=>fromSDB(x,l)).filter(x=>x&&!x.complete&&athens(new Date(x.date))>=today&&athens(new Date(x.date))<=end);
   if(a[1].status==='fulfilled')history=(a[1].value.events||[]).map(x=>fromSDB(x,l)).filter(x=>x&&x.complete);
   if(a.every(x=>x.status==='rejected'))throw Error('both free-tier calls failed');
