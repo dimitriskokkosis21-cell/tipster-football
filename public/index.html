@@ -48,7 +48,7 @@ details.diagnostics{margin:30px 0;border:1px solid var(--line);border-radius:8px
 <div class="controls"><select class="control" id="league" aria-label="Competition"><option value="all">All competitions</option></select>
 <select class="control" id="sort" aria-label="Sort"><option value="kickoff">Kickoff time</option><option value="confidence">Sample strength</option></select>
 <button class="control toggle" id="value" aria-pressed="false">Value bets only</button><button class="control refresh" id="refresh">↻ Refresh</button></div></div>
-<div class="hint"><span id="countLabel">Retrieving verified fixtures…</span><span>Timezone: Athens (EET/EEST)</span></div>
+<div class="hint"><span id="countLabel">Retrieving verified fixtures… First visit may take longer.</span><span>Timezone: Athens (EET/EEST)</span></div>
 <div id="cards" class="cards" aria-live="polite"><div class="message">Connecting to football data providers. Real fixtures will appear when the server responds.</div></div>
 <details class="diagnostics"><summary>Data sources and coverage</summary><section id="diagnostics">Checking sources…</section></details>
 </main>
@@ -108,11 +108,25 @@ function diagnostic(){
  $('diagnostics').innerHTML=(data.meta.sourceStatus||[]).map(s=>'<div class="diagrow"><div><b>'+esc(s.league)+'</b><small>'+esc(s.provider)+'</small>'+(s.warning?'<small class="warning">'+esc(s.warning)+'</small>':'')+'</div><div>'+s.fixtures+' fixtures<br>'+s.history+' results</div></div>').join('');
 }
 async function load(force){
- if(loading)return;loading=true;$('refresh').disabled=true;$('refresh').textContent='Loading…';$('state').textContent='SYNCING SOURCES';
+ if(loading)return;
+ loading=true;
+ $('refresh').disabled=true;$('refresh').textContent='Loading…';
+ $('state').textContent='SYNCING SOURCES';
+ $('countLabel').textContent='Retrieving verified fixtures and preparing predictions…';
+ var controller=new AbortController();
+ var timeout=setTimeout(()=>controller.abort(),27000);
+ var slow=setTimeout(()=>{
+  $('countLabel').textContent='Football providers are responding slowly. Trying to load available fixtures…';
+ },7500);
  try{
-  var res=await fetch('/api/matches'+(force?'?refresh=1':''),{cache:'no-store'});
-  var x=await res.json();if(!res.ok)throw Error(x.error||'HTTP '+res.status);
-  if(!Array.isArray(x.matches))throw Error('Provider returned unexpected data');
+  var res=await fetch('/api/matches'+(force?'?refresh=1':''),{cache:'no-store',signal:controller.signal});
+  if(!res.ok){
+   var err=await res.json().catch(()=>({error:'HTTP '+res.status}));
+   throw Error(err.error||'HTTP '+res.status);
+  }
+  var x=await res.json();
+  if(!Array.isArray(x.matches)||!x.meta||!Array.isArray(x.meta.sourceStatus))
+   throw Error('Unexpected football data format');
   data=x;
   $('state').textContent=x.meta.coverageIncomplete?'LIVE · PARTIAL COVERAGE':'LIVE · RESULTS-BASED';
   $('updated').textContent='Updated '+time(x.meta.updatedAt)+' Athens';
@@ -120,11 +134,31 @@ async function load(force){
   $('league').innerHTML='<option value="all">All competitions</option>'+opts.map(v=>'<option value="'+esc(v[0])+'">'+esc(v[1])+'</option>').join('');
   if(opts.some(v=>v[0]===old))$('league').value=old;
   diagnostic();draw();
+  try{sessionStorage.setItem('tipsterVerifiedSnapshot',JSON.stringify({storedAt:Date.now(),data:x}));}catch{}
  }catch(e){
-  $('state').textContent='DATA CONNECTION ERROR';$('updated').textContent='Retry available';
-  $('cards').innerHTML='<div class="message error"><strong>Football data is unavailable.</strong><p>'+esc(e.message)+'. Tap Refresh to retry. No fictional matches or betting prices are shown.</p></div>';
-  $('countLabel').textContent='Request failed';$('numMatches').textContent='—';$('numValue').textContent='—';
- }finally{loading=false;$('refresh').disabled=false;$('refresh').textContent='↻ Refresh';}
+  console.error('TIPSTER fixture load failed',e);
+  var recovered=false;
+  try{
+   var saved=JSON.parse(sessionStorage.getItem('tipsterVerifiedSnapshot')||'null');
+   if(saved&&saved.data&&saved.storedAt>Date.now()-4*3600000&&saved.data.meta?.today===athens(new Date())&&Array.isArray(saved.data.matches)){
+    data=saved.data;
+    $('state').textContent='CACHED · LIVE FEED UNAVAILABLE';
+    $('updated').textContent='Last verified '+time(data.meta.updatedAt);
+    $('league').innerHTML='<option value="all">All competitions</option>'+[...new Map(data.matches.map(m=>[m.leagueId,m.league])).entries()].map(v=>'<option value="'+esc(v[0])+'">'+esc(v[1])+'</option>').join('');
+    diagnostic();draw();
+    $('countLabel').textContent='Showing previously verified same-day data while the live providers are unavailable. Refresh before betting.';
+    recovered=true;
+   }
+  }catch{}
+  if(!recovered){
+   $('state').textContent='DATA CONNECTION ERROR';$('updated').textContent='Retry available';
+   $('cards').innerHTML='<div class="message error"><strong>Could not load fixtures.</strong><p>'+esc(e.name==='AbortError'?'The request took too long.':'The data source could not respond.')+' Tap Refresh to retry. Technical details: '+esc(e.message)+'.</p></div>';
+   $('countLabel').textContent='Fixture request failed — retry available';$('numMatches').textContent='—';$('numValue').textContent='—';
+  }
+ }finally{
+  clearTimeout(timeout);clearTimeout(slow);
+  loading=false;$('refresh').disabled=false;$('refresh').textContent='↻ Refresh';
+ }
 }
 document.querySelectorAll('[data-range]').forEach(b=>b.addEventListener('click',function(){
  range=b.dataset.range;document.querySelectorAll('[data-range]').forEach(t=>t.classList.toggle('active',t===b));draw();
