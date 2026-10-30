@@ -8,8 +8,8 @@ import {fileURLToPath} from 'node:url';
 const ROOT=fileURLToPath(new URL('.',import.meta.url));
 
 try{
- const tests=execFileSync(process.execPath,['--test','tests/model-v2.test.mjs'],{cwd:ROOT,encoding:'utf8',timeout:15000,stdio:['ignore','pipe','pipe']});
- console.log('TIPSTER V2 SELF-TEST',tests.split('\n').filter(x=>x.startsWith('# tests')||x.startsWith('# pass')||x.startsWith('# fail')).join(' | '));
+ const tests=execFileSync(process.execPath,['--test'],{cwd:ROOT,encoding:'utf8',timeout:15000,stdio:['ignore','pipe','pipe']});
+ console.log('TIPSTER V2 SELF-TEST',tests.match(/# (?:tests|pass|fail) \d+/g)?.join(' | ')||tests.slice(-250));
 }catch(e){console.error('TIPSTER V2 SELF-TEST FAILED:',String(e.stdout||e.stderr||e.message).slice(0,3000));process.exit(1);}
 const PORT=Number(process.env.PORT||3000);
 const ESPN='https://site.api.espn.com/apis/site/v2/sports/soccer/';
