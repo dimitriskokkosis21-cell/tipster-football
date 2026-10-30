@@ -158,8 +158,11 @@ async function leagueFetch(l,today,end,force){
  }catch(e){provider='UNAVAILABLE';warning+='; TheSportsDB failed: '+e.message;}
  return {fixtures,history,report:{league:l.name,provider,fixtures:fixtures.length,history:history.length,warning}};
 }
-async function fetchAll(force=false){
+let inFlightBuild=null;
+async function buildAllMatches(force=false){
  const now=Date.now(),today=athens(),end=dadd(today,7);
+ // Only one complete provider sweep may run at a time, even if Render receives
+ // simultaneous requests from multiple Safari tabs or startup warmup.
  if(!force&&lastSuccessful&&lastSuccessful.expires>now&&lastSuccessful.date===today)return lastSuccessful.data;
  const reports=await Promise.all(LEAGUES.map(async l=>{try{return await leagueFetch(l,today,end,force)}catch(e){return {fixtures:[],history:[],report:{league:l.name,provider:'UNAVAILABLE',fixtures:0,history:0,warning:String(e)}}}}));
  const fixtures=unique(reports.flatMap(r=>r.fixtures)).filter(r=>new Date(r.date)>new Date()&&athens(new Date(r.date))>=today&&athens(new Date(r.date))<=end);
@@ -212,27 +215,51 @@ async function fetchAll(force=false){
   sourceStatus,coverageIncomplete:sourceStatus.some(s=>s.provider==='UNAVAILABLE'||s.provider.includes('limited')||s.warning),
   notice:'ESPN endpoints are unofficial and may change. xG, injuries, suspensions and projected XIs are included only if verified by named sources; otherwise they are explicitly unavailable. Probabilities are not independently calibrated.'}};
  if(sourceStatus.every(s=>s.provider==='UNAVAILABLE')&&!lastSuccessful)throw Error('All football data sources are currently unavailable. Retry later.');
- if(sourceStatus.some(s=>s.provider!=='UNAVAILABLE'))lastSuccessful={data,expires:now+7*60000,date:today};
+ if(sourceStatus.some(s=>s.provider!=='UNAVAILABLE'))lastSuccessful={data,expires:now+5*60000,date:today};
  const caseStudy=matches.filter(m=>/kifisia/i.test(m.homeName+' '+m.awayName)&&/olymp/i.test(m.homeName+' '+m.awayName));
  if(caseStudy.length)console.log('TIPSTER KIFISIA / OLYMPIACOS V2 CHECK',JSON.stringify(caseStudy.map(x=>({match:x.homeName+' vs '+x.awayName,probabilities:x.model.probabilities,xgSource:x.model.verifiedXgMatches,homeElo:x.model.eloHome,awayElo:x.model.eloAway,lambdaHome:x.model.lambdaHome,lambdaAway:x.model.lambdaAway}))));
  if(!matches.length&&sourceStatus.every(s=>s.provider==='UNAVAILABLE')&&lastSuccessful)return lastSuccessful.data;
  return data;
+}
+// Fast stale-while-revalidate for a same-day, verified match snapshot.
+async function fetchAll(force=false){
+ const now=Date.now(),today=athens();
+ if(!force&&lastSuccessful?.date===today&&lastSuccessful.expires>now)return lastSuccessful.data;
+ if(inFlightBuild){
+  if(!force&&lastSuccessful?.date===today)return lastSuccessful.data;
+  return inFlightBuild;
+ }
+ const job=buildAllMatches(force);
+ inFlightBuild=job;
+ void job.catch(e=>console.error('TIPSTER PROVIDER SWEEP FAILED',e.message)).finally(()=>{
+  if(inFlightBuild===job)inFlightBuild=null;
+ });
+ if(!force&&lastSuccessful?.date===today)return lastSuccessful.data;
+ return job;
 }
 const MIME={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.svg':'image/svg+xml'};
 http.createServer(async(req,res)=>{
  try{
   const url=new URL(req.url,'http://localhost');
   if(url.pathname==='/api/health')return json(res,200,{ok:true,app:'TIPSTER',time:new Date().toISOString()});
+  if(url.pathname==='/api/status')return json(res,200,{ok:true,loading:!!inFlightBuild,cached:!!lastSuccessful,cacheDate:lastSuccessful?.date||null,cacheUpdatedAt:lastSuccessful?.data?.meta?.updatedAt||null,fixtureCount:lastSuccessful?.data?.matches?.length||0});
   if(url.pathname==='/api/matches'){
-   try{return json(res,200,await fetchAll(url.searchParams.get('refresh')==='1'));}
-   catch(e){return json(res,503,{error:e.message,retryable:true,at:new Date().toISOString()});}
+   const start=Date.now();
+   try{
+    const result=await fetchAll(url.searchParams.get('refresh')==='1');
+    console.log('TIPSTER HTTP fixtures',JSON.stringify({count:result.matches.length,elapsedMs:Date.now()-start,at:new Date().toISOString()}));
+    return json(res,200,result);
+   }catch(e){
+    console.error('TIPSTER HTTP fixtures failed',JSON.stringify({elapsedMs:Date.now()-start,error:String(e?.message||e)}));
+    return json(res,503,{error:e.message,retryable:true,at:new Date().toISOString()});
+   }
   }
   if(url.pathname.startsWith('/api/'))return json(res,404,{error:'Not found'});
   const path=url.pathname==='/'?'/index.html':url.pathname;
   if(!/^\/[a-zA-Z0-9_./-]+$/.test(path)||path.includes('..'))return json(res,400,{error:'Invalid path'});
   const target=resolve(ROOT,'public','.'+path),base=resolve(ROOT,'public');
   if(target!==base&&!target.startsWith(base+sep))return json(res,403,{error:'Forbidden'});
-  try{const body=await readFile(target);res.writeHead(200,{'content-type':MIME[extname(target)]||'application/octet-stream','cache-control':'public, max-age=300'});res.end(body);}
+  try{const body=await readFile(target);res.writeHead(200,{'content-type':MIME[extname(target)]||'application/octet-stream','cache-control':extname(target)==='.html'?'no-store':'public, max-age=300'});res.end(body);}
   catch{json(res,404,{error:'Not found'});}
  }catch(e){json(res,500,{error:'Unexpected server error'});}
 }).listen(PORT,'0.0.0.0',()=>console.log('TIPSTER serving on '+PORT));
