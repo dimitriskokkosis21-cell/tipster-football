@@ -13,7 +13,7 @@ a{color:var(--ice)}header{border-bottom:1px solid var(--line);background:#111a23
 .brandtext{font-size:23px;font-weight:850;letter-spacing:.055em;line-height:1}.subtitle{font-size:10px;font-weight:700;letter-spacing:.17em;color:var(--sub);margin-top:6px}
 .status{text-align:right;font-size:11px;color:var(--sub)}.status b{font-weight:600;color:var(--ice);font-size:11px}
 .intro{padding:31px 0 22px}.eyebrow{text-transform:uppercase;color:var(--teal);font-weight:750;font-size:10px;letter-spacing:.18em}.intro h1{font-size:clamp(23px,4vw,31px);letter-spacing:-.035em;line-height:1.1;margin:9px 0 8px;font-weight:760}.intro p{max-width:750px;color:var(--sub);margin:0}
-.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0 25px}.stat{border:1px solid var(--line);background:var(--pane);border-radius:9px;padding:15px 17px}.stat .lab{font-size:11px;letter-spacing:.055em;text-transform:uppercase;color:var(--sub)}.stat .num{font-size:27px;font-weight:750;letter-spacing:-.03em;margin-top:3px;font-variant-numeric:tabular-nums}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0 25px}.stat{border:1px solid var(--line);background:var(--pane);border-radius:9px;padding:15px 17px}.stat .lab{font-size:11px;letter-spacing:.055em;text-transform:uppercase;color:var(--sub)}.stat .num{font-size:27px;font-weight:750;letter-spacing:-.03em;margin-top:3px;font-variant-numeric:tabular-nums}
 .toolbar{display:flex;flex-wrap:wrap;gap:11px;justify-content:space-between;align-items:center;margin:0 0 15px}.tabs{display:flex;gap:4px;padding:3px;background:#151f29;border:1px solid var(--line);border-radius:8px}.tabs button{border:0;color:var(--sub);background:none;padding:9px 13px;border-radius:6px;font-size:12px;font-weight:700}.tabs button.active{background:#2b4045;color:#dbf1ef}
 .controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.control{border:1px solid var(--line);border-radius:7px;background:var(--pane);color:var(--txt);padding:10px 12px;font-size:12px;min-height:38px}
 .control:hover{border-color:#52747a}.refresh{color:var(--ice);font-weight:650}.refresh:disabled{opacity:.5;cursor:wait}.toggle.active{border-color:#60a9a2;color:var(--ice)}
@@ -36,13 +36,18 @@ summary::-webkit-details-marker{display:none}summary:after{content:"+";font-size
 footer{border-top:1px solid var(--line);margin-top:35px;padding:25px 0 45px;color:var(--sub);font-size:11px}footer p{max-width:850px}
 details.diagnostics{margin:30px 0;border:1px solid var(--line);border-radius:8px;background:var(--pane)}.diagnostics section{padding:0 16px 16px;font-size:11px;color:var(--sub)}
 .diagrow{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--line)}.diagrow b{color:var(--txt)}.diagrow small{display:block}
-@media(max-width:760px){.cards{grid-template-columns:1fr}.intro{padding-top:26px}.summary{margin-top:17px}.header{padding:18px 0}.status{font-size:10px}.subtitle{max-width:200px}.toolbar{align-items:stretch}.controls{flex:1;justify-content:space-between}.controls select{flex:1;min-width:145px}.tabs{width:100%;justify-content:space-between}.tabs button{flex:1}.wrap{padding:0 14px}.teams{margin:13px 0 18px}}
+@media(max-width:760px){.summary{grid-template-columns:repeat(2,minmax(0,1fr))}.cards{grid-template-columns:1fr}.intro{padding-top:26px}.summary{margin-top:17px}.header{padding:18px 0}.status{font-size:10px}.subtitle{max-width:200px}.toolbar{align-items:stretch}.controls{flex:1;justify-content:space-between}.controls select{flex:1;min-width:145px}.tabs{width:100%;justify-content:space-between}.tabs button{flex:1}.wrap{padding:0 14px}.teams{margin:13px 0 18px}}
 @media(max-width:360px){.picks{grid-template-columns:1fr 1fr}.top{padding:14px 12px 5px}.team{font-size:13px}.stat{padding:12px 10px}.stat .num{font-size:21px}.stat .lab{font-size:9px}.table-wrap{padding:11px}.prob th:first-child,.prob td:first-child{width:40%}}
 </style></head>
 <body><header><div class="wrap header"><div class="brand"><div class="symbol">T</div><div><div class="brandtext">TIPSTER<span style="color:var(--teal)">.</span></div><div class="subtitle">MODEL-LED FOOTBALL INTELLIGENCE</div></div></div><div class="status"><b id="state">CONNECTING TO LIVE DATA</b><div id="updated">Europe/Athens</div></div></div></header>
 <main class="wrap">
 <section class="intro"><div class="eyebrow">Independent probability research</div><h1>Football. Quantified.</h1><p>Real fixtures, transparent model probabilities and independent fair odds. A predicted winner is not the same thing as a qualifying value bet.</p></section>
-<section class="summary"><div class="stat"><div class="lab">Fixtures displayed</div><div id="numMatches" class="num">—</div></div><div class="stat"><div class="lab">Value opportunities</div><div id="numValue" class="num">—</div></div><div class="stat"><div class="lab">Verified results</div><div id="numHistory" class="num">—</div></div></section>
+<section class="summary"><div class="stat"><div class="lab">Fixtures displayed</div><div id="numMatches" class="num">—</div></div><div class="stat"><div class="lab">Value opportunities</div><div id="numValue" class="num">—</div></div><div class="stat"><div class="lab">Verified results</div><div id="numHistory" class="num">—</div></div><div class="stat"><div class="lab">Learning samples</div><div id="numEvaluated" class="num">—</div></div></section>
+<section class="message" id="learningPanel" style="margin-bottom:18px"><div class="eyebrow">Model accountability · historical forecast archive</div>
+<div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-top:10px"><strong>TIPSTER prediction track record</strong><span id="learningFreshness" class="pill">Not yet evaluated</span></div>
+<p id="learningSummary" class="detailsline" style="margin:8px 0">Beginning to archive real pre-match predictions and evaluate them against verified final scores.</p>
+<details><summary>Results by competition and model calibration</summary><div id="learningLeagues" class="details" aria-live="polite">No completed archived forecasts yet.</div></details>
+</section>
 <div class="toolbar">
 <nav class="tabs" aria-label="Date filter"><button data-range="today">Today</button><button data-range="tomorrow">Tomorrow</button><button class="active" data-range="week">Next 7 days</button></nav>
 <div class="controls"><select class="control" id="league" aria-label="Competition"><option value="all">All competitions</option></select>
@@ -52,7 +57,7 @@ details.diagnostics{margin:30px 0;border:1px solid var(--line);border-radius:8px
 <div id="cards" class="cards" aria-live="polite"><div class="message">Connecting to football data providers. Real fixtures will appear when the server responds.</div></div>
 <details class="diagnostics"><summary>Data sources and coverage</summary><section id="diagnostics">Checking sources…</section></details>
 </main>
-<footer><div class="wrap"><strong style="color:var(--txt)">TIPSTER</strong> · Independent probability estimates; no bet is guaranteed.<p>Model V2 uses opponent-adjusted attack and defence, Elo, recency and verified xG where available. Reported confirmed absences receive small, capped heuristic adjustments. Projected XIs appear only with a named data source. Optional verified xG data: StrikerAPI; optional injury/suspension reports: API-Football (both require API credentials). Fair odds = 1 / model probability. Value-bet minimum price includes a conservative probability adjustment and a 5% required expected return. No bookmaker odds are displayed unless verified. Historical goals-based modelling is not a substitute for verified xG, injuries or lineups. Data may be incomplete, particularly where unofficial or limited provider endpoints are used.</p></div></footer>
+<footer><div class="wrap"><strong style="color:var(--txt)">TIPSTER</strong> · Independent probability estimates; no bet is guaranteed.<p>Model V2 uses opponent-adjusted attack and defence, Elo, recency and verified xG where available. Reported confirmed absences receive small, capped heuristic adjustments. Projected XIs appear only with a named data source. Optional verified xG data: StrikerAPI; optional injury/suspension reports: API-Football (both require API credentials). Fair odds = 1 / model probability. Value-bet minimum price includes a conservative probability adjustment and a 5% required expected return. No bookmaker odds are displayed unless verified. Performance scores use real archived pre-kickoff forecasts and independently verified final scores. Historical goals-based modelling is not a substitute for verified xG, injuries or lineups. Data may be incomplete, particularly where unofficial or limited provider endpoints are used.</p></div></footer>
 <script>
 (function(){
 'use strict';
@@ -103,6 +108,22 @@ function draw(){
  $('countLabel').textContent=rows.length+' upcoming modelled matches'+(data.meta.coverageIncomplete?' · Coverage may be incomplete':'');
  $('cards').innerHTML=rows.length?rows.map(card).join(''):'<div class="message">No matching upcoming fixtures with verified data were returned for this filter.<p>Try Next 7 days or All competitions. Provider coverage may be incomplete; no fixture has been invented.</p></div>';
 }
+function showLearning(){
+ var report=data?.meta?.learning,perf=report?.performance;
+ $('numEvaluated').textContent=perf?perf.evaluated:'—';
+ if(!perf||!perf.evaluated){
+  $('learningFreshness').textContent='COLLECTING PREDICTIONS';
+  $('learningSummary').textContent='No completed, archived pre-match forecasts yet. Predictions must be recorded BEFORE kickoff and verified AFTER full time. Accuracy cannot be claimed until results accumulate.';
+  $('learningLeagues').innerHTML='<p class="detailsline">The scheduled archive records fixtures, then tracks confirmed results by league. Learning starts only with genuinely archived forecasts.</p>';
+  return;
+ }
+ var st='Accuracy '+pct(perf.accuracy)+' · 3-way Brier '+dec(perf.brier)+' · Log loss '+dec(perf.logLoss);
+ $('learningFreshness').textContent=perf.evaluated+' VERIFIED RESULTS';
+ $('learningSummary').textContent=st+'. '+perf.awaitingResult+' predictions awaiting final results. Calibration changes only when chronological holdout testing demonstrates an improvement.';
+ var rows=Object.entries(perf.leagues||{}).filter(v=>v[1].tracked>0);
+ $('learningLeagues').innerHTML='<p class="detailsline">Model calibration: '+esc(report.globalCalibration?.reason||'Not yet trained')+' · Global temperature: '+dec(report.globalCalibration?.temperature??1)+' · Last evaluation: '+(report.updatedAt?esc(time(report.updatedAt)):'unknown')+'</p>'
+ +rows.map(([id,v])=>'<div class="diagrow"><div><b>'+esc(v.leagueName||id)+'</b><small>Tracked '+v.tracked+' · Settled '+v.evaluated+'</small></div><div>'+ (v.evaluated?'<b>'+pct(v.accuracy)+'</b><small>Brier '+dec(v.brier)+'</small>':'<small>Awaiting results</small>')+'</div></div>').join('');
+}
 function diagnostic(){
  if(!data)return;
  var enabled=data.meta.featureSources||{};
@@ -136,7 +157,7 @@ async function load(force){
   var old=$('league').value,opts=[...new Map(x.matches.map(m=>[m.leagueId,m.league])).entries()];
   $('league').innerHTML='<option value="all">All competitions</option>'+opts.map(v=>'<option value="'+esc(v[0])+'">'+esc(v[1])+'</option>').join('');
   if(opts.some(v=>v[0]===old))$('league').value=old;
-  diagnostic();draw();
+  diagnostic();showLearning();draw();
   try{sessionStorage.setItem('tipsterVerifiedSnapshot',JSON.stringify({storedAt:Date.now(),data:x}));}catch{}
  }catch(e){
   console.error('TIPSTER fixture load failed',e);
@@ -148,7 +169,7 @@ async function load(force){
     $('state').textContent='CACHED · LIVE FEED UNAVAILABLE';
     $('updated').textContent='Last verified '+time(data.meta.updatedAt);
     $('league').innerHTML='<option value="all">All competitions</option>'+[...new Map(data.matches.map(m=>[m.leagueId,m.league])).entries()].map(v=>'<option value="'+esc(v[0])+'">'+esc(v[1])+'</option>').join('');
-    diagnostic();draw();
+    diagnostic();showLearning();draw();
     $('countLabel').textContent='Showing previously verified same-day data while the live providers are unavailable. Refresh before betting.';
     recovered=true;
    }
