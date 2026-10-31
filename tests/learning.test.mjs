@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {archivePrediction,settlePrediction,fitCalibration,applyTemperature,
- resultLabel,forecastMetrics,selectCalibration} from '../learning.mjs';
+ resultLabel,forecastMetrics,marketMetrics,applyBinaryTemperature,selectMarketCalibration,selectCalibration} from '../learning.mjs';
 const fixture=(id,date='2026-11-01T16:00:00.000Z',p={'1':.6,X:.25,'2':.15})=>
  ({id,leagueId:'gre.1',league:'Greek Super League',date,homeName:'Home',awayName:'Away',
  model:{probabilities:p,rawProbabilities:p,lambdaHome:1.9,lambdaAway:.8}});
@@ -74,4 +74,36 @@ test('chronological holdout never trains on future or unrecorded predictions',()
  assert.ok(cal.global.temperature>=1);
  assert.ok(cal.global.holdout>=12);
  assert.ok(cal.global.improvement>=0);
+});
+
+test('BTTS, totals and exact-score predictions remain auditable and use actual full-time score',()=>{
+ const records=[],m=fixture('espn:gre.1:market', '2026-11-01T16:00:00Z');
+ m.model={...m.model,over25:.65,btts:.58,topScores:[{score:'2-1',probability:.13},{score:'1-1',probability:.1}]};
+ assert.equal(archivePrediction(records,m,'2026-10-31T12:00:00Z'),true);
+ assert.equal(records[0].forecast.markets.over25,.65);
+ assert.equal(records[0].forecast.markets.predictedScore,'2-1');
+ settlePrediction(records[0],{home:2,away:1,completed:true},'2026-11-01T20:00:00Z','ESPN');
+ const stats=marketMetrics(records);
+ assert.equal(stats.over25Evaluated,1);
+ assert.equal(stats.bttsEvaluated,1);
+ assert.equal(stats.exactScoreEvaluated,1);
+ assert.equal(stats.exactScoreAccuracy,1);
+ assert.ok(Math.abs(stats.over25Brier-(1-.65)**2)<1e-10);
+ assert.ok(Math.abs(stats.bttsBrier-(1-.58)**2)<1e-10);
+ assert.ok(stats.expectedGoalsMAE>=0);
+});
+test('binary-market calibration remains neutral until enough verified results',()=>{
+ for(const p of [.01,.1,.5,.8,.99])assert.ok(Math.abs(applyBinaryTemperature(p,1)-p)<1e-10);
+ const cal=fitCalibration([],'2026-10-31T12:00:00Z');
+ assert.equal(selectMarketCalibration(cal,'btts'),1);
+ assert.equal(selectMarketCalibration(cal,'over25'),1);
+});
+test('an archived forecast without market fields may gain new pre-kickoff market tracking, never retroactively',()=>{
+ const rows=[],start=fixture('espn:gre.1:abc');
+ archivePrediction(rows,start,'2026-10-31T09:00:00Z');
+ const revised=fixture('espn:gre.1:abc');
+ revised.model={...revised.model,over25:.45,btts:.4,topScores:[{score:'1-0',probability:.14}]};
+ assert.equal(archivePrediction(rows,revised,'2026-10-31T12:00:00Z'),true);
+ assert.equal(rows[0].firstForecast.markets.predictedScore,null);
+ assert.equal(rows[0].forecast.markets.predictedScore,'1-0');
 });
