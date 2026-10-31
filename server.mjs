@@ -27,7 +27,7 @@ const LEAGUES=[
 ].map(a=>({id:a[0],name:a[1],sdb:a[2]}));
 const cache=new Map();let lastSuccessful=null;
 const LEARNING_URL=process.env.TIPSTER_CALIBRATION_URL||
- 'https://raw.githubusercontent.com/dimitriskokkosis21-cell/tipster-football/main/data/calibration.json';
+ 'https://raw.githubusercontent.com/dimitriskokkosis21-cell/tipster-football/learning-data/data/calibration.json';
 let learnedCache={until:0,value:null};
 async function getLearningReport(force=false){
  if(!force&&learnedCache.value&&learnedCache.until>Date.now())return learnedCache.value;
