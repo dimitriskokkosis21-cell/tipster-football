@@ -141,7 +141,9 @@ export function archivePrediction(records,match,recordedAt,modelVersion='elo-dix
 export function settlePrediction(record,score,settledAt,source){
  if(record.result)return false;
  if(!record.forecast||Date.parse(record.forecast.recordedAt)>=Date.parse(record.kickoff))return false;
- const home=Number(score?.home),away=Number(score?.away),outcome=resultLabel(home,away);
+ if(score?.home===null||score?.home===undefined||score?.home===''||
+    score?.away===null||score?.away===undefined||score?.away==='')return false;
+ const home=Number(score.home),away=Number(score.away),outcome=resultLabel(home,away);
  if(!outcome||!source||!score?.completed)return false;
  record.result={home,away,outcome,completedAt:settledAt,source};
  return true;
