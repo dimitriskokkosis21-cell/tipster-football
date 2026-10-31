@@ -12,6 +12,8 @@ test('canonical names merge provider variants of LaLiga clubs',()=>{
  assert.equal(canonicalSpanishTeam('RC Deportivo'),canonicalSpanishTeam('Deportivo'));
  assert.equal(canonicalSpanishTeam('Espanyol Barcelona'),canonicalSpanishTeam('Espanyol'));
  assert.notEqual(canonicalSpanishTeam('Espanyol Barcelona'),canonicalSpanishTeam('Barcelona'));
+ assert.equal(canonicalSpanishTeam('Deportivo Alavés'),canonicalSpanishTeam('Alaves'));
+ assert.notEqual(canonicalSpanishTeam('Deportivo Alavés'),canonicalSpanishTeam('Deportivo'));
 });
 test('daily ESPN gaps are filled by independent schedule without duplicates',()=>{
  const open=[mk('Levante UD','Club Atlético de Madrid','2026-10-31','OpenLigaDB'),
