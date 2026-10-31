@@ -1,0 +1,26 @@
+{
+  "version": "tipster-learning-v1",
+  "updatedAt": "2026-10-31T00:00:00.000Z",
+  "global": {
+    "temperature": 1,
+    "trained": 0,
+    "holdout": 0,
+    "improvement": 0,
+    "reason": "Awaiting verified completed predictions"
+  },
+  "leagues": {},
+  "performance": {
+    "tracked": 0,
+    "awaitingResult": 0,
+    "evaluated": 0,
+    "accuracy": null,
+    "brier": null,
+    "logLoss": null,
+    "meanConfidence": null,
+    "actualHome": null,
+    "actualDraw": null,
+    "actualAway": null,
+    "leagues": {}
+  },
+  "notes": "New permanent forecast history begins with upcoming matches; no historical predictions are backfilled."
+}
