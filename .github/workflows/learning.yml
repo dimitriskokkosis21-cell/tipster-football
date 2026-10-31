@@ -5,6 +5,10 @@ on:
     # GitHub Actions uses UTC; avoid minute 0, which is heavily loaded.
     - cron: "23 */3 * * *"
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/learning.yml'
 
 permissions:
   contents: write
@@ -23,6 +27,15 @@ jobs:
         with:
           persist-credentials: true
           fetch-depth: 1
+      - name: Load permanent learning-data branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main learning-data
+          git checkout -B learning-data origin/learning-data
+          # Execute the current reviewed worker code from main without
+          # committing website code into the archive-only branch.
+          git restore --source=origin/main --worktree -- scripts/learn.mjs learning.mjs tests/learning.test.mjs
       - name: Select Node.js
         uses: actions/setup-node@v4
         with:
@@ -44,5 +57,5 @@ jobs:
             echo "No changes to archived predictions or calibration"
           else
             git commit -m "data: archive forecasts, scores and learning metrics [skip ci]"
-            git push
+            git push origin HEAD:learning-data
           fi
