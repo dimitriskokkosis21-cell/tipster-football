@@ -117,9 +117,9 @@ function showLearning(){
   $('learningLeagues').innerHTML='<p class="detailsline">The scheduled archive records fixtures, then tracks confirmed results by league. Learning starts only with genuinely archived forecasts.</p>';
   return;
  }
- var st='Accuracy '+pct(perf.accuracy)+' · 3-way Brier '+dec(perf.brier)+' · Log loss '+dec(perf.logLoss);
+ var st='1X2 accuracy '+pct(perf.accuracy)+' · Brier '+dec(perf.brier)+' · Log loss '+dec(perf.logLoss);
  $('learningFreshness').textContent=perf.evaluated+' VERIFIED RESULTS';
- $('learningSummary').textContent=st+'. '+perf.awaitingResult+' predictions awaiting final results. Calibration changes only when chronological holdout testing demonstrates an improvement.';
+ $('learningSummary').textContent=st+'. BTTS Brier '+dec(perf.bttsBrier)+' · O/U 2.5 Brier '+dec(perf.over25Brier)+' · Exact score hit rate '+pct(perf.exactScoreAccuracy)+'. '+perf.awaitingResult+' predictions awaiting finals. Calibration changes only after chronological holdout improvement.';
  var rows=Object.entries(perf.leagues||{}).filter(v=>v[1].tracked>0);
  $('learningLeagues').innerHTML='<p class="detailsline">Model calibration: '+esc(report.globalCalibration?.reason||'Not yet trained')+' · Global temperature: '+dec(report.globalCalibration?.temperature??1)+' · Last evaluation: '+(report.updatedAt?esc(time(report.updatedAt)):'unknown')+'</p>'
  +rows.map(([id,v])=>'<div class="diagrow"><div><b>'+esc(v.leagueName||id)+'</b><small>Tracked '+v.tracked+' · Settled '+v.evaluated+'</small></div><div>'+ (v.evaluated?'<b>'+pct(v.accuracy)+'</b><small>Brier '+dec(v.brier)+'</small>':'<small>Awaiting results</small>')+'</div></div>').join('');
