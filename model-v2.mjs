@@ -126,8 +126,21 @@ export function calculateMatchV2(match,history,availability={}){
  const venueH=venueFactor(gamesH,'home','scored',leagueHome);
  const venueA=venueFactor(gamesA,'away','scored',leagueAway);
  const availabilityFactors=availabilityGoalFactors(availability);
- const lambdaHome=clip(leagueHome*(attack.get(hKey)??1)*(defence.get(aKey)??1)*eloFactor*venueH*availabilityFactors.homeAttack*availabilityFactors.awayDefence,.25,4.6);
- const lambdaAway=clip(leagueAway*(attack.get(aKey)??1)*(defence.get(hKey)??1)/eloFactor*venueA*availabilityFactors.awayAttack*availabilityFactors.homeDefence,.25,4.6);
+ let lambdaHome=clip(leagueHome*(attack.get(hKey)??1)*(defence.get(aKey)??1)*eloFactor*venueH*availabilityFactors.homeAttack*availabilityFactors.awayDefence,.25,4.6);
+ let lambdaAway=clip(leagueAway*(attack.get(aKey)??1)*(defence.get(hKey)??1)/eloFactor*venueA*availabilityFactors.awayAttack*availabilityFactors.homeDefence,.25,4.6);
+ // Blend actual observed season-level shot xG/xGA, never guessed values.
+ // Historical results/Elo remain primary (75%) to avoid double-counting form.
+ const sx=availability?.xgSeason;
+ const xgAvailable=Boolean(sx?.verified&&sx?.home?.games>=3&&sx?.away?.games>=3
+  &&validXg(sx.home.xgFor)!==null&&validXg(sx.home.xgAgainst)!==null
+  &&validXg(sx.away.xgFor)!==null&&validXg(sx.away.xgAgainst)!==null
+  &&validXg(sx.leagueAvgXgAgainst)!==null&&sx.leagueAvgXgAgainst>.1);
+ if(xgAvailable){
+  const projectedH=clip(sx.home.xgFor*sx.away.xgAgainst/sx.leagueAvgXgAgainst*1.07,.25,4.6);
+  const projectedA=clip(sx.away.xgFor*sx.home.xgAgainst/sx.leagueAvgXgAgainst*.93,.25,4.6);
+  lambdaHome=clip(.75*lambdaHome+.25*projectedH,.25,4.6);
+  lambdaAway=clip(.75*lambdaAway+.25*projectedA,.25,4.6);
+ }
  const grid=scoreMatrix(lambdaHome,lambdaAway);
  const p1=grid.filter(v=>v.home>v.away).reduce((s,v)=>s+v.p,0);
  const px=grid.filter(v=>v.home===v.away).reduce((s,v)=>s+v.p,0);
@@ -155,12 +168,14 @@ export function calculateMatchV2(match,history,availability={}){
   }
   return w>0?total/w:null;
  };
- const homeXg=avgXg(gamesH,'for'),homeXga=avgXg(gamesH,'against');
- const awayXg=avgXg(gamesA,'for'),awayXga=avgXg(gamesA,'against');
+ const homeXg=xgAvailable?sx.home.xgFor:avgXg(gamesH,'for');
+ const homeXga=xgAvailable?sx.home.xgAgainst:avgXg(gamesH,'against');
+ const awayXg=xgAvailable?sx.away.xgFor:avgXg(gamesA,'for');
+ const awayXga=xgAvailable?sx.away.xgAgainst:avgXg(gamesA,'against');
  const enough=nH>=5&&nA>=5&&league.length>=30;
  const quality=enough?'RESULTS + ELO':'LIMITED SAMPLE';
  const issues=[];
- if(!verifiedXgMatches)issues.push('Verified xG/xGA for recent matches');
+ if(!verifiedXgMatches&&!xgAvailable)issues.push('Verified xG/xGA for recent matches');
  if(!availability.injuries?.verified)issues.push('Verified injury report');
  if(!availability.suspensions?.verified)issues.push('Verified suspensions');
  if(!availability.predictedLineups?.verified)issues.push('Provider-published predicted XI');
@@ -176,8 +191,9 @@ export function calculateMatchV2(match,history,availability={}){
   homeAttack:attack.get(hKey)??1,awayAttack:attack.get(aKey)??1,
   homeDefence:defence.get(hKey)??1,awayDefence:defence.get(aKey)??1,
   formHome:recent(hKey),formAway:recent(aKey),homeXg,homeXga,awayXg,awayXga,
-  verifiedXgMatches,availability,availabilityAdjustments:availabilityFactors,missing:issues,
-  reasoning:'All recent league results are weighted by recency. Attack and defence are fitted iteratively against opponent quality, then blended with match-result Elo and conservative venue adjustments. Verified xG influences the fit only where a source reports actual xG; explicitly reported confirmed absences receive small, capped heuristic adjustments.',
+  verifiedXgMatches,xgSource:xgAvailable?sx.source:(verifiedXgMatches?'ESPN source match xG':null),xgSeasonGames:xgAvailable?Math.min(sx.home.games,sx.away.games):0,
+  availability,availabilityAdjustments:availabilityFactors,missing:issues,
+  reasoning:'All recent league results are weighted by recency. Attack and defence are fitted iteratively against opponent quality, then blended with match-result Elo and conservative venue adjustments. Verified match xG influences historical fitting; source-verified season xG/xGA gets a separate 25% blend only when present. Confirmed absences receive small, capped heuristic adjustments.',
   confidenceCalibration:'Not independently calibrated',leagueHomeGoals:leagueHome,leagueAwayGoals:leagueAway
  };
 }
