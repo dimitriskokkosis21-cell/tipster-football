@@ -1,0 +1,48 @@
+name: TIPSTER learning cycle
+
+on:
+  schedule:
+    # GitHub Actions uses UTC; avoid minute 0, which is heavily loaded.
+    - cron: "23 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tipster-prediction-ledger
+  cancel-in-progress: false
+
+jobs:
+  snapshot-settle-calibrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out prediction archive
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+      - name: Select Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run regression tests
+        run: node --test
+      - name: Capture pre-match forecasts and settle verified finals
+        run: node scripts/learn.mjs
+        env:
+          TIPSTER_ORIGIN: https://tipster-football.onrender.com
+      - name: Commit permanent historical ledger and future calibration
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "TIPSTER Learning"
+          git config user.email "tipster-learning@users.noreply.github.com"
+          git add data/ledger/ data/calibration.json
+          if git diff --cached --quiet; then
+            echo "No changes to archived predictions or calibration"
+          else
+            git commit -m "data: archive forecasts, scores and learning metrics [skip ci]"
+            git push
+          fi
