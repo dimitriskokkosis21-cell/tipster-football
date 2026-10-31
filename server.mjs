@@ -4,7 +4,7 @@ import {calculateMatchV2,validXg} from './model-v2.mjs';
 import {extractESPNxG,espnAvailability,mergeLicensedMatchData} from './features.mjs';
 import {loadLaLiga} from './laliga.mjs';
 import {optionalLaLigaSources,matchStrikerXG,matchAPIFootballReports} from './data-sources.mjs';
-import {applyTemperature,selectCalibration,LEARNING_VERSION} from './learning.mjs';
+import {applyTemperature,applyBinaryTemperature,selectCalibration,selectMarketCalibration,LEARNING_VERSION} from './learning.mjs';
 import {readFile} from 'node:fs/promises';
 import {resolve,extname,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -54,7 +54,11 @@ function calibratedMatchModel(model,leagueId,learning){
  const fair=Object.fromEntries(Object.entries(probs).map(([k,p])=>[k,1/p]));
  const minimum=Object.fromEntries(Object.entries(probs).map(([k,p])=>[k,1.05/Math.max(.005,p-(model.uncertaintyPenalty||.05))]));
  const prediction=Object.keys(probs).sort((a,b)=>probs[b]-probs[a])[0];
- return {...model,rawProbabilities:raw,probabilities:probs,fairOdds:fair,requiredOdds:minimum,prediction,
+ const overTemperature=selectMarketCalibration(learning,'over25');
+ const bttsTemperature=selectMarketCalibration(learning,'btts');
+ const over25=applyBinaryTemperature(model.over25,overTemperature);
+ const btts=applyBinaryTemperature(model.btts,bttsTemperature);
+ return {...model,rawProbabilities:raw,rawOver25:model.over25,rawBtts:model.btts,over25,btts,probabilities:probs,fairOdds:fair,requiredOdds:minimum,prediction,
   modelVersion:'elo-opponent-poisson-v2',calibration:{...chosen,calibrationVersion:learning?.version||null,updatedAt:learning?.updatedAt||null}};
 }
 
@@ -265,7 +269,7 @@ async function buildAllMatches(force=false){
  });
  const sourceStatus=reports.map(r=>r.report);
  const data={matches,meta:{updatedAt:new Date().toISOString(),today,end,timezone:'Europe/Athens',historyMatches:history.length,
-  learning:{version:learning?.version||LEARNING_VERSION,updatedAt:learning?.updatedAt||null,
+  learning:{version:learning?.version||LEARNING_VERSION,marketCalibrations:learning?.markets||{},updatedAt:learning?.updatedAt||null,
    performance:learning?.performance||null,globalCalibration:learning?.global||null,
    leagueCalibrations:learning?.leagues||{}},
   featureSources:{strikerXgConfigured:supplemental.enabled.striker,apiFootballInjuriesConfigured:supplemental.enabled.apiFootball,xgCoverage:matches.filter(m=>m.model?.xgSource).length,injuriesCoverage:matches.filter(m=>m.model?.availability?.injuries?.verified).length,warnings:supplemental.warnings},
