@@ -2,6 +2,7 @@ import http from 'node:http';
 import {execFileSync} from 'node:child_process';
 import {calculateMatchV2,validXg} from './model-v2.mjs';
 import {extractESPNxG,espnAvailability,mergeLicensedMatchData} from './features.mjs';
+import {loadLaLiga} from './laliga.mjs';
 import {readFile} from 'node:fs/promises';
 import {resolve,extname,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -92,6 +93,12 @@ function unique(arr){
 async function leagueFetch(l,today,end,force){
  let fixtures=[],history=[],provider='',warning=null;
  const past=dadd(today,-420),last=dadd(today,-1);
+ if(l.id==='esp.1'){
+  try{
+   return await loadLaLiga(l,today,end,force,{remote,fromESPN,fromOpen,athens,dadd,cache,ESPN});
+  }catch(e){console.warn('TIPSTER LALIGA MULTI-SOURCE FAILED',String(e.message));warning='LaLiga dual-provider fallback failed: '+e.message;}
+ }
+
  if(l.id==='ger.1'){
   try{
    const season=y=>Number(y.slice(0,4))-(Number(y.slice(5,7))<7?1:0);
