@@ -8,6 +8,10 @@ test('canonical names merge provider variants of LaLiga clubs',()=>{
  assert.equal(canonicalSpanishTeam('Club Atlético de Madrid'),canonicalSpanishTeam('Atletico Madrid'));
  assert.equal(canonicalSpanishTeam('FC Barcelona'),canonicalSpanishTeam('Barcelona'));
  assert.notEqual(canonicalSpanishTeam('Real Sociedad'),canonicalSpanishTeam('Real Madrid'));
+ assert.equal(canonicalSpanishTeam('Deportivo A Coruña'),canonicalSpanishTeam('Deportivo'));
+ assert.equal(canonicalSpanishTeam('RC Deportivo'),canonicalSpanishTeam('Deportivo'));
+ assert.equal(canonicalSpanishTeam('Espanyol Barcelona'),canonicalSpanishTeam('Espanyol'));
+ assert.notEqual(canonicalSpanishTeam('Espanyol Barcelona'),canonicalSpanishTeam('Barcelona'));
 });
 test('daily ESPN gaps are filled by independent schedule without duplicates',()=>{
  const open=[mk('Levante UD','Club Atlético de Madrid','2026-10-31','OpenLigaDB'),
@@ -18,11 +22,14 @@ test('daily ESPN gaps are filled by independent schedule without duplicates',()=
    mk('Racing Santander','Real Madrid CF','2026-11-01','OpenLigaDB'),
    mk('Elche CF','Valencia CF','2026-11-01','OpenLigaDB'),
    mk('Athletic Club','Real Sociedad','2026-11-01','OpenLigaDB'),
-   mk('RC Deportivo','CA Osasuna','2026-11-02','OpenLigaDB')];
+   mk('RC Deportivo','CA Osasuna','2026-11-02','OpenLigaDB'),
+   mk('Espanyol Barcelona','Deportivo A Coruña','2026-11-07','OpenLigaDB')];
  const espn=[mk('Levante','Atletico Madrid','2026-10-31','ESPN (unofficial)'),
-  mk('Barcelona','Alaves','2026-10-31','ESPN (unofficial)')];
+  mk('Barcelona','Alaves','2026-10-31','ESPN (unofficial)'),
+  mk('Deportivo','Osasuna','2026-11-02','ESPN (unofficial)'),
+  mk('Espanyol','Deportivo','2026-11-07','ESPN (unofficial)')];
  const merged=mergeSpanishFixtures([open,espn],date);
- assert.equal(merged.length,9);
+ assert.equal(merged.length,10);
  assert.equal(merged.find(x=>canonicalSpanishTeam(x.homeName)==='barcelona').source,'ESPN (unofficial)');
 });
 test('fixture adapter loads real-shaped independent sources and avoids blocked history and injuries',async()=>{
