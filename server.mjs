@@ -4,6 +4,7 @@ import {calculateMatchV2,validXg} from './model-v2.mjs';
 import {extractESPNxG,espnAvailability,mergeLicensedMatchData} from './features.mjs';
 import {loadLaLiga} from './laliga.mjs';
 import {optionalLaLigaSources,matchStrikerXG,matchAPIFootballReports} from './data-sources.mjs';
+import {applyTemperature,selectCalibration,LEARNING_VERSION} from './learning.mjs';
 import {readFile} from 'node:fs/promises';
 import {resolve,extname,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -25,6 +26,38 @@ const LEAGUES=[
  ['uefa.wchampions',"Women's Champions League",4889]
 ].map(a=>({id:a[0],name:a[1],sdb:a[2]}));
 const cache=new Map();let lastSuccessful=null;
+const LEARNING_URL=process.env.TIPSTER_CALIBRATION_URL||
+ 'https://raw.githubusercontent.com/dimitriskokkosis21-cell/tipster-football/main/data/calibration.json';
+let learnedCache={until:0,value:null};
+async function getLearningReport(force=false){
+ if(!force&&learnedCache.value&&learnedCache.until>Date.now())return learnedCache.value;
+ try{
+  const url=new URL(LEARNING_URL);
+  if(url.protocol!=='https:')throw Error('Calibration must use HTTPS');
+  const response=await fetch(url,{headers:{accept:'application/json'},signal:AbortSignal.timeout(3300)});
+  if(!response.ok)throw Error('HTTP '+response.status);
+  const text=await response.text();
+  if(text.length>300000)throw Error('Calibration exceeds size limit');
+  const document=JSON.parse(text);
+  if(document.version!==LEARNING_VERSION||!document.performance||!document.global)throw Error('Unexpected calibration version');
+  learnedCache={until:Date.now()+10*60000,value:document};return document;
+ }catch(e){
+  console.warn('TIPSTER LEARNING REPORT UNAVAILABLE',e.message);
+  learnedCache.until=Date.now()+2*60000;
+  return learnedCache.value;
+ }
+}
+function calibratedMatchModel(model,leagueId,learning){
+ const raw=Object.fromEntries(Object.entries(model.probabilities));
+ const chosen=selectCalibration(learning,leagueId);
+ const probs=applyTemperature(raw,chosen.temperature);
+ const fair=Object.fromEntries(Object.entries(probs).map(([k,p])=>[k,1/p]));
+ const minimum=Object.fromEntries(Object.entries(probs).map(([k,p])=>[k,1.05/Math.max(.005,p-(model.uncertaintyPenalty||.05))]));
+ const prediction=Object.keys(probs).sort((a,b)=>probs[b]-probs[a])[0];
+ return {...model,rawProbabilities:raw,probabilities:probs,fairOdds:fair,requiredOdds:minimum,prediction,
+  modelVersion:'elo-opponent-poisson-v2',calibration:{...chosen,calibrationVersion:learning?.version||null,updatedAt:learning?.updatedAt||null}};
+}
+
 const dadd=(day,offset)=>new Date(Date.parse(day+'T12:00:00Z')+86400000*offset).toISOString().slice(0,10);
 function athens(d=new Date()){
  const p=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Athens',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(d);
@@ -192,6 +225,7 @@ async function buildAllMatches(force=false){
    if(!Array.isArray(licensed?.matches)||!licensed?.source)throw Error('Invalid feed provenance or matches');
   }catch(e){console.log('TIPSTER OPTIONAL ENRICHMENT UNAVAILABLE:',e.message);licensed=null;}
  }
+ const learning=await getLearningReport(false);
  const eligibleRecords=licensed?.matches||[];
  const findLicensed=(m)=>eligibleRecords.find(r=>
   String(r.leagueId)===String(m.leagueId)&&
@@ -226,10 +260,14 @@ async function buildAllMatches(force=false){
    const xgSeason=matchStrikerXG(m,supplemental.xg);
    if(xgSeason)avail.xgSeason=xgSeason;
   }
-  return {...m,model:calculateMatchV2(m,history,avail)};
+  const baseModel=calculateMatchV2(m,history,avail);
+  return {...m,model:calibratedMatchModel(baseModel,m.leagueId,learning)};
  });
  const sourceStatus=reports.map(r=>r.report);
  const data={matches,meta:{updatedAt:new Date().toISOString(),today,end,timezone:'Europe/Athens',historyMatches:history.length,
+  learning:{version:learning?.version||LEARNING_VERSION,updatedAt:learning?.updatedAt||null,
+   performance:learning?.performance||null,globalCalibration:learning?.global||null,
+   leagueCalibrations:learning?.leagues||{}},
   featureSources:{strikerXgConfigured:supplemental.enabled.striker,apiFootballInjuriesConfigured:supplemental.enabled.apiFootball,xgCoverage:matches.filter(m=>m.model?.xgSource).length,injuriesCoverage:matches.filter(m=>m.model?.availability?.injuries?.verified).length,warnings:supplemental.warnings},
   sourceStatus,coverageIncomplete:sourceStatus.some(s=>s.provider==='UNAVAILABLE'||s.provider.includes('limited')||s.warning),
   notice:'ESPN endpoints are unofficial and may change. xG, injuries, suspensions and projected XIs are included only if verified by named sources; otherwise they are explicitly unavailable. Probabilities are not independently calibrated.'}};
@@ -262,6 +300,7 @@ http.createServer(async(req,res)=>{
  try{
   const url=new URL(req.url,'http://localhost');
   if(url.pathname==='/api/health')return json(res,200,{ok:true,app:'TIPSTER',time:new Date().toISOString()});
+  if(url.pathname==='/api/performance')return json(res,200,{available:!!(await getLearningReport(false)),calibration:await getLearningReport(false)});
   if(url.pathname==='/api/status')return json(res,200,{ok:true,loading:!!inFlightBuild,cached:!!lastSuccessful,cacheDate:lastSuccessful?.date||null,cacheUpdatedAt:lastSuccessful?.data?.meta?.updatedAt||null,fixtureCount:lastSuccessful?.data?.matches?.length||0});
   if(url.pathname==='/api/matches'){
    const start=Date.now();
@@ -297,6 +336,6 @@ setTimeout(async()=>{
    const sum=p['1']+p.X+p['2'];
    if(!Number.isFinite(sum)||Math.abs(sum-1)>1e-9||Object.keys(p).some(k=>Math.abs(f[k]*p[k]-1)>1e-8)){errors++;}
   }
-  console.log('TIPSTER LIVE DATA DIAGNOSTIC',JSON.stringify({fixtures:stats.fixtures,historicalResults:stats.historicalResults,leagues:stats.leagues,modelValidationErrors:errors}));
+  console.log('TIPSTER LIVE DATA DIAGNOSTIC',JSON.stringify({fixtures:stats.fixtures,historicalResults:stats.historicalResults,leagues:stats.leagues,modelValidationErrors:errors,settledForecasts:result.meta.learning?.performance?.evaluated||0}));
  }catch(e){console.error('TIPSTER LIVE DATA DIAGNOSTIC FAILED:',e.message);}
 },1100);
