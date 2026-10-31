@@ -9,13 +9,14 @@
 export function canonicalSpanishTeam(value){
  const name=String(value||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
  const keys=[
+  [/alaves/,'alaves'],
   [/racing|santander/,'racing-santander'],[/deportivo (de )?la coruna|deportivo a coruna|(?:^|\s)deportivo(?:\s|$)|dep\. a coruna/,'deportivo-coruna'],
   [/real sociedad/,'real-sociedad'],[/real madrid/,'real-madrid'],
   [/atletico madrid|atletico de madrid|club atletico/,'atletico-madrid'],
   [/athletic (club|bilbao)/,'athletic-bilbao'],
   [/rayo vallecano/,'rayo-vallecano'],[/celta/,'celta-vigo'],
   [/real betis|\bbetis\b/,'real-betis'],[/malaga/,'malaga'],
-  [/espanyol/,'espanyol'],[/\bbarcelona\b/,'barcelona'],[/alaves/,'alaves'],
+  [/espanyol/,'espanyol'],[/\bbarcelona\b/,'barcelona'],
   [/getafe/,'getafe'],[/sevilla/,'sevilla'],
   [/elche/,'elche'],[/valencia/,'valencia'],
   [/osasuna/,'osasuna'],[/levante/,'levante'],
