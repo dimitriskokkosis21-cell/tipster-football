@@ -1,17 +1,17 @@
 {
   "version": "tipster-learning-v1",
-  "updatedAt": "2026-10-31T00:00:00.000Z",
+  "updatedAt": "2026-10-31T18:21:11.656Z",
   "global": {
     "temperature": 1,
     "trained": 0,
     "holdout": 0,
     "improvement": 0,
-    "reason": "Awaiting verified completed predictions"
+    "reason": "Insufficient settled pre-match forecasts"
   },
   "leagues": {},
   "performance": {
-    "tracked": 0,
-    "awaitingResult": 0,
+    "tracked": 111,
+    "awaitingResult": 111,
     "evaluated": 0,
     "accuracy": null,
     "brier": null,
@@ -20,7 +20,116 @@
     "actualHome": null,
     "actualDraw": null,
     "actualAway": null,
-    "leagues": {}
+    "leagues": {
+      "ita.1": {
+        "evaluated": 0,
+        "accuracy": null,
+        "brier": null,
+        "logLoss": null,
+        "meanConfidence": null,
+        "actualHome": null,
+        "actualDraw": null,
+        "actualAway": null,
+        "tracked": 13,
+        "leagueName": "Serie A"
+      },
+      "fra.1": {
+        "evaluated": 0,
+        "accuracy": null,
+        "brier": null,
+        "logLoss": null,
+        "meanConfidence": null,
+        "actualHome": null,
+        "actualDraw": null,
+        "actualAway": null,
+        "tracked": 9,
+        "leagueName": "Ligue 1"
+      },
+      "eng.1": {
+        "evaluated": 0,
+        "accuracy": null,
+        "brier": null,
+        "logLoss": null,
+        "meanConfidence": null,
+        "actualHome": null,
+        "actualDraw": null,
+        "actualAway": null,
+        "tracked": 8,
+        "leagueName": "Premier League"
+      },
+      "esp.1": {
+        "evaluated": 0,
+        "accuracy": null,
+        "brier": null,
+        "logLoss": null,
+        "meanConfidence": null,
+        "actualHome": null,
+        "actualDraw": null,
+        "actualAway": null,
+        "tracked": 11,
+        "leagueName": "La Liga"
+      },
+      "ger.1": {
+        "evaluated": 0,
+        "accuracy": null,
+        "brier": null,
+        "logLoss": null,
+        "meanConfidence": null,
+        "actualHome": null,
+        "actualDraw": null,
+        "actualAway": null,
+        "tracked": 8,
+        "leagueName": "Bundesliga"
+      },
+      "gre.1": {
+        "evaluated": 0,
+        "accuracy": null,
+        "brier": null,
+        "logLoss": null,
+        "meanConfidence": null,
+        "actualHome": null,
+        "actualDraw": null,
+        "actualAway": null,
+        "tracked": 8,
+        "leagueName": "Greek Super League"
+      },
+      "uefa.champions": {
+        "evaluated": 0,
+        "accuracy": null,
+        "brier": null,
+        "logLoss": null,
+        "meanConfidence": null,
+        "actualHome": null,
+        "actualDraw": null,
+        "actualAway": null,
+        "tracked": 18,
+        "leagueName": "Champions League"
+      },
+      "uefa.europa": {
+        "evaluated": 0,
+        "accuracy": null,
+        "brier": null,
+        "logLoss": null,
+        "meanConfidence": null,
+        "actualHome": null,
+        "actualDraw": null,
+        "actualAway": null,
+        "tracked": 18,
+        "leagueName": "Europa League"
+      },
+      "uefa.europa.conf": {
+        "evaluated": 0,
+        "accuracy": null,
+        "brier": null,
+        "logLoss": null,
+        "meanConfidence": null,
+        "actualHome": null,
+        "actualDraw": null,
+        "actualAway": null,
+        "tracked": 18,
+        "leagueName": "Conference League"
+      }
+    }
   },
-  "notes": "New permanent forecast history begins with upcoming matches; no historical predictions are backfilled."
+  "notes": "Calibration is trained only on archived pre-kickoff forecasts with verified final results; chronological holdout validation and shrinkage. No settled match is retroactively repredicted."
 }

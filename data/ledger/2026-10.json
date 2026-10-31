@@ -1,0 +1,270 @@
+[
+  {
+    "key": "fra.1|espn:fra.1:401876413",
+    "matchId": "espn:fra.1:401876413",
+    "leagueId": "fra.1",
+    "league": "Ligue 1",
+    "homeName": "Troyes",
+    "awayName": "Le Mans",
+    "kickoff": "2026-10-31T19:45:00.000Z",
+    "firstRecordedAt": "2026-10-31T18:21:11.656Z",
+    "forecast": {
+      "recordedAt": "2026-10-31T18:21:11.656Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.2296556352099682,
+        "2": 0.49492615502146714,
+        "X": 0.27541820976856457
+      },
+      "publishedProbabilities": {
+        "1": 0.2296556352099682,
+        "2": 0.49492615502146714,
+        "X": 0.27541820976856457
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 1,
+        "scope": "untrained",
+        "sampleSize": 0,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-10-31T00:00:00.000Z"
+      },
+      "expectedGoals": {
+        "home": 0.9589859958287729,
+        "away": 1.5213519774008133
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-10-31T18:21:11.656Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.2296556352099682,
+        "2": 0.49492615502146714,
+        "X": 0.27541820976856457
+      },
+      "publishedProbabilities": {
+        "1": 0.2296556352099682,
+        "2": 0.49492615502146714,
+        "X": 0.27541820976856457
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 1,
+        "scope": "untrained",
+        "sampleSize": 0,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-10-31T00:00:00.000Z"
+      },
+      "expectedGoals": {
+        "home": 0.9589859958287729,
+        "away": 1.5213519774008133
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "ita.1|espn:ita.1:401874795",
+    "matchId": "espn:ita.1:401874795",
+    "leagueId": "ita.1",
+    "league": "Serie A",
+    "homeName": "AC Milan",
+    "awayName": "Internazionale",
+    "kickoff": "2026-10-31T19:45:00.000Z",
+    "firstRecordedAt": "2026-10-31T18:21:11.656Z",
+    "forecast": {
+      "recordedAt": "2026-10-31T18:21:11.656Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.17874467107552192,
+        "2": 0.6404448245475014,
+        "X": 0.18081050437697677
+      },
+      "publishedProbabilities": {
+        "1": 0.17874467107552192,
+        "2": 0.6404448245475014,
+        "X": 0.18081050437697677
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 1,
+        "scope": "untrained",
+        "sampleSize": 0,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-10-31T00:00:00.000Z"
+      },
+      "expectedGoals": {
+        "home": 1.4047987866943166,
+        "away": 2.6751104572270865
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-10-31T18:21:11.656Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.17874467107552192,
+        "2": 0.6404448245475014,
+        "X": 0.18081050437697677
+      },
+      "publishedProbabilities": {
+        "1": 0.17874467107552192,
+        "2": 0.6404448245475014,
+        "X": 0.18081050437697677
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 1,
+        "scope": "untrained",
+        "sampleSize": 0,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-10-31T00:00:00.000Z"
+      },
+      "expectedGoals": {
+        "home": 1.4047987866943166,
+        "away": 2.6751104572270865
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "eng.1|espn:eng.1:401879250",
+    "matchId": "espn:eng.1:401879250",
+    "leagueId": "eng.1",
+    "league": "Premier League",
+    "homeName": "Aston Villa",
+    "awayName": "Fulham",
+    "kickoff": "2026-10-31T20:00:00.000Z",
+    "firstRecordedAt": "2026-10-31T18:21:11.656Z",
+    "forecast": {
+      "recordedAt": "2026-10-31T18:21:11.656Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.5141915875263805,
+        "2": 0.19704554886179232,
+        "X": 0.2887628636118271
+      },
+      "publishedProbabilities": {
+        "1": 0.5141915875263805,
+        "2": 0.19704554886179232,
+        "X": 0.2887628636118271
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 1,
+        "scope": "untrained",
+        "sampleSize": 0,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-10-31T00:00:00.000Z"
+      },
+      "expectedGoals": {
+        "home": 1.423104593648368,
+        "away": 0.7804266405163588
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-10-31T18:21:11.656Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.5141915875263805,
+        "2": 0.19704554886179232,
+        "X": 0.2887628636118271
+      },
+      "publishedProbabilities": {
+        "1": 0.5141915875263805,
+        "2": 0.19704554886179232,
+        "X": 0.2887628636118271
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 1,
+        "scope": "untrained",
+        "sampleSize": 0,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-10-31T00:00:00.000Z"
+      },
+      "expectedGoals": {
+        "home": 1.423104593648368,
+        "away": 0.7804266405163588
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "esp.1|espn:esp.1:401882822",
+    "matchId": "espn:esp.1:401882822",
+    "leagueId": "esp.1",
+    "league": "La Liga",
+    "homeName": "Barcelona",
+    "awayName": "Alavés",
+    "kickoff": "2026-10-31T20:00:00.000Z",
+    "firstRecordedAt": "2026-10-31T18:21:11.656Z",
+    "forecast": {
+      "recordedAt": "2026-10-31T18:21:11.656Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.4572369263981816,
+        "2": 0.28963061061304946,
+        "X": 0.2531324629887689
+      },
+      "publishedProbabilities": {
+        "1": 0.4572369263981816,
+        "2": 0.28963061061304946,
+        "X": 0.2531324629887689
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 1,
+        "scope": "untrained",
+        "sampleSize": 0,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-10-31T00:00:00.000Z"
+      },
+      "expectedGoals": {
+        "home": 1.696969696969697,
+        "away": 1.3131313131313131
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-10-31T18:21:11.656Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.4572369263981816,
+        "2": 0.28963061061304946,
+        "X": 0.2531324629887689
+      },
+      "publishedProbabilities": {
+        "1": 0.4572369263981816,
+        "2": 0.28963061061304946,
+        "X": 0.2531324629887689
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 1,
+        "scope": "untrained",
+        "sampleSize": 0,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-10-31T00:00:00.000Z"
+      },
+      "expectedGoals": {
+        "home": 1.696969696969697,
+        "away": 1.3131313131313131
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  }
+]
