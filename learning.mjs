@@ -39,6 +39,72 @@ export function forecastMetrics(forecasts){
  return {evaluated:n,accuracy:correct/n,brier:brier/n,logLoss:logLoss/n,
   meanConfidence:confidence/n,actualHome:homes/n,actualDraw:draws/n,actualAway:aways/n};
 }
+export function applyBinaryTemperature(p,temp=1){
+ if(!Number.isFinite(p)||p<0||p>1)throw Error('Invalid binary market probability');
+ const t=clamp(Number.isFinite(temp)?temp:1,.8,1.65);
+ const q=clamp(p,.00001,.99999);
+ const odds=Math.pow(q/(1-q),1/t);
+ return odds/(1+odds);
+}
+export function marketMetrics(forecasts){
+ const complete=forecasts.filter(r=>r.result&&Number.isInteger(r.result.home)&&Number.isInteger(r.result.away));
+ const counters={over25:{n:0,loss:0},btts:{n:0,loss:0}};
+ let exactN=0,exactCorrect=0,goalsN=0,goalError=0;
+ for(const r of complete){
+  const markets=r.forecast?.markets||{};
+  const h=r.result.home,a=r.result.away;
+  for(const [market,yes] of [['over25',h+a>=3],['btts',h>0&&a>0]]){
+   const p=markets[market];
+   if(Number.isFinite(p)&&p>=0&&p<=1){
+    counters[market].n++;counters[market].loss+=(p-(yes?1:0))**2;
+   }
+  }
+  if(/^\d+-\d+$/.test(markets.predictedScore||'')){
+   exactN++;if(markets.predictedScore===h+'-'+a)exactCorrect++;
+  }
+  const eg=r.forecast?.expectedGoals;
+  if(Number.isFinite(eg?.home)&&Number.isFinite(eg?.away)){
+   goalsN++;goalError+=(Math.abs(eg.home-h)+Math.abs(eg.away-a))/2;
+  }
+ }
+ return {over25Evaluated:counters.over25.n,over25Brier:counters.over25.n?counters.over25.loss/counters.over25.n:null,
+  bttsEvaluated:counters.btts.n,bttsBrier:counters.btts.n?counters.btts.loss/counters.btts.n:null,
+  exactScoreEvaluated:exactN,exactScoreAccuracy:exactN?exactCorrect/exactN:null,
+  expectedGoalsEvaluated:goalsN,expectedGoalsMAE:goalsN?goalError/goalsN:null};
+}
+function binaryCalibrationLoss(rows,market,temp){
+ let sum=0,n=0;
+ for(const r of rows){
+  const raw=r.forecast?.markets?.[market];
+  const score=r.result;
+  if(!score||!Number.isFinite(raw)||raw<0||raw>1)continue;
+  const hit=market==='over25'?score.home+score.away>=3:score.home>0&&score.away>0;
+  const p=applyBinaryTemperature(raw,temp);
+  sum-=Math.log(Math.max(.000001,hit?p:1-p));n++;
+ }
+ return n?sum/n:Infinity;
+}
+function fitBinaryCalibration(rows,market,min=80){
+ const sorted=rows.filter(r=>r.result&&Number.isFinite(r.forecast?.markets?.[market]))
+  .sort((a,b)=>a.kickoff.localeCompare(b.kickoff));
+ if(sorted.length<min)return {temperature:1,trained:sorted.length,holdout:0,improvement:0,reason:'Too few verified forecasts'};
+ const split=Math.floor(sorted.length*.75),training=sorted.slice(0,split),holdout=sorted.slice(split);
+ if(holdout.length<15)return {temperature:1,trained:training.length,holdout:holdout.length,improvement:0,reason:'Too few held-out forecasts'};
+ let best=1,bestScore=Infinity;
+ for(const t of GRIDS){
+  const score=binaryCalibrationLoss(training,market,t)+12/training.length*(t-1)**2;
+  if(score<bestScore){best=t;bestScore=score;}
+ }
+ if(binaryCalibrationLoss(holdout,market,best)>binaryCalibrationLoss(holdout,market,1)-.002)
+  return {temperature:1,trained:training.length,holdout:holdout.length,improvement:0,reason:'No holdout gain'};
+ const temp=1+(best-1)*sorted.length/(sorted.length+110);
+ return {temperature:Number(temp.toFixed(4)),trained:training.length,holdout:holdout.length,
+  improvement:Number((binaryCalibrationLoss(holdout,market,1)-binaryCalibrationLoss(holdout,market,temp)).toFixed(6)),reason:'Chronological holdout gain'};
+}
+export function selectMarketCalibration(calibration,market){
+ const details=calibration?.markets?.[market];
+ return details?.trained>=60&&Number.isFinite(details.temperature)?details.temperature:1;
+}
 export function calibrationLoss(forecasts,temp){
  let total=0,n=0;
  for(const r of forecasts){
@@ -75,6 +141,7 @@ export function fitCalibration(records,now=new Date().toISOString()){
  const settled=records.filter(r=>r.result&&Date.parse(r.kickoff)<Date.parse(now)&&
    Date.parse(r.forecast?.recordedAt)<Date.parse(r.kickoff)&&validProbs(r.forecast?.rawProbabilities));
  const global=selectTemperature(settled,70,12),leagues={},metrics={};
+ const markets={over25:fitBinaryCalibration(settled,'over25'),btts:fitBinaryCalibration(settled,'btts')};
  const groups=new Map();
  for(const r of records){
   if(!groups.has(r.leagueId))groups.set(r.leagueId,[]);
@@ -82,14 +149,14 @@ export function fitCalibration(records,now=new Date().toISOString()){
  }
  for(const [leagueId,items] of groups){
   const resolved=items.filter(r=>r.result);
-  metrics[leagueId]={...forecastMetrics(items),tracked:items.length,leagueName:items[0]?.league};
+  metrics[leagueId]={...forecastMetrics(items),...marketMetrics(items),tracked:items.length,leagueName:items[0]?.league};
   // League-specific adjustments demand stronger evidence than global trends.
   if(resolved.length>=95)leagues[leagueId]=selectTemperature(resolved,95,16);
  }
  return {version:LEARNING_VERSION,updatedAt:now,
-  global,leagues,performance:{
+  global,leagues,markets,performance:{
    tracked:records.length,awaitingResult:records.filter(r=>!r.result).length,
-   ...forecastMetrics(records),leagues:metrics
+   ...forecastMetrics(records),...marketMetrics(records),leagues:metrics
   },notes:'Calibration is trained only on archived pre-kickoff forecasts with verified final results; chronological holdout validation and shrinkage. No settled match is retroactively repredicted.'};
 }
 export function selectCalibration(calibration,leagueId){
@@ -115,6 +182,10 @@ export function archivePrediction(records,match,recordedAt,modelVersion='elo-dix
   xgCoverage:match.model?.xgSource||null,
   injuryCoverage:match.model?.availability?.injuries?.verified||false,
   calibration:match.model?.calibration||null,
+  markets:{over25:Number.isFinite(match.model?.rawOver25)?match.model.rawOver25:match.model?.over25??null,
+   btts:Number.isFinite(match.model?.rawBtts)?match.model.rawBtts:match.model?.btts??null,
+   predictedScore:match.model?.topScores?.[0]?.score||null,
+   topScores:Array.isArray(match.model?.topScores)?match.model.topScores.slice(0,5):[]},
   expectedGoals:{home:match.model?.lambdaHome??null,away:match.model?.lambdaAway??null}
  };
  if(!record){
@@ -135,7 +206,7 @@ export function archivePrediction(records,match,recordedAt,modelVersion='elo-dix
  if(Date.parse(recordedAt)<=Date.parse(prior.recordedAt))return false;
  const dist=LABELS.reduce((s,k)=>s+Math.abs(prior.rawProbabilities[k]-p[k]),0);
  // Save most recent snapshot when meaningful probability or availability changes.
- if(dist<.006&&prior.xgCoverage===forecast.xgCoverage&&prior.injuryCoverage===forecast.injuryCoverage)return false;
+ if(dist<.006&&prior.xgCoverage===forecast.xgCoverage&&prior.injuryCoverage===forecast.injuryCoverage&&prior.markets&&Math.abs((prior.markets.over25??0)-(forecast.markets.over25??0))<.005&&Math.abs((prior.markets.btts??0)-(forecast.markets.btts??0))<.005)return false;
  record.forecast=forecast;record.revisionCount=(record.revisionCount||1)+1;return true;
 }
 export function settlePrediction(record,score,settledAt,source){
