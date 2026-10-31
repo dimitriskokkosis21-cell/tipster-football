@@ -235,6 +235,7 @@ async function buildAllMatches(force=false){
   notice:'ESPN endpoints are unofficial and may change. xG, injuries, suspensions and projected XIs are included only if verified by named sources; otherwise they are explicitly unavailable. Probabilities are not independently calibrated.'}};
  if(sourceStatus.every(s=>s.provider==='UNAVAILABLE')&&!lastSuccessful)throw Error('All football data sources are currently unavailable. Retry later.');
  if(sourceStatus.some(s=>s.provider!=='UNAVAILABLE'))lastSuccessful={data,expires:now+5*60000,date:today};
+ console.log('TIPSTER LALIGA FIXTURE AUDIT',JSON.stringify(matches.filter(m=>m.leagueId==='esp.1').map(m=>({date:m.date,home:m.homeName,away:m.awayName,source:m.source}))));
  const caseStudy=matches.filter(m=>/kifisia/i.test(m.homeName+' '+m.awayName)&&/olymp/i.test(m.homeName+' '+m.awayName));
  if(caseStudy.length)console.log('TIPSTER KIFISIA / OLYMPIACOS V2 CHECK',JSON.stringify(caseStudy.map(x=>({match:x.homeName+' vs '+x.awayName,probabilities:x.model.probabilities,xgSource:x.model.verifiedXgMatches,homeElo:x.model.eloHome,awayElo:x.model.eloAway,lambdaHome:x.model.lambdaHome,lambdaAway:x.model.lambdaAway}))));
  if(!matches.length&&sourceStatus.every(s=>s.provider==='UNAVAILABLE')&&lastSuccessful)return lastSuccessful.data;
