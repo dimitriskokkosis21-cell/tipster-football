@@ -3,6 +3,7 @@ import {execFileSync} from 'node:child_process';
 import {calculateMatchV2,validXg} from './model-v2.mjs';
 import {extractESPNxG,espnAvailability,mergeLicensedMatchData} from './features.mjs';
 import {loadLaLiga} from './laliga.mjs';
+import {optionalLaLigaSources,matchStrikerXG,matchAPIFootballReports} from './data-sources.mjs';
 import {readFile} from 'node:fs/promises';
 import {resolve,extname,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -209,16 +210,27 @@ async function buildAllMatches(force=false){
    if(matched){matched.homeXg=validXg(record.homeXg);matched.awayXg=validXg(record.awayXg);matched.xgSource=record.source;}
   }
  }
+ const supplemental=await optionalLaLigaSources(today,end);
  const leagueInjuries=new Map(reports.map((r,i)=>[LEAGUES[i].id,r.injuries]));
  const matches=fixtures.map(m=>{
   const base=espnAvailability(leagueInjuries.get(m.leagueId),m);
   const rich=findLicensed(m);
   const custom=rich?mergeLicensedMatchData(m,rich):null;
   const avail=custom??base;
+  if(m.leagueId==='esp.1'){
+   const report=matchAPIFootballReports(m,supplemental.injuries);
+   if(report){
+    avail.injuries=report.injuries;
+    avail.suspensions=report.suspensions;
+   }
+   const xgSeason=matchStrikerXG(m,supplemental.xg);
+   if(xgSeason)avail.xgSeason=xgSeason;
+  }
   return {...m,model:calculateMatchV2(m,history,avail)};
  });
  const sourceStatus=reports.map(r=>r.report);
  const data={matches,meta:{updatedAt:new Date().toISOString(),today,end,timezone:'Europe/Athens',historyMatches:history.length,
+  featureSources:{strikerXgConfigured:supplemental.enabled.striker,apiFootballInjuriesConfigured:supplemental.enabled.apiFootball,xgCoverage:matches.filter(m=>m.model?.xgSource).length,injuriesCoverage:matches.filter(m=>m.model?.availability?.injuries?.verified).length,warnings:supplemental.warnings},
   sourceStatus,coverageIncomplete:sourceStatus.some(s=>s.provider==='UNAVAILABLE'||s.provider.includes('limited')||s.warning),
   notice:'ESPN endpoints are unofficial and may change. xG, injuries, suspensions and projected XIs are included only if verified by named sources; otherwise they are explicitly unavailable. Probabilities are not independently calibrated.'}};
  if(sourceStatus.every(s=>s.provider==='UNAVAILABLE')&&!lastSuccessful)throw Error('All football data sources are currently unavailable. Retry later.');
