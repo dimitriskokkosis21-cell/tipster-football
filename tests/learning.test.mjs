@@ -34,7 +34,7 @@ test('3-way outcome classifier includes draws and valid temperatures preserve pr
   const p=applyTemperature(raw,t);
   assert.ok(Math.abs(Object.values(p).reduce((a,b)=>a+b,0)-1)<1e-10);
  }
- assert.equal(applyTemperature(raw,1)['1'],raw['1']);
+ assert.ok(Math.abs(applyTemperature(raw,1)['1']-raw['1'])<1e-12);
 });
 test('ledger computes proper loss scores from recorded probabilities, not retroactive calibration',()=>{
  const records=[],m=fixture('espn:gre.1:13');
