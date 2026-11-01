@@ -290,7 +290,13 @@
       }
     },
     "revisionCount": 3,
-    "result": null,
+    "result": {
+      "home": 5,
+      "away": 1,
+      "outcome": "1",
+      "completedAt": "2026-11-01T19:06:52.013Z",
+      "source": "ESPN verified final • event 401876414"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -384,7 +390,13 @@
       }
     },
     "revisionCount": 2,
-    "result": null,
+    "result": {
+      "home": 2,
+      "away": 0,
+      "outcome": "1",
+      "completedAt": "2026-11-01T19:06:52.013Z",
+      "source": "ESPN verified final • event 401874782"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -478,7 +490,13 @@
       }
     },
     "revisionCount": 3,
-    "result": null,
+    "result": {
+      "home": 2,
+      "away": 1,
+      "outcome": "1",
+      "completedAt": "2026-11-01T19:06:52.013Z",
+      "source": "ESPN verified final • event 401874983"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -572,7 +590,13 @@
       }
     },
     "revisionCount": 3,
-    "result": null,
+    "result": {
+      "home": 1,
+      "away": 1,
+      "outcome": "X",
+      "completedAt": "2026-11-01T19:06:52.013Z",
+      "source": "OpenLigaDB verified final • match 83223"
+    },
     "source": "OpenLigaDB (ODbL)"
   },
   {
@@ -666,7 +690,13 @@
       }
     },
     "revisionCount": 2,
-    "result": null,
+    "result": {
+      "home": 3,
+      "away": 0,
+      "outcome": "1",
+      "completedAt": "2026-11-01T19:06:52.013Z",
+      "source": "ESPN verified final • event 401896737"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -760,7 +790,13 @@
       }
     },
     "revisionCount": 2,
-    "result": null,
+    "result": {
+      "home": 0,
+      "away": 3,
+      "outcome": "2",
+      "completedAt": "2026-11-01T19:06:52.013Z",
+      "source": "ESPN verified final • event 401882819"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -854,7 +890,13 @@
       }
     },
     "revisionCount": 3,
-    "result": null,
+    "result": {
+      "home": 0,
+      "away": 1,
+      "outcome": "2",
+      "completedAt": "2026-11-01T19:06:52.013Z",
+      "source": "ESPN verified final • event 401896735"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -948,7 +990,13 @@
       }
     },
     "revisionCount": 2,
-    "result": null,
+    "result": {
+      "home": 3,
+      "away": 1,
+      "outcome": "1",
+      "completedAt": "2026-11-01T19:06:52.013Z",
+      "source": "ESPN verified final • event 401876415"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -1042,7 +1090,13 @@
       }
     },
     "revisionCount": 2,
-    "result": null,
+    "result": {
+      "home": 2,
+      "away": 0,
+      "outcome": "1",
+      "completedAt": "2026-11-01T19:06:52.013Z",
+      "source": "ESPN verified final • event 401876418"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -1136,7 +1190,13 @@
       }
     },
     "revisionCount": 3,
-    "result": null,
+    "result": {
+      "home": 0,
+      "away": 1,
+      "outcome": "2",
+      "completedAt": "2026-11-01T19:06:52.013Z",
+      "source": "ESPN verified final • event 401879246"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -1257,7 +1317,13 @@
       }
     },
     "revisionCount": 1,
-    "result": null,
+    "result": {
+      "home": 0,
+      "away": 1,
+      "outcome": "2",
+      "completedAt": "2026-11-01T19:06:52.013Z",
+      "source": "TheSportsDB verified final • event 2494082"
+    },
     "source": "TheSportsDB (restricted free coverage)"
   },
   {
@@ -1351,7 +1417,13 @@
       }
     },
     "revisionCount": 3,
-    "result": null,
+    "result": {
+      "home": 3,
+      "away": 1,
+      "outcome": "1",
+      "completedAt": "2026-11-01T19:06:52.013Z",
+      "source": "OpenLigaDB verified final • match 83221"
+    },
     "source": "OpenLigaDB (ODbL)"
   },
   {
@@ -1445,7 +1517,13 @@
       }
     },
     "revisionCount": 3,
-    "result": null,
+    "result": {
+      "home": 2,
+      "away": 1,
+      "outcome": "1",
+      "completedAt": "2026-11-01T19:06:52.013Z",
+      "source": "ESPN verified final • event 401896734"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -1539,7 +1617,13 @@
       }
     },
     "revisionCount": 2,
-    "result": null,
+    "result": {
+      "home": 1,
+      "away": 2,
+      "outcome": "2",
+      "completedAt": "2026-11-01T19:06:52.013Z",
+      "source": "ESPN verified final • event 401874968"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -2575,6 +2659,127 @@
     "revisionCount": 3,
     "result": null,
     "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "eng.1|sportsdb:2494080",
+    "matchId": "sportsdb:2494080",
+    "leagueId": "eng.1",
+    "league": "Premier League",
+    "homeName": "Newcastle United",
+    "awayName": "Everton",
+    "kickoff": "2026-11-02T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-01T19:06:52.013Z",
+    "forecast": {
+      "recordedAt": "2026-11-01T19:06:52.013Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.4390101159357487,
+        "2": 0.28586319513619773,
+        "X": 0.2751266889280536
+      },
+      "publishedProbabilities": {
+        "1": 0.4390101159357487,
+        "2": 0.28586319513619773,
+        "X": 0.2751266889280536
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 1,
+        "scope": "untrained",
+        "sampleSize": 0,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-01T15:53:52.648Z"
+      },
+      "markets": {
+        "over25": 0.48907542430746526,
+        "btts": 0.5363914324564387,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.13126497073079488
+          },
+          {
+            "score": "1-0",
+            "probability": 0.09808869612918805
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09078138162690487
+          },
+          {
+            "score": "0-0",
+            "probability": 0.08066589023560067
+          },
+          {
+            "score": "2-0",
+            "probability": 0.07894033184948249
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.48,
+        "away": 1.15
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-01T19:06:52.013Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.4390101159357487,
+        "2": 0.28586319513619773,
+        "X": 0.2751266889280536
+      },
+      "publishedProbabilities": {
+        "1": 0.4390101159357487,
+        "2": 0.28586319513619773,
+        "X": 0.2751266889280536
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 1,
+        "scope": "untrained",
+        "sampleSize": 0,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-01T15:53:52.648Z"
+      },
+      "markets": {
+        "over25": 0.48907542430746526,
+        "btts": 0.5363914324564387,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.13126497073079488
+          },
+          {
+            "score": "1-0",
+            "probability": 0.09808869612918805
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09078138162690487
+          },
+          {
+            "score": "0-0",
+            "probability": 0.08066589023560067
+          },
+          {
+            "score": "2-0",
+            "probability": 0.07894033184948249
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.48,
+        "away": 1.15
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "TheSportsDB (restricted free coverage)"
   },
   {
     "key": "esp.1|espn:esp.1:401882824",
