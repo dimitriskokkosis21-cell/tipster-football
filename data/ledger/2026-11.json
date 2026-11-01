@@ -1128,6 +1128,127 @@
     "source": "ESPN (unofficial)"
   },
   {
+    "key": "eng.1|sportsdb:2494082",
+    "matchId": "sportsdb:2494082",
+    "leagueId": "eng.1",
+    "league": "Premier League",
+    "homeName": "Liverpool",
+    "awayName": "Arsenal",
+    "kickoff": "2026-11-01T16:30:00.000Z",
+    "firstRecordedAt": "2026-11-01T10:02:13.059Z",
+    "forecast": {
+      "recordedAt": "2026-11-01T10:02:13.059Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.4390101159357487,
+        "2": 0.28586319513619773,
+        "X": 0.2751266889280536
+      },
+      "publishedProbabilities": {
+        "1": 0.4390101159357487,
+        "2": 0.28586319513619773,
+        "X": 0.2751266889280536
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 1,
+        "scope": "untrained",
+        "sampleSize": 0,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-01T07:26:27.960Z"
+      },
+      "markets": {
+        "over25": 0.48907542430746526,
+        "btts": 0.5363914324564387,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.13126497073079488
+          },
+          {
+            "score": "1-0",
+            "probability": 0.09808869612918805
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09078138162690487
+          },
+          {
+            "score": "0-0",
+            "probability": 0.08066589023560067
+          },
+          {
+            "score": "2-0",
+            "probability": 0.07894033184948249
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.48,
+        "away": 1.15
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-01T10:02:13.059Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.4390101159357487,
+        "2": 0.28586319513619773,
+        "X": 0.2751266889280536
+      },
+      "publishedProbabilities": {
+        "1": 0.4390101159357487,
+        "2": 0.28586319513619773,
+        "X": 0.2751266889280536
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 1,
+        "scope": "untrained",
+        "sampleSize": 0,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-01T07:26:27.960Z"
+      },
+      "markets": {
+        "over25": 0.48907542430746526,
+        "btts": 0.5363914324564387,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.13126497073079488
+          },
+          {
+            "score": "1-0",
+            "probability": 0.09808869612918805
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09078138162690487
+          },
+          {
+            "score": "0-0",
+            "probability": 0.08066589023560067
+          },
+          {
+            "score": "2-0",
+            "probability": 0.07894033184948249
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.48,
+        "away": 1.15
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "TheSportsDB (restricted free coverage)"
+  },
+  {
     "key": "ger.1|openliga:83221",
     "matchId": "openliga:83221",
     "leagueId": "ger.1",
