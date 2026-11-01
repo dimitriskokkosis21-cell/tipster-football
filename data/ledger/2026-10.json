@@ -290,7 +290,13 @@
       }
     },
     "revisionCount": 2,
-    "result": null,
+    "result": {
+      "home": 1,
+      "away": 1,
+      "outcome": "X",
+      "completedAt": "2026-11-01T01:31:42.852Z",
+      "source": "ESPN verified final • event 401879250"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -384,7 +390,13 @@
       }
     },
     "revisionCount": 2,
-    "result": null,
+    "result": {
+      "home": 6,
+      "away": 1,
+      "outcome": "1",
+      "completedAt": "2026-11-01T01:31:42.852Z",
+      "source": "ESPN verified final • event 401882822"
+    },
     "source": "ESPN (unofficial)"
   }
 ]
