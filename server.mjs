@@ -211,8 +211,11 @@ async function buildAllMatches(force=false){
  // simultaneous requests from multiple Safari tabs or startup warmup.
  if(!force&&lastSuccessful&&lastSuccessful.expires>now&&lastSuccessful.date===today)return lastSuccessful.data;
  const reports=await Promise.all(LEAGUES.map(async l=>{try{return await leagueFetch(l,today,end,force)}catch(e){return {fixtures:[],history:[],report:{league:l.name,provider:'UNAVAILABLE',fixtures:0,history:0,warning:String(e)}}}}));
+ const auxiliary=[['ned.1','Eredivisie'],['por.1','Primeira Liga'],['tur.1','Turkish Super Lig'],['ukr.1','Ukrainian Premier League'],['aut.1','Austrian Bundesliga']].map(([id,name])=>({id,name,sdb:null}));
+ const auxiliaryReports=await Promise.all(auxiliary.map(async l=>{try{return await leagueFetch(l,today,end,false)}catch(e){return {history:[],report:{warning:e.message}}}}));
+ const auxiliaryHistory=auxiliaryReports.flatMap(r=>r.history||[]);
  const fixtures=unique(reports.flatMap(r=>r.fixtures)).filter(r=>new Date(r.date)>new Date()&&athens(new Date(r.date))>=today&&athens(new Date(r.date))<=end);
- const history=unique(reports.flatMap(r=>r.history)).filter(x=>x.complete);
+ const history=unique([...reports.flatMap(r=>r.history),...auxiliaryHistory]).filter(x=>x.complete);
 
  // Optional licensed private data feed: matching must be anchored by competition,
  // kickoff, home and away identity and explicit data-source provenance.
