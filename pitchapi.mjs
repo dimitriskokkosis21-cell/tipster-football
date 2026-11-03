@@ -31,6 +31,7 @@ export function pitchMatchIdentity(a,b){
 export async function enrichPitchHistory(history,key,{days=14,maxShots=65}={}){
  const status={configured:Boolean(key),authenticated:false,coveredMatches:0,xgMatches:0,warning:null};
  if(!key)return {history,status};
+ if(batchCache.result&&batchCache.until>Date.now())return {history:history.map(r=>batchCache.result.updates.get(r.id)||r),status:batchCache.result.status};
  try{
   const date=new Date();date.setUTCDate(date.getUTCDate()-1);
   const found=[];
@@ -54,6 +55,8 @@ export async function enrichPitchHistory(history,key,{days=14,maxShots=65}={}){
   for(const {idx,xg} of results)if(xg){
    copy[idx]={...copy[idx],...xg};status.xgMatches++;
   }
+  batchCache={until:Date.now()+6*3600000,result:{updates:new Map(copy.filter((r,i)=>r!==history[i]&&r.id).map(r=>[r.id,r])),status}};
+  console.log('TIPSTER PITCH DATA COVERAGE',JSON.stringify(status));
   return {history:copy,status};
- }catch(e){status.warning=e.message;return {history,status};}
+ }catch(e){status.warning=e.message;batchCache={until:Date.now()+20*60000,result:{updates:new Map(),status}};console.log('TIPSTER PITCH DATA COVERAGE',JSON.stringify(status));return {history,status};}
 }
