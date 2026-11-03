@@ -20,7 +20,7 @@ export function canonicalSpanishTeam(value){
   [/getafe/,'getafe'],[/sevilla/,'sevilla'],
   [/elche/,'elche'],[/valencia/,'valencia'],
   [/osasuna/,'osasuna'],[/levante/,'levante'],
-  [/villarreal/,'villarreal'],
+  [/villarreal|villareal/,'villarreal'],
   [/girona/,'girona'],[/mallorca/,'mallorca'],
   [/oviedo/,'oviedo'],[/las palmas/,'las-palmas'],
   [/granada/,'granada']
