@@ -9,7 +9,7 @@ export function crossLeagueModel(match,history,base){
  const rows=history.filter(r=>r.complete&&Date.parse(r.date)<when&&Number.isFinite(r.homeScore)&&Number.isFinite(r.awayScore))
  .map(r=>({...r,homeName:teamKey(r.homeName),awayName:teamKey(r.awayName),homeId:teamKey(r.homeName),awayId:teamKey(r.awayName)}));
  const h=teamKey(match.homeName),a=teamKey(match.awayName);
- const domesticIds=new Set(['eng.1','esp.1','ita.1','ger.1','fra.1','gre.1']);
+ const domesticIds=new Set(['eng.1','esp.1','ita.1','ger.1','fra.1','gre.1','ned.1','por.1','tur.1','ukr.1','aut.1']);
  const domesticH=rows.filter(r=>domesticIds.has(r.leagueId)&&(r.homeName===h||r.awayName===h));
  const domesticA=rows.filter(r=>domesticIds.has(r.leagueId)&&(r.homeName===a||r.awayName===a));
  const global=computeTeamRatings(rows);
