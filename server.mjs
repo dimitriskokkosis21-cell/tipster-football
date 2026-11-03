@@ -2,7 +2,7 @@ import http from 'node:http';
 import {execFileSync} from 'node:child_process';
 import {calculateMatchV2,validXg} from './model-v2.mjs';
 import {crossLeagueModel} from './crossleague.mjs';
-import {extractESPNxG,espnAvailability,mergeLicensedMatchData} from './features.mjs';
+import {extractESPNxG,espnAvailability,mergeESPNTeamInjuries,mergeLicensedMatchData} from './features.mjs';
 import {loadLaLiga} from './laliga.mjs';
 import {optionalLaLigaSources,matchStrikerXG,matchAPIFootballReports} from './data-sources.mjs';
 import {applyTemperature,applyBinaryTemperature,selectCalibration,selectMarketCalibration,LEARNING_VERSION} from './learning.mjs';
@@ -253,9 +253,23 @@ async function buildAllMatches(force=false){
   }
  }
  const supplemental=await optionalLaLigaSources(today,end);
+ // Free ESPN team-level reports complement the often-empty league injury feed.
+ // Restrict lookups to the next 48 hours and cache each team for 2 hours.
+ const near=fixtures.filter(m=>Date.parse(m.date)-Date.now()<48*3600000).slice(0,18);
+ const targets=new Map();
+ for(const m of near)for(const id of [m.homeId,m.awayId]){
+  if(!/^\\d+$/.test(String(id)))continue;
+  const k=m.leagueId+':'+id;
+  targets.set(k,ESPN+m.leagueId+'/teams/'+encodeURIComponent(id)+'/injuries');
+ }
+ const teamInjuries=new Map();
+ await Promise.all([...targets].map(async ([k,url])=>{
+  try{teamInjuries.set(k,await remote(url,7200000,false,4500));}
+  catch(e){/* A missing free feed is unknown, not a clean injury report. */}
+ }));
  const leagueInjuries=new Map(reports.map((r,i)=>[LEAGUES[i].id,r.injuries]));
  const matches=fixtures.map(m=>{
-  const base=espnAvailability(leagueInjuries.get(m.leagueId),m);
+  const base=mergeESPNTeamInjuries(espnAvailability(leagueInjuries.get(m.leagueId),m),teamInjuries.get(m.leagueId+':'+m.homeId),teamInjuries.get(m.leagueId+':'+m.awayId),m);
   const rich=findLicensed(m);
   const custom=rich?mergeLicensedMatchData(m,rich):null;
   const avail=custom??base;
