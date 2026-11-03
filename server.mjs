@@ -283,7 +283,16 @@ async function buildAllMatches(force=false){
    if(xgSeason)avail.xgSeason=xgSeason;
   }
   const baseModel=crossLeagueModel(m,history,calculateMatchV2(m,history,avail));
-  return {...m,model:calibratedMatchModel(baseModel,m.leagueId,learning)};
+  const leagueHistory=history.filter(r=>r.leagueId===m.leagueId).length;
+  const coverageIncomplete=leagueHistory<80||baseModel.crossLeagueUnanchored||baseModel.quality?.includes('LIMITED');
+  const model=calibratedMatchModel(baseModel,m.leagueId,learning);
+  if(coverageIncomplete){
+   model.quality='UNRELIABLE · INCOMPLETE HISTORICAL COVERAGE';
+   model.tip='DO NOT BET · DATA INCOMPLETE';
+   model.crossLeagueUnanchored=true;
+   model.missing=[...new Set([...(model.missing||[]),...(leagueHistory<80?['Only '+leagueHistory+' historical results available for this competition']:[])])];
+  }
+  return {...m,model};
  });
  const sourceStatus=reports.map(r=>r.report);
  const data={matches,meta:{updatedAt:new Date().toISOString(),today,end,timezone:'Europe/Athens',historyMatches:history.length,
