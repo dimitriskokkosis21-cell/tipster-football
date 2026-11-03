@@ -166,8 +166,15 @@ async function leagueFetch(l,today,end,force){
   // Prioritize the current year's fixture query. The older archive is
   // supplementary and must never cause current fixtures to disappear.
   const currentYears=[...new Set([today.slice(0,4),end.slice(0,4)])];
-  const currentResponses=await Promise.allSettled(currentYears.map(year=>
-   remote(ESPN+l.id+'/scoreboard?dates='+year+'&limit=1000',21600000,force,11500)));
+  const currentResponses=await Promise.allSettled(currentYears.map(async year=>{
+   const url=ESPN+l.id+'/scoreboard?dates='+year+'&limit=1000';
+   try{return await remote(url,21600000,force,11500);}
+   catch(first){
+    // Retry transient ESPN timeouts once rather than treating a league as
+    // having only a single fallback match. No subscription or API key needed.
+    return await remote(url,21600000,false,7500);
+   }
+  }));
   const currentGood=currentResponses.filter(r=>r.status==='fulfilled'&&Array.isArray(r.value?.events));
   if(!currentGood.length)throw Error(currentResponses.map(r=>r.reason?.message||'scoreboard unavailable').join('; '));
   const currentEvents=new Map();
