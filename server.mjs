@@ -2,6 +2,7 @@ import http from 'node:http';
 import {execFileSync} from 'node:child_process';
 import {calculateMatchV2,validXg} from './model-v2.mjs';
 import {crossLeagueModel} from './crossleague.mjs';
+import {enrichPitchHistory} from './pitchapi.mjs';
 import {extractESPNxG,espnAvailability,mergeESPNTeamInjuries,mergeLicensedMatchData} from './features.mjs';
 import {loadLaLiga} from './laliga.mjs';
 import {optionalLaLigaSources,matchStrikerXG,matchAPIFootballReports} from './data-sources.mjs';
@@ -222,7 +223,9 @@ async function buildAllMatches(force=false){
  const auxiliaryReports=await Promise.all(auxiliary.map(async l=>{try{return await leagueFetch(l,today,end,false)}catch(e){return {history:[],report:{warning:e.message}}}}));
  const auxiliaryHistory=auxiliaryReports.flatMap(r=>r.history||[]);
  const fixtures=unique(reports.flatMap(r=>r.fixtures)).filter(r=>new Date(r.date)>new Date()&&athens(new Date(r.date))>=today&&athens(new Date(r.date))<=end);
- const history=unique([...reports.flatMap(r=>r.history),...auxiliaryHistory]).filter(x=>x.complete);
+ const initialHistory=unique([...reports.flatMap(r=>r.history),...auxiliaryHistory]).filter(x=>x.complete);
+ const pitch=await enrichPitchHistory(initialHistory,process.env.PITCH_API_KEY,{days:10,maxShots:50});
+ const history=pitch.history;
 
  // Optional licensed private data feed: matching must be anchored by competition,
  // kickoff, home and away identity and explicit data-source provenance.
@@ -306,7 +309,7 @@ async function buildAllMatches(force=false){
   learning:{version:learning?.version||LEARNING_VERSION,marketCalibrations:learning?.markets||{},updatedAt:learning?.updatedAt||null,
    performance:learning?.performance||null,globalCalibration:learning?.global||null,
    leagueCalibrations:learning?.leagues||{}},
-  featureSources:{strikerXgConfigured:supplemental.enabled.striker,apiFootballInjuriesConfigured:supplemental.enabled.apiFootball,xgCoverage:matches.filter(m=>m.model?.xgSource).length,injuriesCoverage:matches.filter(m=>m.model?.availability?.injuries?.verified).length,warnings:supplemental.warnings},
+  featureSources:{pitchApi:pitch.status,strikerXgConfigured:supplemental.enabled.striker,apiFootballInjuriesConfigured:supplemental.enabled.apiFootball,xgCoverage:matches.filter(m=>m.model?.xgSource).length,injuriesCoverage:matches.filter(m=>m.model?.availability?.injuries?.verified).length,warnings:supplemental.warnings},
   sourceStatus,coverageIncomplete:sourceStatus.some(s=>s.provider==='UNAVAILABLE'||s.provider.includes('limited')||s.warning),
   notice:'ESPN endpoints are unofficial and may change. xG, injuries, suspensions and projected XIs are included only if verified by named sources; otherwise they are explicitly unavailable. Probabilities are not independently calibrated.'}};
  if(sourceStatus.every(s=>s.provider==='UNAVAILABLE')&&!lastSuccessful)throw Error('All football data sources are currently unavailable. Retry later.');
