@@ -2,7 +2,7 @@ import http from 'node:http';
 import {execFileSync} from 'node:child_process';
 import {calculateMatchV2,validXg} from './model-v2.mjs';
 import {crossLeagueModel} from './crossleague.mjs';
-import {enrichPitchHistory} from './pitchapi.mjs';
+import {enrichPitchHistory,pitchUpcomingLineups} from './pitchapi.mjs';
 import {extractESPNxG,espnAvailability,mergeESPNTeamInjuries,mergeLicensedMatchData} from './features.mjs';
 import {loadLaLiga} from './laliga.mjs';
 import {optionalLaLigaSources,matchStrikerXG,matchAPIFootballReports} from './data-sources.mjs';
@@ -277,12 +277,15 @@ async function buildAllMatches(force=false){
   try{teamInjuries.set(k,await remote(url,7200000,false,4500));}
   catch(e){/* A missing free feed is unknown, not a clean injury report. */}
  }));
+ const pitchLineups=await pitchUpcomingLineups(fixtures,process.env.PITCH_API_KEY);
  const leagueInjuries=new Map(reports.map((r,i)=>[LEAGUES[i].id,r.injuries]));
  const matches=fixtures.map(m=>{
   const base=mergeESPNTeamInjuries(espnAvailability(leagueInjuries.get(m.leagueId),m),teamInjuries.get(m.leagueId+':'+m.homeId),teamInjuries.get(m.leagueId+':'+m.awayId),m);
   const rich=findLicensed(m);
   const custom=rich?mergeLicensedMatchData(m,rich):null;
   const avail=custom??base;
+  const pitchXI=pitchLineups.out.get(m.id);
+  if(pitchXI&&!avail.predictedLineups?.verified)avail.predictedLineups=pitchXI;
   if(m.leagueId==='esp.1'){
    const report=matchAPIFootballReports(m,supplemental.injuries);
    if(report){
@@ -309,7 +312,7 @@ async function buildAllMatches(force=false){
   learning:{version:learning?.version||LEARNING_VERSION,marketCalibrations:learning?.markets||{},updatedAt:learning?.updatedAt||null,
    performance:learning?.performance||null,globalCalibration:learning?.global||null,
    leagueCalibrations:learning?.leagues||{}},
-  featureSources:{pitchApi:pitch.status,strikerXgConfigured:supplemental.enabled.striker,apiFootballInjuriesConfigured:supplemental.enabled.apiFootball,xgCoverage:matches.filter(m=>m.model?.xgSource).length,injuriesCoverage:matches.filter(m=>m.model?.availability?.injuries?.verified).length,warnings:supplemental.warnings},
+  featureSources:{pitchApi:pitch.status,pitchLineups:pitchLineups.status,strikerXgConfigured:supplemental.enabled.striker,apiFootballInjuriesConfigured:supplemental.enabled.apiFootball,xgCoverage:matches.filter(m=>m.model?.xgSource).length,injuriesCoverage:matches.filter(m=>m.model?.availability?.injuries?.verified).length,warnings:supplemental.warnings},
   sourceStatus,coverageIncomplete:sourceStatus.some(s=>s.provider==='UNAVAILABLE'||s.provider.includes('limited')||s.warning),
   notice:'ESPN endpoints are unofficial and may change. xG, injuries, suspensions and projected XIs are included only if verified by named sources; otherwise they are explicitly unavailable. Probabilities are not independently calibrated.'}};
  if(sourceStatus.every(s=>s.provider==='UNAVAILABLE')&&!lastSuccessful)throw Error('All football data sources are currently unavailable. Retry later.');
