@@ -2,6 +2,7 @@ const BASE='https://api.pitchapi.dev/v1';
 const names={'Premier League':'eng.1','LaLiga':'esp.1','La Liga':'esp.1','Bundesliga':'ger.1','Serie A':'ita.1','Ligue 1':'fra.1'};
 const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');
 const cache=new Map();
+let batchCache={until:0,result:null};
 async function get(path,key){
  const prior=cache.get(path);
  if(prior&&prior.until>Date.now())return prior.data;
