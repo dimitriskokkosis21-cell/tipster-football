@@ -56,6 +56,31 @@ export function espnAvailability(data,match){
   home:home.filter(x=>x.suspended),away:away.filter(x=>x.suspended)};
  return {injuries,suspensions:susp,predictedLineups:{verified:false,source:null,home:[],away:[]}};
 }
+export function mergeESPNTeamInjuries(base,homeFeed,awayFeed,match){
+ const all=[];
+ for(const [side,feed] of [['home',homeFeed],['away',awayFeed]]){
+  if(!feed)continue;
+  const id=side==='home'?match.homeId:match.awayId;
+  const name=side==='home'?match.homeName:match.awayName;
+  const rows=rowsFromInjuryFeed(feed);
+  for(const r of rows){
+   // Team-scoped endpoint is authoritative for its requested team when the
+   // row omits a team reference. Reject conflicting explicit team identity.
+   const explicit=r.team?.id??r.teamId??r.team?.displayName??r.teamName;
+   if(explicit!=null&&!sameTeam(r,id,name))continue;
+   all.push({...r,team:{id,displayName:name}});
+  }
+ }
+ if(!all.length)return base;
+ const supplement=espnAvailability({injuries:all},match);
+ const merge=(a,b)=>[...a,...b].filter((x,i,arr)=>arr.findIndex(y=>norm(y.name)===norm(x.name))===i);
+ const home=merge(base?.injuries?.home||[],supplement.injuries.home);
+ const away=merge(base?.injuries?.away||[],supplement.injuries.away);
+ const source='ESPN league and team injury feeds (unofficial)';
+ return {...base,injuries:{verified:home.length+away.length>0,source,home,away,updatedAt:new Date().toISOString()},
+ suspensions:{verified:[...home,...away].some(x=>x.suspended),source,
+ home:home.filter(x=>x.suspended),away:away.filter(x=>x.suspended)}};
+}
 export function availabilityGoalFactors(info){
  const injuries=info?.injuries;
  if(!injuries?.verified)return {homeAttack:1,awayAttack:1,homeDefence:1,awayDefence:1,source:null};
