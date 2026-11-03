@@ -139,9 +139,9 @@ async function load(force){
  $('state').textContent='SYNCING SOURCES';
  $('countLabel').textContent='Retrieving verified fixtures and preparing predictions…';
  var controller=new AbortController();
- var timeout=setTimeout(()=>controller.abort(),27000);
+ var timeout=setTimeout(()=>controller.abort(),90000);
  var slow=setTimeout(()=>{
-  $('countLabel').textContent='Football providers are responding slowly. Trying to load available fixtures…';
+  $('countLabel').textContent='Football providers are responding slowly. Initial synchronization may take up to 90 seconds…';
  },7500);
  try{
   var res=await fetch('/api/matches'+(force?'?refresh=1':''),{cache:'no-store',signal:controller.signal});
