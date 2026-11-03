@@ -13,6 +13,9 @@ test('canonical names merge provider variants of LaLiga clubs',()=>{
  assert.equal(canonicalSpanishTeam('Espanyol Barcelona'),canonicalSpanishTeam('Espanyol'));
  assert.notEqual(canonicalSpanishTeam('Espanyol Barcelona'),canonicalSpanishTeam('Barcelona'));
  assert.equal(canonicalSpanishTeam('Deportivo Alavés'),canonicalSpanishTeam('Alaves'));
+ assert.equal(canonicalSpanishTeam('FC Villareal'),canonicalSpanishTeam('Villarreal'));
+ assert.equal(canonicalSpanishTeam('FC Getafe'),canonicalSpanishTeam('Getafe'));
+
  assert.notEqual(canonicalSpanishTeam('Deportivo Alavés'),canonicalSpanishTeam('Deportivo'));
 });
 test('daily ESPN gaps are filled by independent schedule without duplicates',()=>{
@@ -25,13 +28,15 @@ test('daily ESPN gaps are filled by independent schedule without duplicates',()=
    mk('Elche CF','Valencia CF','2026-11-01','OpenLigaDB'),
    mk('Athletic Club','Real Sociedad','2026-11-01','OpenLigaDB'),
    mk('RC Deportivo','CA Osasuna','2026-11-02','OpenLigaDB'),
-   mk('Espanyol Barcelona','Deportivo A Coruña','2026-11-07','OpenLigaDB')];
+   mk('Espanyol Barcelona','Deportivo A Coruña','2026-11-07','OpenLigaDB'),
+   mk('FC Villareal','FC Getafe','2026-11-08','OpenLigaDB')];
  const espn=[mk('Levante','Atletico Madrid','2026-10-31','ESPN (unofficial)'),
   mk('Barcelona','Alaves','2026-10-31','ESPN (unofficial)'),
   mk('Deportivo','Osasuna','2026-11-02','ESPN (unofficial)'),
-  mk('Espanyol','Deportivo','2026-11-07','ESPN (unofficial)')];
+  mk('Espanyol','Deportivo','2026-11-07','ESPN (unofficial)'),
+  mk('Villarreal','Getafe','2026-11-08','ESPN (unofficial)')];
  const merged=mergeSpanishFixtures([open,espn],date);
- assert.equal(merged.length,10);
+ assert.equal(merged.length,11);
  assert.equal(merged.find(x=>canonicalSpanishTeam(x.homeName)==='barcelona').source,'ESPN (unofficial)');
 });
 test('fixture adapter loads real-shaped independent sources and avoids blocked history and injuries',async()=>{
