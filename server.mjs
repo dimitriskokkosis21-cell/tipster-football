@@ -258,7 +258,7 @@ async function buildAllMatches(force=false){
  const near=fixtures.filter(m=>Date.parse(m.date)-Date.now()<48*3600000).slice(0,18);
  const targets=new Map();
  for(const m of near)for(const id of [m.homeId,m.awayId]){
-  if(!/^\\d+$/.test(String(id)))continue;
+  if(!/^[0-9]+$/.test(String(id)))continue;
   const k=m.leagueId+':'+id;
   targets.set(k,ESPN+m.leagueId+'/teams/'+encodeURIComponent(id)+'/injuries');
  }
