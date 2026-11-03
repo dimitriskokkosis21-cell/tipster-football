@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {calculateMatchV2,scoreMatrix,validXg} from '../model-v2.mjs';
-import {extractESPNxG,espnAvailability,availabilityGoalFactors,mergeLicensedMatchData} from '../features.mjs';
+import {extractESPNxG,espnAvailability,mergeESPNTeamInjuries,availabilityGoalFactors,mergeLicensedMatchData} from '../features.mjs';
 
 const kickoff='2026-10-31T17:00:00.000Z';
 const league='gre.1';
@@ -88,4 +88,17 @@ test('licensed projected XI requires named source, correct team/competition/date
  const result=mergeLicensedMatchData(fixture,record);
  assert.equal(result.predictedLineups.verified,true);
  assert.equal(mergeLicensedMatchData(fixture,{...record,date:'2020-01-01T00:00:00Z'}),null);
+});
+
+test('free ESPN team-specific injuries enrich reports but empty feeds never imply healthy squads',()=>{
+ const m={homeId:'10',awayId:'20',homeName:'Alpha',awayName:'Beta'};
+ const blank=espnAvailability(null,m);
+ assert.equal(mergeESPNTeamInjuries(blank,null,null,m).injuries.verified,false);
+ const team={injuries:[{athlete:{displayName:'Forward A'},status:'Out',detail:'Hamstring'}]};
+ const merged=mergeESPNTeamInjuries(blank,team,null,m);
+ assert.equal(merged.injuries.verified,true);
+ assert.equal(merged.injuries.home[0].name,'Forward A');
+ assert.equal(merged.injuries.home[0].confirmedOut,true);
+ assert.equal(merged.injuries.away.length,0);
+ assert.equal(merged.suspensions.verified,false);
 });
