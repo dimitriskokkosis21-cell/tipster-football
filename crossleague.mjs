@@ -40,7 +40,7 @@ export function crossLeagueModel(match,history,base){
  lambdaHome:lh,lambdaAway:la,topScores:grid.slice().sort((x,y)=>y.p-x.p).slice(0,5).map(x=>({score:x.home+'-'+x.away,probability:x.p})),
  over25:grid.reduce((s,x)=>s+(x.home+x.away>=3?x.p:0),0),
  btts:grid.reduce((s,x)=>s+(x.home>0&&x.away>0?x.p:0),0),
- crossLeagueUnanchored:!grounded,quality:grounded?'CROSS-LEAGUE ELO · UNCALIBRATED':'UNRELIABLE · LIMITED CROSS-LEAGUE DATA',
+ crossLeagueUnanchored:true,quality:grounded?'CROSS-LEAGUE ELO · UNCALIBRATED':'UNRELIABLE · LIMITED CROSS-LEAGUE DATA',
  tip:'NO VERIFIED PRICE · UNCALIBRATED',uncertaintyPenalty:Math.max(.12,base.uncertaintyPenalty),
  missing,eloHome:Math.round(eh),eloAway:Math.round(ea),eloDifference:Math.round(globalDifference),
  crossLeagueDiagnostics:{domesticHome:domesticH.length,domesticAway:domesticA.length,globalHome:nH,globalAway:nA,eloShift:Math.round(shift)},
