@@ -172,22 +172,26 @@ export function calculateMatchV2(match,history,availability={}){
  const homeXga=xgAvailable?sx.home.xgAgainst:avgXg(gamesH,'against');
  const awayXg=xgAvailable?sx.away.xgFor:avgXg(gamesA,'for');
  const awayXga=xgAvailable?sx.away.xgAgainst:avgXg(gamesA,'against');
- const enough=nH>=5&&nA>=5&&league.length>=30;
- const quality=enough?'RESULTS + ELO':'LIMITED SAMPLE';
+ const crossLeague=['uefa.champions','uefa.europa','uefa.europa.conf','uefa.wchampions','uefa.nations'].includes(match.leagueId);
+ const crossLeagueUnanchored=crossLeague;
+ const enough=nH>=5&&nA>=5&&league.length>=30&&!crossLeagueUnanchored;
+ const quality=crossLeagueUnanchored?'UNRELIABLE · NO CROSS-LEAGUE STRENGTH':enough?'RESULTS + ELO':'LIMITED SAMPLE';
  const issues=[];
+ if(crossLeagueUnanchored)issues.push('Domestic-league strength anchors are absent: UEFA-only Elo ratings are not comparable across countries');
  if(!verifiedXgMatches&&!xgAvailable)issues.push('Verified xG/xGA for recent matches');
  if(!availability.injuries?.verified)issues.push('Verified injury report');
  if(!availability.suspensions?.verified)issues.push('Verified suspensions');
  if(!availability.predictedLineups?.verified)issues.push('Provider-published predicted XI');
  issues.push('Verified bookmaker prices');
  return {
-  probabilities:probs,fairOdds:fair,prediction:predicted,tip:'NO VERIFIED PRICE',
+  probabilities:probs,fairOdds:fair,prediction:predicted,tip:crossLeagueUnanchored?'DO NOT BET · UNVALIDATED':'NO VERIFIED PRICE',
+  crossLeagueUnanchored,
   bookmakerOdds:null,requiredOdds:minOdds,
   lambdaHome,lambdaAway,topScores:top,
   over25:grid.reduce((s,v)=>s+(v.home+v.away>=3?v.p:0),0),
   btts:grid.reduce((s,v)=>s+(v.home>0&&v.away>0?v.p:0),0),
   quality,homeSample:nH,awaySample:nA,leagueSample:league.length,
-  uncertaintyPenalty:uncertainty,eloHome:Math.round(eloHome),eloAway:Math.round(eloAway),eloDifference:Math.round(eloDiff),
+  uncertaintyPenalty:crossLeagueUnanchored?Math.max(.20,uncertainty):uncertainty,eloHome:Math.round(eloHome),eloAway:Math.round(eloAway),eloDifference:Math.round(eloDiff),
   homeAttack:attack.get(hKey)??1,awayAttack:attack.get(aKey)??1,
   homeDefence:defence.get(hKey)??1,awayDefence:defence.get(aKey)??1,
   formHome:recent(hKey),formAway:recent(aKey),homeXg,homeXga,awayXg,awayXga,
