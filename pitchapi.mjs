@@ -60,3 +60,33 @@ export async function enrichPitchHistory(history,key,{days=14,maxShots=65}={}){
   return {history:copy,status};
  }catch(e){status.warning=e.message;batchCache={until:Date.now()+20*60000,result:{updates:new Map(),status}};console.log('TIPSTER PITCH DATA COVERAGE',JSON.stringify(status));return {history,status};}
 }
+
+export async function pitchUpcomingLineups(fixtures,key,{maxDays=2}={}){
+ const status={configured:Boolean(key),matched:0,lineups:0,warning:null};
+ const out=new Map();
+ if(!key)return {out,status};
+ try{
+  const dates=[...new Set(fixtures.filter(m=>Date.parse(m.date)>Date.now()&&Date.parse(m.date)-Date.now()<maxDays*86400000)
+   .map(m=>m.date.slice(0,10)))].slice(0,3);
+  for(const date of dates){
+   const list=await get('/date/'+date+'?status=upcoming',key);
+   for(const p of list.matches||[]){
+    const m=fixtures.find(f=>names[p.league?.name]===f.leagueId&&pitchMatchIdentity(p,f));
+    if(!m)continue;
+    status.matched++;
+    try{
+     const raw=await get('/matches/'+p.id+'/lineups',key);
+     const sides=raw?.home&&raw?.away?{home:raw.home,away:raw.away}:raw?.home_team&&raw?.away_team?{home:raw.home_team,away:raw.away_team}:null;
+     if(!sides)continue;
+     const players=side=>(side?.starters||side?.starting_eleven||[]).map(x=>x.player?.name||x.name).filter(x=>typeof x==='string'&&x.trim());
+     const home=players(sides.home),away=players(sides.away);
+     if(home.length!==11||away.length!==11)continue;
+     out.set(m.id,{verified:true,source:'PitchAPI '+(sides.home.confirmed&&sides.away.confirmed?'confirmed XI':'predicted XI'),home,away});
+     status.lineups++;
+    }catch{}
+   }
+  }
+ }catch(e){status.warning=e.message;}
+ console.log('TIPSTER PITCH LINEUP COVERAGE',JSON.stringify(status));
+ return {out,status};
+}
