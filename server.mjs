@@ -1,6 +1,7 @@
 import http from 'node:http';
 import {execFileSync} from 'node:child_process';
 import {calculateMatchV2,validXg} from './model-v2.mjs';
+import {crossLeagueModel} from './crossleague.mjs';
 import {extractESPNxG,espnAvailability,mergeLicensedMatchData} from './features.mjs';
 import {loadLaLiga} from './laliga.mjs';
 import {optionalLaLigaSources,matchStrikerXG,matchAPIFootballReports} from './data-sources.mjs';
@@ -264,7 +265,7 @@ async function buildAllMatches(force=false){
    const xgSeason=matchStrikerXG(m,supplemental.xg);
    if(xgSeason)avail.xgSeason=xgSeason;
   }
-  const baseModel=calculateMatchV2(m,history,avail);
+  const baseModel=crossLeagueModel(m,history,calculateMatchV2(m,history,avail));
   return {...m,model:calibratedMatchModel(baseModel,m.leagueId,learning)};
  });
  const sourceStatus=reports.map(r=>r.report);
