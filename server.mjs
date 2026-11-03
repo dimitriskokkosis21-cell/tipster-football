@@ -224,7 +224,7 @@ async function buildAllMatches(force=false){
  const auxiliaryHistory=auxiliaryReports.flatMap(r=>r.history||[]);
  const fixtures=unique(reports.flatMap(r=>r.fixtures)).filter(r=>new Date(r.date)>new Date()&&athens(new Date(r.date))>=today&&athens(new Date(r.date))<=end);
  const initialHistory=unique([...reports.flatMap(r=>r.history),...auxiliaryHistory]).filter(x=>x.complete);
- const pitch=await enrichPitchHistory(initialHistory,process.env.PITCH_API_KEY,{days:10,maxShots:50});
+ const pitch=await Promise.race([enrichPitchHistory(initialHistory,process.env.PITCH_API_KEY,{days:10,maxShots:50}),new Promise(resolve=>setTimeout(()=>resolve({history:initialHistory,status:{configured:Boolean(process.env.PITCH_API_KEY),authenticated:false,coveredMatches:0,xgMatches:0,warning:'Enrichment timed out; serving fixtures without optional xG'}}),6500))]);
  const history=pitch.history;
 
  // Optional licensed private data feed: matching must be anchored by competition,
@@ -277,7 +277,7 @@ async function buildAllMatches(force=false){
   try{teamInjuries.set(k,await remote(url,7200000,false,4500));}
   catch(e){/* A missing free feed is unknown, not a clean injury report. */}
  }));
- const pitchLineups=await pitchUpcomingLineups(fixtures,process.env.PITCH_API_KEY);
+ const pitchLineups=await Promise.race([pitchUpcomingLineups(fixtures,process.env.PITCH_API_KEY),new Promise(resolve=>setTimeout(()=>resolve({out:new Map(),status:{configured:Boolean(process.env.PITCH_API_KEY),matched:0,lineups:0,warning:'Lineup feed timed out'}}),2500))]);
  const leagueInjuries=new Map(reports.map((r,i)=>[LEAGUES[i].id,r.injuries]));
  const matches=fixtures.map(m=>{
   const base=mergeESPNTeamInjuries(espnAvailability(leagueInjuries.get(m.leagueId),m),teamInjuries.get(m.leagueId+':'+m.homeId),teamInjuries.get(m.leagueId+':'+m.awayId),m);
