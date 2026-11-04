@@ -1,6 +1,6 @@
 {
   "version": "tipster-learning-v1",
-  "updatedAt": "2026-11-04T13:32:05.453Z",
+  "updatedAt": "2026-11-04T16:15:12.024Z",
   "global": {
     "temperature": 1,
     "trained": 42,
@@ -26,8 +26,8 @@
     }
   },
   "performance": {
-    "tracked": 151,
-    "awaitingResult": 109,
+    "tracked": 167,
+    "awaitingResult": 125,
     "evaluated": 42,
     "accuracy": 0.5714285714285714,
     "brier": 0.5635290820386673,
@@ -62,7 +62,7 @@
         "exactScoreAccuracy": 0.16666666666666666,
         "expectedGoalsEvaluated": 6,
         "expectedGoalsMAE": 1.121924751973477,
-        "tracked": 15,
+        "tracked": 16,
         "leagueName": "Ligue 1"
       },
       "ita.1": {
@@ -82,7 +82,7 @@
         "exactScoreAccuracy": 0,
         "expectedGoalsEvaluated": 8,
         "expectedGoalsMAE": 1.1747998224516638,
-        "tracked": 18,
+        "tracked": 19,
         "leagueName": "Serie A"
       },
       "eng.1": {
@@ -102,7 +102,7 @@
         "exactScoreAccuracy": 0,
         "expectedGoalsEvaluated": 5,
         "expectedGoalsMAE": 0.6877790722260546,
-        "tracked": 15,
+        "tracked": 16,
         "leagueName": "Premier League"
       },
       "esp.1": {
@@ -122,7 +122,7 @@
         "exactScoreAccuracy": 0,
         "expectedGoalsEvaluated": 6,
         "expectedGoalsMAE": 0.8963865290092136,
-        "tracked": 17,
+        "tracked": 26,
         "leagueName": "La Liga"
       },
       "ger.1": {
@@ -162,7 +162,7 @@
         "exactScoreAccuracy": 0.16666666666666666,
         "expectedGoalsEvaluated": 6,
         "expectedGoalsMAE": 0.9514940363093495,
-        "tracked": 13,
+        "tracked": 14,
         "leagueName": "Greek Super League"
       },
       "uefa.champions": {
@@ -202,7 +202,7 @@
         "exactScoreAccuracy": null,
         "expectedGoalsEvaluated": 0,
         "expectedGoalsMAE": null,
-        "tracked": 18,
+        "tracked": 19,
         "leagueName": "Europa League"
       },
       "uefa.europa.conf": {
@@ -222,7 +222,7 @@
         "exactScoreAccuracy": null,
         "expectedGoalsEvaluated": 0,
         "expectedGoalsMAE": null,
-        "tracked": 18,
+        "tracked": 19,
         "leagueName": "Conference League"
       },
       "uefa.wchampions": {
@@ -242,7 +242,7 @@
         "exactScoreAccuracy": null,
         "expectedGoalsEvaluated": 0,
         "expectedGoalsMAE": null,
-        "tracked": 8,
+        "tracked": 9,
         "leagueName": "Women's Champions League"
       }
     }
