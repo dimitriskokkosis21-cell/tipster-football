@@ -15474,7 +15474,13 @@
       }
     },
     "revisionCount": 6,
-    "result": null,
+    "result": {
+      "home": 2,
+      "away": 0,
+      "outcome": "1",
+      "completedAt": "2026-11-08T21:55:54.882Z",
+      "source": "ESPN verified final • event 401882807"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -15595,7 +15601,13 @@
       }
     },
     "revisionCount": 6,
-    "result": null,
+    "result": {
+      "home": 0,
+      "away": 0,
+      "outcome": "X",
+      "completedAt": "2026-11-08T21:55:54.882Z",
+      "source": "ESPN verified final • event 401882815"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -15958,7 +15970,13 @@
       }
     },
     "revisionCount": 23,
-    "result": null,
+    "result": {
+      "home": 2,
+      "away": 1,
+      "outcome": "1",
+      "completedAt": "2026-11-08T21:55:54.882Z",
+      "source": "OpenLigaDB verified final • match 83231"
+    },
     "source": "OpenLigaDB (ODbL)"
   },
   {
@@ -16079,7 +16097,13 @@
       }
     },
     "revisionCount": 5,
-    "result": null,
+    "result": {
+      "home": 1,
+      "away": 1,
+      "outcome": "X",
+      "completedAt": "2026-11-08T21:55:54.882Z",
+      "source": "ESPN verified final • event 401896730"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -16200,7 +16224,13 @@
       }
     },
     "revisionCount": 24,
-    "result": null,
+    "result": {
+      "home": 1,
+      "away": 2,
+      "outcome": "2",
+      "completedAt": "2026-11-08T21:55:54.882Z",
+      "source": "ESPN verified final • event 401876404"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -16321,7 +16351,13 @@
       }
     },
     "revisionCount": 25,
-    "result": null,
+    "result": {
+      "home": 2,
+      "away": 2,
+      "outcome": "X",
+      "completedAt": "2026-11-08T21:55:54.882Z",
+      "source": "ESPN verified final • event 401875003"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -16442,7 +16478,13 @@
       }
     },
     "revisionCount": 6,
-    "result": null,
+    "result": {
+      "home": 1,
+      "away": 2,
+      "outcome": "2",
+      "completedAt": "2026-11-08T21:55:54.882Z",
+      "source": "ESPN verified final • event 401882816"
+    },
     "source": "ESPN (unofficial)"
   },
   {
