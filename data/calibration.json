@@ -1,6 +1,6 @@
 {
   "version": "tipster-learning-v1",
-  "updatedAt": "2026-11-09T19:18:38.140Z",
+  "updatedAt": "2026-11-09T22:04:31.924Z",
   "global": {
     "temperature": 1,
     "trained": 111,
@@ -26,8 +26,8 @@
     }
   },
   "performance": {
-    "tracked": 213,
-    "awaitingResult": 65,
+    "tracked": 221,
+    "awaitingResult": 73,
     "evaluated": 148,
     "accuracy": 0.5743243243243243,
     "brier": 0.5624240062878058,
@@ -262,7 +262,7 @@
         "exactScoreAccuracy": null,
         "expectedGoalsEvaluated": 0,
         "expectedGoalsMAE": null,
-        "tracked": 45,
+        "tracked": 53,
         "leagueName": "Nations League"
       }
     }
