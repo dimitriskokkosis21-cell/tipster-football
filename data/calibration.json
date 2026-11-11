@@ -1,6 +1,6 @@
 {
   "version": "tipster-learning-v1",
-  "updatedAt": "2026-11-10T21:59:30.778Z",
+  "updatedAt": "2026-11-11T01:27:55.543Z",
   "global": {
     "temperature": 1,
     "trained": 115,
@@ -26,8 +26,8 @@
     }
   },
   "performance": {
-    "tracked": 221,
-    "awaitingResult": 67,
+    "tracked": 225,
+    "awaitingResult": 71,
     "evaluated": 154,
     "accuracy": 0.577922077922078,
     "brier": 0.5643120073461849,
@@ -242,7 +242,7 @@
         "exactScoreAccuracy": 0,
         "expectedGoalsEvaluated": 6,
         "expectedGoalsMAE": 1.081012354494099,
-        "tracked": 10,
+        "tracked": 14,
         "leagueName": "Women's Champions League"
       },
       "uefa.nations": {
