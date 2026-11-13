@@ -1,49 +1,49 @@
 {
   "version": "tipster-learning-v1",
-  "updatedAt": "2026-11-13T19:19:33.473Z",
+  "updatedAt": "2026-11-13T22:04:32.251Z",
   "global": {
     "temperature": 1,
-    "trained": 125,
-    "holdout": 42,
+    "trained": 132,
+    "holdout": 44,
     "improvement": 0,
     "reason": "Holdout not better than raw model"
   },
   "leagues": {},
   "markets": {
     "over25": {
-      "temperature": 1.0301,
-      "trained": 125,
-      "holdout": 42,
-      "improvement": 0.001964,
+      "temperature": 1.0615,
+      "trained": 132,
+      "holdout": 44,
+      "improvement": 0.002823,
       "reason": "Chronological holdout gain"
     },
     "btts": {
-      "temperature": 1.0603,
-      "trained": 125,
-      "holdout": 42,
-      "improvement": 0.002394,
-      "reason": "Chronological holdout gain"
+      "temperature": 1,
+      "trained": 132,
+      "holdout": 44,
+      "improvement": 0,
+      "reason": "No holdout gain"
     }
   },
   "performance": {
-    "tracked": 234,
-    "awaitingResult": 67,
-    "evaluated": 167,
-    "accuracy": 0.5688622754491018,
-    "brier": 0.5620940683240414,
-    "logLoss": 0.9545196683437969,
-    "meanConfidence": 0.5341804701839439,
-    "actualHome": 0.46107784431137727,
-    "actualDraw": 0.18562874251497005,
-    "actualAway": 0.3532934131736527,
-    "over25Evaluated": 167,
-    "over25Brier": 0.23958563562057897,
-    "bttsEvaluated": 167,
-    "bttsBrier": 0.25107166400326764,
-    "exactScoreEvaluated": 167,
-    "exactScoreAccuracy": 0.12574850299401197,
-    "expectedGoalsEvaluated": 167,
-    "expectedGoalsMAE": 0.9086532337624903,
+    "tracked": 261,
+    "awaitingResult": 85,
+    "evaluated": 176,
+    "accuracy": 0.5681818181818182,
+    "brier": 0.5638186628998485,
+    "logLoss": 0.9558030154276814,
+    "meanConfidence": 0.5308817515581208,
+    "actualHome": 0.45454545454545453,
+    "actualDraw": 0.1875,
+    "actualAway": 0.35795454545454547,
+    "over25Evaluated": 176,
+    "over25Brier": 0.2406171570838759,
+    "bttsEvaluated": 176,
+    "bttsBrier": 0.24985655723861788,
+    "exactScoreEvaluated": 176,
+    "exactScoreAccuracy": 0.11931818181818182,
+    "expectedGoalsEvaluated": 176,
+    "expectedGoalsMAE": 0.923928024015941,
     "leagues": {
       "fra.1": {
         "evaluated": 16,
@@ -62,7 +62,7 @@
         "exactScoreAccuracy": 0.125,
         "expectedGoalsEvaluated": 16,
         "expectedGoalsMAE": 0.9600304290582371,
-        "tracked": 17,
+        "tracked": 22,
         "leagueName": "Ligue 1"
       },
       "ita.1": {
@@ -82,7 +82,7 @@
         "exactScoreAccuracy": 0.10526315789473684,
         "expectedGoalsEvaluated": 19,
         "expectedGoalsMAE": 0.9319852078416426,
-        "tracked": 19,
+        "tracked": 23,
         "leagueName": "Serie A"
       },
       "eng.1": {
@@ -102,7 +102,7 @@
         "exactScoreAccuracy": 0.125,
         "expectedGoalsEvaluated": 16,
         "expectedGoalsMAE": 0.8037248990543637,
-        "tracked": 16,
+        "tracked": 23,
         "leagueName": "Premier League"
       },
       "esp.1": {
@@ -122,7 +122,7 @@
         "exactScoreAccuracy": 0.0625,
         "expectedGoalsEvaluated": 16,
         "expectedGoalsMAE": 1.0294763734285843,
-        "tracked": 28,
+        "tracked": 32,
         "leagueName": "La Liga"
       },
       "ger.1": {
@@ -142,7 +142,7 @@
         "exactScoreAccuracy": 0.09090909090909091,
         "expectedGoalsEvaluated": 11,
         "expectedGoalsMAE": 0.692380751981787,
-        "tracked": 12,
+        "tracked": 18,
         "leagueName": "Bundesliga"
       },
       "gre.1": {
@@ -162,7 +162,7 @@
         "exactScoreAccuracy": 0.21428571428571427,
         "expectedGoalsEvaluated": 14,
         "expectedGoalsMAE": 0.8358604058436977,
-        "tracked": 14,
+        "tracked": 15,
         "leagueName": "Greek Super League"
       },
       "uefa.champions": {
@@ -246,22 +246,22 @@
         "leagueName": "Women's Champions League"
       },
       "uefa.nations": {
-        "evaluated": 10,
-        "accuracy": 0.5,
-        "brier": 0.4638232213200311,
-        "logLoss": 0.809747280662626,
-        "meanConfidence": 0.5407184665233493,
-        "actualHome": 0.5,
-        "actualDraw": 0.1,
-        "actualAway": 0.4,
-        "over25Evaluated": 10,
-        "over25Brier": 0.2513317837895785,
-        "bttsEvaluated": 10,
-        "bttsBrier": 0.24714890137879256,
-        "exactScoreEvaluated": 10,
-        "exactScoreAccuracy": 0.2,
-        "expectedGoalsEvaluated": 10,
-        "expectedGoalsMAE": 0.5873579183731445,
+        "evaluated": 19,
+        "accuracy": 0.5263157894736842,
+        "brier": 0.5263477617609847,
+        "logLoss": 0.8902115214991624,
+        "meanConfidence": 0.5070649694075853,
+        "actualHome": 0.42105263157894735,
+        "actualDraw": 0.15789473684210525,
+        "actualAway": 0.42105263157894735,
+        "over25Evaluated": 19,
+        "over25Brier": 0.2553229650537507,
+        "bttsEvaluated": 19,
+        "bttsBrier": 0.23775132627573536,
+        "exactScoreEvaluated": 19,
+        "exactScoreAccuracy": 0.10526315789473684,
+        "expectedGoalsEvaluated": 19,
+        "expectedGoalsMAE": 0.8810432301158526,
         "tracked": 53,
         "leagueName": "Nations League"
       }
