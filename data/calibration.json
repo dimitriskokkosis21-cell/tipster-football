@@ -1,6 +1,6 @@
 {
   "version": "tipster-learning-v1",
-  "updatedAt": "2026-11-15T21:57:40.622Z",
+  "updatedAt": "2026-11-16T01:48:45.885Z",
   "global": {
     "temperature": 1,
     "trained": 144,
@@ -26,8 +26,8 @@
     }
   },
   "performance": {
-    "tracked": 285,
-    "awaitingResult": 93,
+    "tracked": 289,
+    "awaitingResult": 97,
     "evaluated": 192,
     "accuracy": 0.578125,
     "brier": 0.5623522731225145,
@@ -82,7 +82,7 @@
         "exactScoreAccuracy": 0.10526315789473684,
         "expectedGoalsEvaluated": 19,
         "expectedGoalsMAE": 0.9319852078416426,
-        "tracked": 28,
+        "tracked": 29,
         "leagueName": "Serie A"
       },
       "eng.1": {
@@ -102,7 +102,7 @@
         "exactScoreAccuracy": 0.125,
         "expectedGoalsEvaluated": 16,
         "expectedGoalsMAE": 0.8037248990543637,
-        "tracked": 25,
+        "tracked": 26,
         "leagueName": "Premier League"
       },
       "esp.1": {
@@ -122,7 +122,7 @@
         "exactScoreAccuracy": 0.0625,
         "expectedGoalsEvaluated": 16,
         "expectedGoalsMAE": 1.0294763734285843,
-        "tracked": 39,
+        "tracked": 40,
         "leagueName": "La Liga"
       },
       "ger.1": {
@@ -162,7 +162,7 @@
         "exactScoreAccuracy": 0.21428571428571427,
         "expectedGoalsEvaluated": 14,
         "expectedGoalsMAE": 0.8358604058436977,
-        "tracked": 20,
+        "tracked": 21,
         "leagueName": "Greek Super League"
       },
       "uefa.champions": {
