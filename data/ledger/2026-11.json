@@ -22435,7 +22435,13 @@
       }
     },
     "revisionCount": 3,
-    "result": null,
+    "result": {
+      "home": 1,
+      "away": 0,
+      "outcome": "1",
+      "completedAt": "2026-11-16T19:22:36.578Z",
+      "source": "ESPN verified final • event 401861180"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -22556,7 +22562,13 @@
       }
     },
     "revisionCount": 3,
-    "result": null,
+    "result": {
+      "home": 2,
+      "away": 2,
+      "outcome": "X",
+      "completedAt": "2026-11-16T19:22:36.578Z",
+      "source": "ESPN verified final • event 401861181"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -22677,7 +22689,13 @@
       }
     },
     "revisionCount": 3,
-    "result": null,
+    "result": {
+      "home": 3,
+      "away": 0,
+      "outcome": "1",
+      "completedAt": "2026-11-16T19:22:36.578Z",
+      "source": "ESPN verified final • event 401861182"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -22798,7 +22816,13 @@
       }
     },
     "revisionCount": 3,
-    "result": null,
+    "result": {
+      "home": 2,
+      "away": 1,
+      "outcome": "1",
+      "completedAt": "2026-11-16T19:22:36.578Z",
+      "source": "ESPN verified final • event 401861183"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -22919,7 +22943,13 @@
       }
     },
     "revisionCount": 3,
-    "result": null,
+    "result": {
+      "home": 2,
+      "away": 1,
+      "outcome": "1",
+      "completedAt": "2026-11-16T19:22:36.578Z",
+      "source": "ESPN verified final • event 401861184"
+    },
     "source": "ESPN (unofficial)"
   },
   {
