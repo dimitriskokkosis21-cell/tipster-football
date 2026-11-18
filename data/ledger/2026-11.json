@@ -24721,7 +24721,13 @@
       }
     },
     "revisionCount": 3,
-    "result": null,
+    "result": {
+      "home": 3,
+      "away": 1,
+      "outcome": "1",
+      "completedAt": "2026-11-18T22:11:43.746Z",
+      "source": "ESPN verified final • event 401916981"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -24842,7 +24848,13 @@
       }
     },
     "revisionCount": 3,
-    "result": null,
+    "result": {
+      "home": 0,
+      "away": 2,
+      "outcome": "2",
+      "completedAt": "2026-11-18T22:11:43.746Z",
+      "source": "ESPN verified final • event 401916982"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -24963,7 +24975,13 @@
       }
     },
     "revisionCount": 3,
-    "result": null,
+    "result": {
+      "home": 2,
+      "away": 0,
+      "outcome": "1",
+      "completedAt": "2026-11-18T22:11:43.746Z",
+      "source": "ESPN verified final • event 401916979"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -25084,7 +25102,13 @@
       }
     },
     "revisionCount": 3,
-    "result": null,
+    "result": {
+      "home": 1,
+      "away": 0,
+      "outcome": "1",
+      "completedAt": "2026-11-18T22:11:43.746Z",
+      "source": "ESPN verified final • event 401916980"
+    },
     "source": "ESPN (unofficial)"
   },
   {
@@ -25097,57 +25121,57 @@
     "kickoff": "2026-11-19T17:45:00.000Z",
     "firstRecordedAt": "2026-11-11T22:21:04.645Z",
     "forecast": {
-      "recordedAt": "2026-11-12T22:07:34.080Z",
+      "recordedAt": "2026-11-18T22:11:43.746Z",
       "modelVersion": "elo-v2+calibration-v1",
       "rawProbabilities": {
-        "1": 0.4693072688437757,
-        "2": 0.28292682440662054,
-        "X": 0.24776590674960375
+        "1": 0.48079348753633805,
+        "2": 0.27245298535116486,
+        "X": 0.24675352711249715
       },
       "publishedProbabilities": {
-        "1": 0.4693072688437757,
-        "2": 0.28292682440662054,
-        "X": 0.24776590674960375
+        "1": 0.48600184934180124,
+        "2": 0.27015055552318146,
+        "X": 0.24384759513501725
       },
       "xgCoverage": null,
       "injuryCoverage": false,
       "calibration": {
-        "temperature": 1,
+        "temperature": 0.9672,
         "scope": "global",
-        "sampleSize": 119,
+        "sampleSize": 157,
         "calibrationVersion": "tipster-learning-v1",
-        "updatedAt": "2026-11-12T19:19:33.034Z"
+        "updatedAt": "2026-11-18T19:21:10.389Z"
       },
       "markets": {
-        "over25": 0.5977448166019108,
-        "btts": 0.6171473314584276,
+        "over25": 0.59533324181178,
+        "btts": 0.6126921222681152,
         "predictedScore": "1-1",
         "topScores": [
           {
             "score": "1-1",
-            "probability": 0.11374511229525021
+            "probability": 0.11360121334922588
           },
           {
             "score": "2-1",
-            "probability": 0.0937537614791897
+            "probability": 0.09469652333177718
           },
           {
             "score": "1-0",
-            "probability": 0.07242177721185325
-          },
-          {
-            "score": "1-2",
-            "probability": 0.07074928659254405
+            "probability": 0.07423791274191417
           },
           {
             "score": "2-0",
-            "probability": 0.07043452765350756
+            "probability": 0.07284439879778119
+          },
+          {
+            "score": "1-2",
+            "probability": 0.06900921195378129
           }
         ]
       },
       "expectedGoals": {
-        "home": 1.7638828211332653,
-        "away": 1.3310767403793455
+        "home": 1.7838767206387776,
+        "away": 1.2999835937236344
       }
     },
     "firstForecast": {
@@ -25204,7 +25228,7 @@
         "away": 1.3392416281824224
       }
     },
-    "revisionCount": 2,
+    "revisionCount": 3,
     "result": null,
     "source": "ESPN (unofficial)"
   },
@@ -25339,57 +25363,57 @@
     "kickoff": "2026-11-19T20:00:00.000Z",
     "firstRecordedAt": "2026-11-11T22:21:04.645Z",
     "forecast": {
-      "recordedAt": "2026-11-12T22:07:34.080Z",
+      "recordedAt": "2026-11-18T22:11:43.746Z",
       "modelVersion": "elo-v2+calibration-v1",
       "rawProbabilities": {
-        "1": 0.5585755882411179,
-        "2": 0.19277857521944325,
-        "X": 0.2486458365394389
+        "1": 0.5721031323259291,
+        "2": 0.18255567829150346,
+        "X": 0.2453411893825674
       },
       "publishedProbabilities": {
-        "1": 0.5585755882411179,
-        "2": 0.19277857521944325,
-        "X": 0.2486458365394389
+        "1": 0.5801560519176243,
+        "2": 0.17809128033642477,
+        "X": 0.24175266774595092
       },
       "xgCoverage": null,
       "injuryCoverage": false,
       "calibration": {
-        "temperature": 1,
+        "temperature": 0.9672,
         "scope": "global",
-        "sampleSize": 119,
+        "sampleSize": 157,
         "calibrationVersion": "tipster-learning-v1",
-        "updatedAt": "2026-11-12T19:19:33.034Z"
+        "updatedAt": "2026-11-18T19:21:10.389Z"
       },
       "markets": {
-        "over25": 0.5105195576165329,
-        "btts": 0.5161105486694628,
+        "over25": 0.5094549339209453,
+        "btts": 0.508798888520249,
         "predictedScore": "1-1",
         "topScores": [
           {
             "score": "1-1",
-            "probability": 0.11864348850740408
+            "probability": 0.11706153371854136
           },
           {
             "score": "1-0",
-            "probability": 0.10903176902012436
+            "probability": 0.11135692876262242
           },
           {
             "score": "2-0",
-            "probability": 0.10322041394998127
+            "probability": 0.10671810711985606
           },
           {
             "score": "2-1",
-            "probability": 0.09799571386305285
+            "probability": 0.0980993796558644
           },
           {
             "score": "0-0",
-            "probability": 0.07383741237697725
+            "probability": 0.07402282795497965
           }
         ]
       },
       "expectedGoals": {
-        "home": 1.7675713206447554,
-        "away": 0.9493830736867592
+        "home": 1.7933531690119882,
+        "away": 0.9192383776605793
       }
     },
     "firstForecast": {
@@ -25446,7 +25470,7 @@
         "away": 0.9987952833852761
       }
     },
-    "revisionCount": 2,
+    "revisionCount": 3,
     "result": null,
     "source": "ESPN (unofficial)"
   },
@@ -25460,57 +25484,57 @@
     "kickoff": "2026-11-19T20:00:00.000Z",
     "firstRecordedAt": "2026-11-11T22:21:04.645Z",
     "forecast": {
-      "recordedAt": "2026-11-12T22:07:34.080Z",
+      "recordedAt": "2026-11-18T22:11:43.746Z",
       "modelVersion": "elo-v2+calibration-v1",
       "rawProbabilities": {
-        "1": 0.9169422065805615,
-        "2": 0.028286203752127606,
-        "X": 0.054771589667310924
+        "1": 0.9190884276073936,
+        "2": 0.027161909373899458,
+        "X": 0.05374966301870692
       },
       "publishedProbabilities": {
-        "1": 0.9169422065805615,
-        "2": 0.028286203752127606,
-        "X": 0.054771589667310924
+        "1": 0.9264922309126981,
+        "2": 0.024298494875068383,
+        "X": 0.04920927421223352
       },
       "xgCoverage": null,
       "injuryCoverage": false,
       "calibration": {
-        "temperature": 1,
+        "temperature": 0.9672,
         "scope": "global",
-        "sampleSize": 119,
+        "sampleSize": 157,
         "calibrationVersion": "tipster-learning-v1",
-        "updatedAt": "2026-11-12T19:19:33.034Z"
+        "updatedAt": "2026-11-18T19:21:10.389Z"
       },
       "markets": {
-        "over25": 0.9159104214594854,
-        "btts": 0.6162653774575266,
+        "over25": 0.9146200682249773,
+        "btts": 0.6080440357210328,
         "predictedScore": "4-0",
         "topScores": [
           {
             "score": "4-0",
-            "probability": 0.07101943334831085
+            "probability": 0.07257676162943258
           },
           {
             "score": "4-1",
-            "probability": 0.06896459721039344
+            "probability": 0.06890258710705224
           },
           {
             "score": "5-0",
-            "probability": 0.06533787868044598
+            "probability": 0.06677062069907795
           },
           {
             "score": "5-1",
-            "probability": 0.06344742943356196
+            "probability": 0.06339038013848806
           },
           {
             "score": "3-0",
-            "probability": 0.06175602899853117
+            "probability": 0.06311022750385442
           }
         ]
       },
       "expectedGoals": {
         "home": 4.6,
-        "away": 0.9710665652901006
+        "away": 0.94937533116812
       }
     },
     "firstForecast": {
@@ -25567,7 +25591,7 @@
         "away": 1.0090937279428516
       }
     },
-    "revisionCount": 2,
+    "revisionCount": 3,
     "result": null,
     "source": "ESPN (unofficial)"
   },
@@ -33567,57 +33591,57 @@
     "kickoff": "2026-11-24T20:00:00.000Z",
     "firstRecordedAt": "2026-11-16T22:08:31.226Z",
     "forecast": {
-      "recordedAt": "2026-11-16T22:08:31.226Z",
+      "recordedAt": "2026-11-18T22:11:43.746Z",
       "modelVersion": "elo-v2+calibration-v1",
       "rawProbabilities": {
-        "1": 0.735658050382676,
-        "2": 0.10519030130111914,
-        "X": 0.1591516483162049
+        "1": 0.7442772229522753,
+        "2": 0.10048166174273249,
+        "X": 0.15524111530499224
       },
       "publishedProbabilities": {
-        "1": 0.7464440278595461,
-        "2": 0.10006514334367236,
-        "X": 0.1534908287967815
+        "1": 0.7553302190601373,
+        "2": 0.09527899293390238,
+        "X": 0.14939078800596042
       },
       "xgCoverage": null,
       "injuryCoverage": false,
       "calibration": {
-        "temperature": 0.9679,
+        "temperature": 0.9672,
         "scope": "global",
-        "sampleSize": 147,
+        "sampleSize": 157,
         "calibrationVersion": "tipster-learning-v1",
-        "updatedAt": "2026-11-16T19:22:36.578Z"
+        "updatedAt": "2026-11-18T19:21:10.389Z"
       },
       "markets": {
-        "over25": 0.7132046344408471,
-        "btts": 0.5862686896617548,
+        "over25": 0.7174062909476027,
+        "btts": 0.5828646013466491,
         "predictedScore": "2-0",
         "topScores": [
           {
             "score": "2-0",
-            "probability": 0.09199129601664051
+            "probability": 0.09229202288962463
           },
           {
             "score": "2-1",
-            "probability": 0.08968902366826054
+            "probability": 0.08872496095379116
           },
           {
             "score": "3-0",
-            "probability": 0.08331322495007208
+            "probability": 0.08477001902966892
           },
           {
             "score": "3-1",
-            "probability": 0.08122813926955057
+            "probability": 0.08149368052593672
           },
           {
             "score": "1-1",
-            "probability": 0.07064226356060271
+            "probability": 0.06890650457498625
           }
         ]
       },
       "expectedGoals": {
-        "home": 2.7169926468369803,
-        "away": 0.9749729327874289
+        "home": 2.7554933690547165,
+        "away": 0.9613502681580679
       }
     },
     "firstForecast": {
@@ -33674,7 +33698,7 @@
         "away": 0.9749729327874289
       }
     },
-    "revisionCount": 1,
+    "revisionCount": 2,
     "result": null,
     "source": "ESPN (unofficial)"
   },
@@ -33809,57 +33833,57 @@
     "kickoff": "2026-11-24T20:00:00.000Z",
     "firstRecordedAt": "2026-11-16T22:08:31.226Z",
     "forecast": {
-      "recordedAt": "2026-11-16T22:08:31.226Z",
+      "recordedAt": "2026-11-18T22:11:43.746Z",
       "modelVersion": "elo-v2+calibration-v1",
       "rawProbabilities": {
-        "1": 0.8495520618723105,
-        "2": 0.05981371101265977,
-        "X": 0.09063422711502976
+        "1": 0.8566008201882751,
+        "2": 0.05629166597539727,
+        "X": 0.08710751383632763
       },
       "publishedProbabilities": {
-        "1": 0.8594545988760486,
-        "2": 0.055413448817284966,
-        "X": 0.08513195230666641
+        "1": 0.8665327305006156,
+        "2": 0.051922414582388055,
+        "X": 0.08154485491699624
       },
       "xgCoverage": null,
       "injuryCoverage": false,
       "calibration": {
-        "temperature": 0.9679,
+        "temperature": 0.9672,
         "scope": "global",
-        "sampleSize": 147,
+        "sampleSize": 157,
         "calibrationVersion": "tipster-learning-v1",
-        "updatedAt": "2026-11-16T19:22:36.578Z"
+        "updatedAt": "2026-11-18T19:21:10.389Z"
       },
       "markets": {
-        "over25": 0.8843728839951036,
-        "btts": 0.6743974649852337,
-        "predictedScore": "3-1",
+        "over25": 0.8874615634823343,
+        "btts": 0.6700253255280967,
+        "predictedScore": "4-1",
         "topScores": [
           {
-            "score": "3-1",
-            "probability": 0.07188674561870097
-          },
-          {
             "score": "4-1",
-            "probability": 0.07105367499289486
+            "probability": 0.0712209700805303
           },
           {
-            "score": "3-0",
-            "probability": 0.062123894062843535
+            "score": "3-1",
+            "probability": 0.07105328758064276
           },
           {
             "score": "4-0",
-            "probability": 0.061403961746266646
+            "probability": 0.06241711881183904
+          },
+          {
+            "score": "3-0",
+            "probability": 0.06227016408058064
           },
           {
             "score": "5-1",
-            "probability": 0.05618420682749683
+            "probability": 0.057111238642741556
           }
         ]
       },
       "expectedGoals": {
-        "home": 3.953645383797183,
-        "away": 1.1571513135667493
+        "home": 4.009439816543167,
+        "away": 1.1410486647938862
       }
     },
     "firstForecast": {
@@ -33916,7 +33940,7 @@
         "away": 1.1571513135667493
       }
     },
-    "revisionCount": 1,
+    "revisionCount": 2,
     "result": null,
     "source": "ESPN (unofficial)"
   },
@@ -34535,57 +34559,57 @@
     "kickoff": "2026-11-25T20:00:00.000Z",
     "firstRecordedAt": "2026-11-17T22:15:01.984Z",
     "forecast": {
-      "recordedAt": "2026-11-17T22:15:01.984Z",
+      "recordedAt": "2026-11-18T22:11:43.746Z",
       "modelVersion": "elo-v2+calibration-v1",
       "rawProbabilities": {
-        "1": 0.8177757506765251,
-        "2": 0.0810988838870845,
-        "X": 0.10112536543639042
+        "1": 0.802641423786126,
+        "2": 0.08974415426498794,
+        "X": 0.10761442194888604
       },
       "publishedProbabilities": {
-        "1": 0.8284416930117775,
-        "2": 0.07603901662521002,
-        "X": 0.09551929036301256
+        "1": 0.8136378057036024,
+        "2": 0.08445932781382803,
+        "X": 0.10190286648256955
       },
       "xgCoverage": null,
       "injuryCoverage": false,
       "calibration": {
-        "temperature": 0.9676,
+        "temperature": 0.9672,
         "scope": "global",
-        "sampleSize": 151,
+        "sampleSize": 157,
         "calibrationVersion": "tipster-learning-v1",
-        "updatedAt": "2026-11-17T19:26:54.077Z"
+        "updatedAt": "2026-11-18T19:21:10.389Z"
       },
       "markets": {
-        "over25": 0.9052712107058724,
-        "btts": 0.7428327832635286,
+        "over25": 0.9010958846336017,
+        "btts": 0.7498103779446723,
         "predictedScore": "3-1",
         "topScores": [
           {
             "score": "3-1",
-            "probability": 0.0674247678417042
+            "probability": 0.06829724764634827
           },
           {
             "score": "4-1",
-            "probability": 0.06732541594958116
-          },
-          {
-            "score": "5-1",
-            "probability": 0.05378096836374127
+            "probability": 0.06653489444343866
           },
           {
             "score": "2-1",
-            "probability": 0.05064319976031272
+            "probability": 0.052579711087149116
           },
           {
-            "score": "3-0",
-            "probability": 0.04794261718351638
+            "score": "5-1",
+            "probability": 0.05185441382964689
+          },
+          {
+            "score": "3-2",
+            "probability": 0.04922483206539426
           }
         ]
       },
       "expectedGoals": {
-        "home": 3.994105911207211,
-        "away": 1.4063639367791163
+        "home": 3.896783354314054,
+        "away": 1.4414880177979243
       }
     },
     "firstForecast": {
@@ -34642,7 +34666,7 @@
         "away": 1.4063639367791163
       }
     },
-    "revisionCount": 1,
+    "revisionCount": 2,
     "result": null,
     "source": "ESPN (unofficial)"
   },
@@ -34777,57 +34801,57 @@
     "kickoff": "2026-11-25T20:00:00.000Z",
     "firstRecordedAt": "2026-11-17T22:15:01.984Z",
     "forecast": {
-      "recordedAt": "2026-11-17T22:15:01.984Z",
+      "recordedAt": "2026-11-18T22:11:43.746Z",
       "modelVersion": "elo-v2+calibration-v1",
       "rawProbabilities": {
-        "1": 0.6376699102075273,
-        "2": 0.15897864724205432,
-        "X": 0.2033514425504184
+        "1": 0.628092475808217,
+        "2": 0.1651672985797542,
+        "X": 0.20674022561202876
       },
       "publishedProbabilities": {
-        "1": 0.6472887728624359,
-        "2": 0.1540426339239815,
-        "X": 0.19866859321358266
+        "1": 0.6376318572904419,
+        "2": 0.16024997068833186,
+        "X": 0.2021181720212262
       },
       "xgCoverage": null,
       "injuryCoverage": false,
       "calibration": {
-        "temperature": 0.9676,
+        "temperature": 0.9672,
         "scope": "global",
-        "sampleSize": 151,
+        "sampleSize": 157,
         "calibrationVersion": "tipster-learning-v1",
-        "updatedAt": "2026-11-17T19:26:54.077Z"
+        "updatedAt": "2026-11-18T19:21:10.389Z"
       },
       "markets": {
-        "over25": 0.6418739196361237,
-        "btts": 0.5891403251754411,
+        "over25": 0.638552428875953,
+        "btts": 0.5916571643943527,
         "predictedScore": "2-1",
         "topScores": [
           {
             "score": "2-1",
-            "probability": 0.09798403540928777
+            "probability": 0.09822502380229667
           },
           {
             "score": "1-1",
-            "probability": 0.0931050769532178
+            "probability": 0.09465664159309374
           },
           {
             "score": "2-0",
-            "probability": 0.09293386012116119
+            "probability": 0.09186072958230243
           },
           {
             "score": "1-0",
-            "probability": 0.0764383286787032
+            "probability": 0.07653980248527727
           },
           {
             "score": "3-1",
-            "probability": 0.07355798068818213
+            "probability": 0.07270858827781249
           }
         ]
       },
       "expectedGoals": {
-        "home": 2.2521418019044868,
-        "away": 1.054341606832456
+        "home": 2.2206740847675652,
+        "away": 1.0692819907803166
       }
     },
     "firstForecast": {
@@ -34884,7 +34908,7 @@
         "away": 1.054341606832456
       }
     },
-    "revisionCount": 1,
+    "revisionCount": 2,
     "result": null,
     "source": "ESPN (unofficial)"
   },
@@ -35003,6 +35027,4362 @@
       "expectedGoals": {
         "home": 1.4085378356733431,
         "away": 2.904298151794316
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa.conf|espn:uefa.europa.conf:401915816",
+    "matchId": "espn:uefa.europa.conf:401915816",
+    "leagueId": "uefa.europa.conf",
+    "league": "Conference League",
+    "homeName": "Kairat Almaty",
+    "awayName": "Mjällby AIF",
+    "kickoff": "2026-11-26T15:30:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.24774063014723366,
+        "2": 0.47498477210397144,
+        "X": 0.27727459774879487
+      },
+      "publishedProbabilities": {
+        "1": 0.244884730498304,
+        "2": 0.4799882139339469,
+        "X": 0.275127055567749
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.45851281625302154,
+        "btts": 0.5028875533780034,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.13192224306026154
+          },
+          {
+            "score": "0-1",
+            "probability": 0.11303664922514926
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09220512238748561
+          },
+          {
+            "score": "0-2",
+            "probability": 0.09099004324546327
+          },
+          {
+            "score": "0-0",
+            "probability": 0.08997381886221825
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.0133539791682968,
+        "away": 1.4957217019049982
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.24774063014723366,
+        "2": 0.47498477210397144,
+        "X": 0.27727459774879487
+      },
+      "publishedProbabilities": {
+        "1": 0.244884730498304,
+        "2": 0.4799882139339469,
+        "X": 0.275127055567749
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.45851281625302154,
+        "btts": 0.5028875533780034,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.13192224306026154
+          },
+          {
+            "score": "0-1",
+            "probability": 0.11303664922514926
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09220512238748561
+          },
+          {
+            "score": "0-2",
+            "probability": 0.09099004324546327
+          },
+          {
+            "score": "0-0",
+            "probability": 0.08997381886221825
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.0133539791682968,
+        "away": 1.4957217019049982
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa.conf|espn:uefa.europa.conf:401915739",
+    "matchId": "espn:uefa.europa.conf:401915739",
+    "leagueId": "uefa.europa.conf",
+    "league": "Conference League",
+    "homeName": "Kauno Zalgiris",
+    "awayName": "Riga FC",
+    "kickoff": "2026-11-26T17:45:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.24112486896855864,
+        "2": 0.4868846286821569,
+        "X": 0.27199050234928446
+      },
+      "publishedProbabilities": {
+        "1": 0.2380644518698139,
+        "2": 0.49229804444961395,
+        "X": 0.2696375036805721
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.4727329374427665,
+        "btts": 0.5112849563851217,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.12964620927888346
+          },
+          {
+            "score": "0-1",
+            "probability": 0.11046562844594786
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09367812802625189
+          },
+          {
+            "score": "0-2",
+            "probability": 0.09196365457676521
+          },
+          {
+            "score": "0-0",
+            "probability": 0.08540553656236154
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.0186429460353335,
+        "away": 1.5462942965416222
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.24112486896855864,
+        "2": 0.4868846286821569,
+        "X": 0.27199050234928446
+      },
+      "publishedProbabilities": {
+        "1": 0.2380644518698139,
+        "2": 0.49229804444961395,
+        "X": 0.2696375036805721
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.4727329374427665,
+        "btts": 0.5112849563851217,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.12964620927888346
+          },
+          {
+            "score": "0-1",
+            "probability": 0.11046562844594786
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09367812802625189
+          },
+          {
+            "score": "0-2",
+            "probability": 0.09196365457676521
+          },
+          {
+            "score": "0-0",
+            "probability": 0.08540553656236154
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.0186429460353335,
+        "away": 1.5462942965416222
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa.conf|espn:uefa.europa.conf:401915808",
+    "matchId": "espn:uefa.europa.conf:401915808",
+    "leagueId": "uefa.europa.conf",
+    "league": "Conference League",
+    "homeName": "SK Brann",
+    "awayName": "AGF",
+    "kickoff": "2026-11-26T17:45:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.5758851367621681,
+        "2": 0.16373476995381497,
+        "X": 0.2603800932840169
+      },
+      "publishedProbabilities": {
+        "1": 0.5839151522087066,
+        "2": 0.159086031698304,
+        "X": 0.2569988160929895
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.4295126306693624,
+        "btts": 0.4364417005512449,
+        "predictedScore": "1-0",
+        "topScores": [
+          {
+            "score": "1-0",
+            "probability": 0.1411112234848989
+          },
+          {
+            "score": "2-0",
+            "probability": 0.1220486122962819
+          },
+          {
+            "score": "1-1",
+            "probability": 0.12105106192047045
+          },
+          {
+            "score": "0-0",
+            "probability": 0.09890787277704008
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09264940905580703
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.6379016609510508,
+        "away": 0.7591189060871405
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.5758851367621681,
+        "2": 0.16373476995381497,
+        "X": 0.2603800932840169
+      },
+      "publishedProbabilities": {
+        "1": 0.5839151522087066,
+        "2": 0.159086031698304,
+        "X": 0.2569988160929895
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.4295126306693624,
+        "btts": 0.4364417005512449,
+        "predictedScore": "1-0",
+        "topScores": [
+          {
+            "score": "1-0",
+            "probability": 0.1411112234848989
+          },
+          {
+            "score": "2-0",
+            "probability": 0.1220486122962819
+          },
+          {
+            "score": "1-1",
+            "probability": 0.12105106192047045
+          },
+          {
+            "score": "0-0",
+            "probability": 0.09890787277704008
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09264940905580703
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.6379016609510508,
+        "away": 0.7591189060871405
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa.conf|espn:uefa.europa.conf:401915809",
+    "matchId": "espn:uefa.europa.conf:401915809",
+    "leagueId": "uefa.europa.conf",
+    "league": "Conference League",
+    "homeName": "Pafos",
+    "awayName": "FC Midtjylland",
+    "kickoff": "2026-11-26T17:45:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.491056604039411,
+        "2": 0.2557578065047199,
+        "X": 0.2531855894558691
+      },
+      "publishedProbabilities": {
+        "1": 0.4966288235026536,
+        "2": 0.25300075231510405,
+        "X": 0.25037042418224237
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.5567701696382882,
+        "btts": 0.5790837461770734,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.11918222936233734
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09595113592138209
+          },
+          {
+            "score": "1-0",
+            "probability": 0.08588549627389987
+          },
+          {
+            "score": "2-0",
+            "probability": 0.08070133159285017
+          },
+          {
+            "score": "1-2",
+            "probability": 0.06621664175288991
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.7228695248475148,
+        "away": 1.1889659566643753
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.491056604039411,
+        "2": 0.2557578065047199,
+        "X": 0.2531855894558691
+      },
+      "publishedProbabilities": {
+        "1": 0.4966288235026536,
+        "2": 0.25300075231510405,
+        "X": 0.25037042418224237
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.5567701696382882,
+        "btts": 0.5790837461770734,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.11918222936233734
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09595113592138209
+          },
+          {
+            "score": "1-0",
+            "probability": 0.08588549627389987
+          },
+          {
+            "score": "2-0",
+            "probability": 0.08070133159285017
+          },
+          {
+            "score": "1-2",
+            "probability": 0.06621664175288991
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.7228695248475148,
+        "away": 1.1889659566643753
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa.conf|espn:uefa.europa.conf:401915810",
+    "matchId": "espn:uefa.europa.conf:401915810",
+    "leagueId": "uefa.europa.conf",
+    "league": "Conference League",
+    "homeName": "Egnatia",
+    "awayName": "Lincoln Red Imps",
+    "kickoff": "2026-11-26T17:45:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.39417921934503664,
+        "2": 0.31446918541204405,
+        "X": 0.2913515952429193
+      },
+      "publishedProbabilities": {
+        "1": 0.39630796030785054,
+        "2": 0.31375440894031353,
+        "X": 0.2899376307518359
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.43881931005027097,
+        "btts": 0.5022080358996912,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.13834903962116862
+          },
+          {
+            "score": "1-0",
+            "probability": 0.1050061128764212
+          },
+          {
+            "score": "0-0",
+            "probability": 0.09684749879430445
+          },
+          {
+            "score": "0-1",
+            "probability": 0.09047782488250776
+          },
+          {
+            "score": "2-1",
+            "probability": 0.08398590949190178
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.2991044014820148,
+        "away": 1.1336277939725492
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.39417921934503664,
+        "2": 0.31446918541204405,
+        "X": 0.2913515952429193
+      },
+      "publishedProbabilities": {
+        "1": 0.39630796030785054,
+        "2": 0.31375440894031353,
+        "X": 0.2899376307518359
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.43881931005027097,
+        "btts": 0.5022080358996912,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.13834903962116862
+          },
+          {
+            "score": "1-0",
+            "probability": 0.1050061128764212
+          },
+          {
+            "score": "0-0",
+            "probability": 0.09684749879430445
+          },
+          {
+            "score": "0-1",
+            "probability": 0.09047782488250776
+          },
+          {
+            "score": "2-1",
+            "probability": 0.08398590949190178
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.2991044014820148,
+        "away": 1.1336277939725492
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa.conf|espn:uefa.europa.conf:401915811",
+    "matchId": "espn:uefa.europa.conf:401915811",
+    "leagueId": "uefa.europa.conf",
+    "league": "Conference League",
+    "homeName": "Heart of Midlothian",
+    "awayName": "AS Monaco",
+    "kickoff": "2026-11-26T17:45:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.1638207441818845,
+        "2": 0.6022597506933578,
+        "X": 0.23391950512475765
+      },
+      "publishedProbabilities": {
+        "1": 0.15904480115112518,
+        "2": 0.6110953203926766,
+        "X": 0.22985987845619826
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.5249152784729284,
+        "btts": 0.5064031597940937,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.11161714902293154
+          },
+          {
+            "score": "0-2",
+            "probability": 0.11118471895980982
+          },
+          {
+            "score": "0-1",
+            "probability": 0.11036035241267722
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09857221484070149
+          },
+          {
+            "score": "0-3",
+            "probability": 0.07004243097806756
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 0.8865626118669473,
+        "away": 1.8898936373635828
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.1638207441818845,
+        "2": 0.6022597506933578,
+        "X": 0.23391950512475765
+      },
+      "publishedProbabilities": {
+        "1": 0.15904480115112518,
+        "2": 0.6110953203926766,
+        "X": 0.22985987845619826
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.5249152784729284,
+        "btts": 0.5064031597940937,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.11161714902293154
+          },
+          {
+            "score": "0-2",
+            "probability": 0.11118471895980982
+          },
+          {
+            "score": "0-1",
+            "probability": 0.11036035241267722
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09857221484070149
+          },
+          {
+            "score": "0-3",
+            "probability": 0.07004243097806756
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 0.8865626118669473,
+        "away": 1.8898936373635828
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa.conf|espn:uefa.europa.conf:401915812",
+    "matchId": "espn:uefa.europa.conf:401915812",
+    "leagueId": "uefa.europa.conf",
+    "league": "Conference League",
+    "homeName": "Jablonec",
+    "awayName": "FC Lugano",
+    "kickoff": "2026-11-26T17:45:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.2084134544025303,
+        "2": 0.5638145026115937,
+        "X": 0.2277720429858759
+      },
+      "publishedProbabilities": {
+        "1": 0.20431882912676155,
+        "2": 0.5717104680041054,
+        "X": 0.223970702869133
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.6141312632951672,
+        "btts": 0.6015504385966584,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.10471413822680646
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09842248676219957
+          },
+          {
+            "score": "0-2",
+            "probability": 0.0848360076275136
+          },
+          {
+            "score": "0-1",
+            "probability": 0.07750388277200364
+          },
+          {
+            "score": "1-3",
+            "probability": 0.06598965583193682
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.1601499117490255,
+        "away": 2.0114200931960498
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.2084134544025303,
+        "2": 0.5638145026115937,
+        "X": 0.2277720429858759
+      },
+      "publishedProbabilities": {
+        "1": 0.20431882912676155,
+        "2": 0.5717104680041054,
+        "X": 0.223970702869133
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.6141312632951672,
+        "btts": 0.6015504385966584,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.10471413822680646
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09842248676219957
+          },
+          {
+            "score": "0-2",
+            "probability": 0.0848360076275136
+          },
+          {
+            "score": "0-1",
+            "probability": 0.07750388277200364
+          },
+          {
+            "score": "1-3",
+            "probability": 0.06598965583193682
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.1601499117490255,
+        "away": 2.0114200931960498
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa.conf|espn:uefa.europa.conf:401915813",
+    "matchId": "espn:uefa.europa.conf:401915813",
+    "leagueId": "uefa.europa.conf",
+    "league": "Conference League",
+    "homeName": "Iberia 1999",
+    "awayName": "Getafe",
+    "kickoff": "2026-11-26T17:45:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.43878798041467443,
+        "2": 0.2835938436504895,
+        "X": 0.2776181759348361
+      },
+      "publishedProbabilities": {
+        "1": 0.4425243306713457,
+        "2": 0.28180641839551296,
+        "X": 0.27566925093314126
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.47855165565468855,
+        "btts": 0.5279133833777065,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.13246098427513642
+          },
+          {
+            "score": "1-0",
+            "probability": 0.10108724126038988
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09037343594380684
+          },
+          {
+            "score": "0-0",
+            "probability": 0.08383652282945644
+          },
+          {
+            "score": "2-0",
+            "probability": 0.08012216029403191
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.4600461711656527,
+        "away": 1.12794557226309
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.43878798041467443,
+        "2": 0.2835938436504895,
+        "X": 0.2776181759348361
+      },
+      "publishedProbabilities": {
+        "1": 0.4425243306713457,
+        "2": 0.28180641839551296,
+        "X": 0.27566925093314126
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.47855165565468855,
+        "btts": 0.5279133833777065,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.13246098427513642
+          },
+          {
+            "score": "1-0",
+            "probability": 0.10108724126038988
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09037343594380684
+          },
+          {
+            "score": "0-0",
+            "probability": 0.08383652282945644
+          },
+          {
+            "score": "2-0",
+            "probability": 0.08012216029403191
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.4600461711656527,
+        "away": 1.12794557226309
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa.conf|espn:uefa.europa.conf:401915814",
+    "matchId": "espn:uefa.europa.conf:401915814",
+    "leagueId": "uefa.europa.conf",
+    "league": "Conference League",
+    "homeName": "Brighton & Hove Albion",
+    "awayName": "CSU Craiova",
+    "kickoff": "2026-11-26T17:45:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.46226519331064597,
+        "2": 0.2644406203948307,
+        "X": 0.27329418629452334
+      },
+      "publishedProbabilities": {
+        "1": 0.4668353285658028,
+        "2": 0.2620443570526103,
+        "X": 0.27112031438158696
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.48425913909830204,
+        "btts": 0.5275056114004847,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.13040381063287307
+          },
+          {
+            "score": "1-0",
+            "probability": 0.10304839010284975
+          },
+          {
+            "score": "2-1",
+            "probability": 0.0925302255105749
+          },
+          {
+            "score": "2-0",
+            "probability": 0.08471522155453547
+          },
+          {
+            "score": "0-0",
+            "probability": 0.08201245683455582
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.5184731307438757,
+        "away": 1.0922502923634392
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.46226519331064597,
+        "2": 0.2644406203948307,
+        "X": 0.27329418629452334
+      },
+      "publishedProbabilities": {
+        "1": 0.4668353285658028,
+        "2": 0.2620443570526103,
+        "X": 0.27112031438158696
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.48425913909830204,
+        "btts": 0.5275056114004847,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.13040381063287307
+          },
+          {
+            "score": "1-0",
+            "probability": 0.10304839010284975
+          },
+          {
+            "score": "2-1",
+            "probability": 0.0925302255105749
+          },
+          {
+            "score": "2-0",
+            "probability": 0.08471522155453547
+          },
+          {
+            "score": "0-0",
+            "probability": 0.08201245683455582
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.5184731307438757,
+        "away": 1.0922502923634392
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa.conf|espn:uefa.europa.conf:401915815",
+    "matchId": "espn:uefa.europa.conf:401915815",
+    "leagueId": "uefa.europa.conf",
+    "league": "Conference League",
+    "homeName": "Ajax Amsterdam",
+    "awayName": "FC Thun",
+    "kickoff": "2026-11-26T17:45:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.6676845980759923,
+        "2": 0.12714425088544534,
+        "X": 0.20517115103856232
+      },
+      "publishedProbabilities": {
+        "1": 0.6778534753870205,
+        "2": 0.1220211206830833,
+        "X": 0.20012540392989622
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.5680798860036494,
+        "btts": 0.5027360876870833,
+        "predictedScore": "2-0",
+        "topScores": [
+          {
+            "score": "2-0",
+            "probability": 0.1177755391815925
+          },
+          {
+            "score": "1-0",
+            "probability": 0.10401166601471747
+          },
+          {
+            "score": "1-1",
+            "probability": 0.09780225358130355
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09750165662169825
+          },
+          {
+            "score": "3-0",
+            "probability": 0.08375500183531022
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 2.133422672075541,
+        "away": 0.8278599894275592
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.6676845980759923,
+        "2": 0.12714425088544534,
+        "X": 0.20517115103856232
+      },
+      "publishedProbabilities": {
+        "1": 0.6778534753870205,
+        "2": 0.1220211206830833,
+        "X": 0.20012540392989622
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.5680798860036494,
+        "btts": 0.5027360876870833,
+        "predictedScore": "2-0",
+        "topScores": [
+          {
+            "score": "2-0",
+            "probability": 0.1177755391815925
+          },
+          {
+            "score": "1-0",
+            "probability": 0.10401166601471747
+          },
+          {
+            "score": "1-1",
+            "probability": 0.09780225358130355
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09750165662169825
+          },
+          {
+            "score": "3-0",
+            "probability": 0.08375500183531022
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 2.133422672075541,
+        "away": 0.8278599894275592
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa|espn:uefa.europa:401915506",
+    "matchId": "espn:uefa.europa:401915506",
+    "leagueId": "uefa.europa",
+    "league": "Europa League",
+    "homeName": "Besiktas",
+    "awayName": "Hapoel Be'er",
+    "kickoff": "2026-11-26T17:45:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.7662291764505772,
+        "2": 0.08653431726597013,
+        "X": 0.14723650628345267
+      },
+      "publishedProbabilities": {
+        "1": 0.7772497718965822,
+        "2": 0.08152100837168602,
+        "X": 0.14122921973173186
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.7098298386459706,
+        "btts": 0.5536889259770504,
+        "predictedScore": "2-0",
+        "topScores": [
+          {
+            "score": "2-0",
+            "probability": 0.09910109397831163
+          },
+          {
+            "score": "3-0",
+            "probability": 0.0922394370411152
+          },
+          {
+            "score": "2-1",
+            "probability": 0.087199443516691
+          },
+          {
+            "score": "3-1",
+            "probability": 0.08116184451039833
+          },
+          {
+            "score": "1-1",
+            "probability": 0.06682947309517798
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 2.792283112272259,
+        "away": 0.8799039447109906
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.7662291764505772,
+        "2": 0.08653431726597013,
+        "X": 0.14723650628345267
+      },
+      "publishedProbabilities": {
+        "1": 0.7772497718965822,
+        "2": 0.08152100837168602,
+        "X": 0.14122921973173186
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.7098298386459706,
+        "btts": 0.5536889259770504,
+        "predictedScore": "2-0",
+        "topScores": [
+          {
+            "score": "2-0",
+            "probability": 0.09910109397831163
+          },
+          {
+            "score": "3-0",
+            "probability": 0.0922394370411152
+          },
+          {
+            "score": "2-1",
+            "probability": 0.087199443516691
+          },
+          {
+            "score": "3-1",
+            "probability": 0.08116184451039833
+          },
+          {
+            "score": "1-1",
+            "probability": 0.06682947309517798
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 2.792283112272259,
+        "away": 0.8799039447109906
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa|espn:uefa.europa:401915507",
+    "matchId": "espn:uefa.europa:401915507",
+    "leagueId": "uefa.europa",
+    "league": "Europa League",
+    "homeName": "Marseille",
+    "awayName": "Levski Sofia",
+    "kickoff": "2026-11-26T17:45:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.2664934273326846,
+        "2": 0.4166724165465578,
+        "X": 0.31683415612075755
+      },
+      "publishedProbabilities": {
+        "1": 0.2643185467096037,
+        "2": 0.419583642444076,
+        "X": 0.31609781084632044
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.34069485622910817,
+        "btts": 0.4160878129405059,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.14177421938665388
+          },
+          {
+            "score": "0-1",
+            "probability": 0.14022908057264716
+          },
+          {
+            "score": "0-0",
+            "probability": 0.13619469024040348
+          },
+          {
+            "score": "1-0",
+            "probability": 0.10320879605775646
+          },
+          {
+            "score": "0-2",
+            "probability": 0.08805349982449553
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 0.8862588579984891,
+        "away": 1.177941492498092
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.2664934273326846,
+        "2": 0.4166724165465578,
+        "X": 0.31683415612075755
+      },
+      "publishedProbabilities": {
+        "1": 0.2643185467096037,
+        "2": 0.419583642444076,
+        "X": 0.31609781084632044
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.34069485622910817,
+        "btts": 0.4160878129405059,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.14177421938665388
+          },
+          {
+            "score": "0-1",
+            "probability": 0.14022908057264716
+          },
+          {
+            "score": "0-0",
+            "probability": 0.13619469024040348
+          },
+          {
+            "score": "1-0",
+            "probability": 0.10320879605775646
+          },
+          {
+            "score": "0-2",
+            "probability": 0.08805349982449553
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 0.8862588579984891,
+        "away": 1.177941492498092
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa|espn:uefa.europa:401915508",
+    "matchId": "espn:uefa.europa:401915508",
+    "leagueId": "uefa.europa",
+    "league": "Europa League",
+    "homeName": "Union St.-Gilloise",
+    "awayName": "Lech Poznan",
+    "kickoff": "2026-11-26T17:45:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.8237477181278064,
+        "2": 0.055020859850813786,
+        "X": 0.12123142202137976
+      },
+      "publishedProbabilities": {
+        "1": 0.8341342796411022,
+        "2": 0.05082917811486338,
+        "X": 0.11503654224403453
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.7064595551309769,
+        "btts": 0.4787869535454676,
+        "predictedScore": "2-0",
+        "topScores": [
+          {
+            "score": "2-0",
+            "probability": 0.11335619827827473
+          },
+          {
+            "score": "3-0",
+            "probability": 0.11174189817741598
+          },
+          {
+            "score": "4-0",
+            "probability": 0.08261294043427521
+          },
+          {
+            "score": "2-1",
+            "probability": 0.0788204619017787
+          },
+          {
+            "score": "3-1",
+            "probability": 0.07769798354126227
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 2.957277146057002,
+        "away": 0.6953343804657661
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.8237477181278064,
+        "2": 0.055020859850813786,
+        "X": 0.12123142202137976
+      },
+      "publishedProbabilities": {
+        "1": 0.8341342796411022,
+        "2": 0.05082917811486338,
+        "X": 0.11503654224403453
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.7064595551309769,
+        "btts": 0.4787869535454676,
+        "predictedScore": "2-0",
+        "topScores": [
+          {
+            "score": "2-0",
+            "probability": 0.11335619827827473
+          },
+          {
+            "score": "3-0",
+            "probability": 0.11174189817741598
+          },
+          {
+            "score": "4-0",
+            "probability": 0.08261294043427521
+          },
+          {
+            "score": "2-1",
+            "probability": 0.0788204619017787
+          },
+          {
+            "score": "3-1",
+            "probability": 0.07769798354126227
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 2.957277146057002,
+        "away": 0.6953343804657661
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa|espn:uefa.europa:401915517",
+    "matchId": "espn:uefa.europa:401915517",
+    "leagueId": "uefa.europa",
+    "league": "Europa League",
+    "homeName": "Dinamo Zagreb",
+    "awayName": "Bayer Leverkusen",
+    "kickoff": "2026-11-26T17:45:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.2617687169766715,
+        "2": 0.473101873863168,
+        "X": 0.26512940916016053
+      },
+      "publishedProbabilities": {
+        "1": 0.2592523415719517,
+        "2": 0.47805331155984115,
+        "X": 0.26269434686820703
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.513717426148755,
+        "btts": 0.5488727919302313,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.12625076386465653
+          },
+          {
+            "score": "0-1",
+            "probability": 0.09591927729932849
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09424578839017338
+          },
+          {
+            "score": "0-2",
+            "probability": 0.08321287679641753
+          },
+          {
+            "score": "0-0",
+            "probability": 0.073472835919755
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.1325865901830092,
+        "away": 1.5975031039905838
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.2617687169766715,
+        "2": 0.473101873863168,
+        "X": 0.26512940916016053
+      },
+      "publishedProbabilities": {
+        "1": 0.2592523415719517,
+        "2": 0.47805331155984115,
+        "X": 0.26269434686820703
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.513717426148755,
+        "btts": 0.5488727919302313,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.12625076386465653
+          },
+          {
+            "score": "0-1",
+            "probability": 0.09591927729932849
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09424578839017338
+          },
+          {
+            "score": "0-2",
+            "probability": 0.08321287679641753
+          },
+          {
+            "score": "0-0",
+            "probability": 0.073472835919755
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.1325865901830092,
+        "away": 1.5975031039905838
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa|espn:uefa.europa:401915518",
+    "matchId": "espn:uefa.europa:401915518",
+    "leagueId": "uefa.europa",
+    "league": "Europa League",
+    "homeName": "Viktoria Plzen",
+    "awayName": "Benfica",
+    "kickoff": "2026-11-26T17:45:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.09305834062323082,
+        "2": 0.7448144476647174,
+        "X": 0.16212721171205186
+      },
+      "publishedProbabilities": {
+        "1": 0.0879973104203345,
+        "2": 0.7557792159676985,
+        "X": 0.156223473611967
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.661935799606872,
+        "btts": 0.5263644212921386,
+        "predictedScore": "0-2",
+        "topScores": [
+          {
+            "score": "0-2",
+            "probability": 0.10994231821719448
+          },
+          {
+            "score": "0-3",
+            "probability": 0.09447816377300018
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09132618626371077
+          },
+          {
+            "score": "0-1",
+            "probability": 0.08033228699702673
+          },
+          {
+            "score": "1-3",
+            "probability": 0.07848052071760803
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 0.8306736454591855,
+        "away": 2.5780290602847478
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.09305834062323082,
+        "2": 0.7448144476647174,
+        "X": 0.16212721171205186
+      },
+      "publishedProbabilities": {
+        "1": 0.0879973104203345,
+        "2": 0.7557792159676985,
+        "X": 0.156223473611967
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.661935799606872,
+        "btts": 0.5263644212921386,
+        "predictedScore": "0-2",
+        "topScores": [
+          {
+            "score": "0-2",
+            "probability": 0.10994231821719448
+          },
+          {
+            "score": "0-3",
+            "probability": 0.09447816377300018
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09132618626371077
+          },
+          {
+            "score": "0-1",
+            "probability": 0.08033228699702673
+          },
+          {
+            "score": "1-3",
+            "probability": 0.07848052071760803
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 0.8306736454591855,
+        "away": 2.5780290602847478
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa|espn:uefa.europa:401915519",
+    "matchId": "espn:uefa.europa:401915519",
+    "leagueId": "uefa.europa",
+    "league": "Europa League",
+    "homeName": "Celta Vigo",
+    "awayName": "AFC Bournemouth",
+    "kickoff": "2026-11-26T17:45:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.09800733530375076,
+        "2": 0.7296413140052628,
+        "X": 0.1723513506909865
+      },
+      "publishedProbabilities": {
+        "1": 0.09292132702552117,
+        "2": 0.7405130679300893,
+        "X": 0.16656560504438944
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.631178806270084,
+        "btts": 0.510606594244839,
+        "predictedScore": "0-2",
+        "topScores": [
+          {
+            "score": "0-2",
+            "probability": 0.11578287149641961
+          },
+          {
+            "score": "0-3",
+            "probability": 0.09448868921152018
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09325007130508293
+          },
+          {
+            "score": "0-1",
+            "probability": 0.0892516001361973
+          },
+          {
+            "score": "1-1",
+            "probability": 0.08150911600077716
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 0.8053874472094651,
+        "away": 2.448255635492045
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.09800733530375076,
+        "2": 0.7296413140052628,
+        "X": 0.1723513506909865
+      },
+      "publishedProbabilities": {
+        "1": 0.09292132702552117,
+        "2": 0.7405130679300893,
+        "X": 0.16656560504438944
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.631178806270084,
+        "btts": 0.510606594244839,
+        "predictedScore": "0-2",
+        "topScores": [
+          {
+            "score": "0-2",
+            "probability": 0.11578287149641961
+          },
+          {
+            "score": "0-3",
+            "probability": 0.09448868921152018
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09325007130508293
+          },
+          {
+            "score": "0-1",
+            "probability": 0.0892516001361973
+          },
+          {
+            "score": "1-1",
+            "probability": 0.08150911600077716
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 0.8053874472094651,
+        "away": 2.448255635492045
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa|espn:uefa.europa:401915520",
+    "matchId": "espn:uefa.europa:401915520",
+    "leagueId": "uefa.europa",
+    "league": "Europa League",
+    "homeName": "RB Salzburg",
+    "awayName": "Ararat-Armenia",
+    "kickoff": "2026-11-26T17:45:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.5008998926051418,
+        "2": 0.26335313025763507,
+        "X": 0.23574697713722317
+      },
+      "publishedProbabilities": {
+        "1": 0.506793136147236,
+        "2": 0.26070510012870257,
+        "X": 0.23250176372406148
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.6352444743399354,
+        "btts": 0.6397275995586857,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.1052861781451599
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09451288024977181
+          },
+          {
+            "score": "2-0",
+            "probability": 0.0698762531324297
+          },
+          {
+            "score": "1-2",
+            "probability": 0.06654554355460694
+          },
+          {
+            "score": "1-0",
+            "probability": 0.0658609795960033
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.921026741569588,
+        "away": 1.35257510259817
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.5008998926051418,
+        "2": 0.26335313025763507,
+        "X": 0.23574697713722317
+      },
+      "publishedProbabilities": {
+        "1": 0.506793136147236,
+        "2": 0.26070510012870257,
+        "X": 0.23250176372406148
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.6352444743399354,
+        "btts": 0.6397275995586857,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.1052861781451599
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09451288024977181
+          },
+          {
+            "score": "2-0",
+            "probability": 0.0698762531324297
+          },
+          {
+            "score": "1-2",
+            "probability": 0.06654554355460694
+          },
+          {
+            "score": "1-0",
+            "probability": 0.0658609795960033
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.921026741569588,
+        "away": 1.35257510259817
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa|espn:uefa.europa:401915521",
+    "matchId": "espn:uefa.europa:401915521",
+    "leagueId": "uefa.europa",
+    "league": "Europa League",
+    "homeName": "Olympiacos",
+    "awayName": "AC Milan",
+    "kickoff": "2026-11-26T17:45:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.48670779447009815,
+        "2": 0.22075969392338135,
+        "X": 0.2925325116065205
+      },
+      "publishedProbabilities": {
+        "1": 0.4920450704574969,
+        "2": 0.21727643194574175,
+        "X": 0.2906784975967613
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.387107258619313,
+        "btts": 0.438079689060031,
+        "predictedScore": "1-0",
+        "topScores": [
+          {
+            "score": "1-0",
+            "probability": 0.13944080999646566
+          },
+          {
+            "score": "1-1",
+            "probability": 0.13463278490150205
+          },
+          {
+            "score": "0-0",
+            "probability": 0.11561917425093891
+          },
+          {
+            "score": "2-0",
+            "probability": 0.10288055253427897
+          },
+          {
+            "score": "2-1",
+            "probability": 0.08731922036437678
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.3879467153299714,
+        "away": 0.8487436956103316
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.48670779447009815,
+        "2": 0.22075969392338135,
+        "X": 0.2925325116065205
+      },
+      "publishedProbabilities": {
+        "1": 0.4920450704574969,
+        "2": 0.21727643194574175,
+        "X": 0.2906784975967613
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.387107258619313,
+        "btts": 0.438079689060031,
+        "predictedScore": "1-0",
+        "topScores": [
+          {
+            "score": "1-0",
+            "probability": 0.13944080999646566
+          },
+          {
+            "score": "1-1",
+            "probability": 0.13463278490150205
+          },
+          {
+            "score": "0-0",
+            "probability": 0.11561917425093891
+          },
+          {
+            "score": "2-0",
+            "probability": 0.10288055253427897
+          },
+          {
+            "score": "2-1",
+            "probability": 0.08731922036437678
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.3879467153299714,
+        "away": 0.8487436956103316
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa.conf|espn:uefa.europa.conf:401915738",
+    "matchId": "espn:uefa.europa.conf:401915738",
+    "leagueId": "uefa.europa.conf",
+    "league": "Conference League",
+    "homeName": "Inter D'Escaldes",
+    "awayName": "F.C. København",
+    "kickoff": "2026-11-26T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.19984554441315014,
+        "2": 0.5682820307968558,
+        "X": 0.23187242478999406
+      },
+      "publishedProbabilities": {
+        "1": 0.19560610896179936,
+        "2": 0.576293386785254,
+        "X": 0.22810050425294667
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.5861754619346143,
+        "btts": 0.5760996550217473,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.10855549162476122
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09916559079079841
+          },
+          {
+            "score": "0-2",
+            "probability": 0.09121137060565694
+          },
+          {
+            "score": "0-1",
+            "probability": 0.08621421406729994
+          },
+          {
+            "score": "1-3",
+            "probability": 0.0646193711448629
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.0872064538919246,
+        "away": 1.9548929410762586
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.19984554441315014,
+        "2": 0.5682820307968558,
+        "X": 0.23187242478999406
+      },
+      "publishedProbabilities": {
+        "1": 0.19560610896179936,
+        "2": 0.576293386785254,
+        "X": 0.22810050425294667
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.5861754619346143,
+        "btts": 0.5760996550217473,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.10855549162476122
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09916559079079841
+          },
+          {
+            "score": "0-2",
+            "probability": 0.09121137060565694
+          },
+          {
+            "score": "0-1",
+            "probability": 0.08621421406729994
+          },
+          {
+            "score": "1-3",
+            "probability": 0.0646193711448629
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.0872064538919246,
+        "away": 1.9548929410762586
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa.conf|espn:uefa.europa.conf:401915801",
+    "matchId": "espn:uefa.europa.conf:401915801",
+    "leagueId": "uefa.europa.conf",
+    "league": "Conference League",
+    "homeName": "SC Freiburg",
+    "awayName": "FC Twente",
+    "kickoff": "2026-11-26T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.2481234248849292,
+        "2": 0.5225876091110788,
+        "X": 0.229288966003992
+      },
+      "publishedProbabilities": {
+        "1": 0.24499828581984748,
+        "2": 0.5292059640176117,
+        "X": 0.22579575016254086
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.650063072293699,
+        "btts": 0.6457363530307291,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.10124558991600814
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09495276319402259
+          },
+          {
+            "score": "0-2",
+            "probability": 0.07082273265998532
+          },
+          {
+            "score": "0-1",
+            "probability": 0.06395251674836959
+          },
+          {
+            "score": "2-2",
+            "probability": 0.06365207116100284
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.3407102441229393,
+        "away": 2.0069902640083304
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.2481234248849292,
+        "2": 0.5225876091110788,
+        "X": 0.229288966003992
+      },
+      "publishedProbabilities": {
+        "1": 0.24499828581984748,
+        "2": 0.5292059640176117,
+        "X": 0.22579575016254086
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.650063072293699,
+        "btts": 0.6457363530307291,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.10124558991600814
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09495276319402259
+          },
+          {
+            "score": "0-2",
+            "probability": 0.07082273265998532
+          },
+          {
+            "score": "0-1",
+            "probability": 0.06395251674836959
+          },
+          {
+            "score": "2-2",
+            "probability": 0.06365207116100284
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.3407102441229393,
+        "away": 2.0069902640083304
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa.conf|espn:uefa.europa.conf:401915802",
+    "matchId": "espn:uefa.europa.conf:401915802",
+    "leagueId": "uefa.europa.conf",
+    "league": "Conference League",
+    "homeName": "Braga",
+    "awayName": "KuPS Kuopio",
+    "kickoff": "2026-11-26T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.5921934245327852,
+        "2": 0.14699934713471935,
+        "X": 0.2608072283324954
+      },
+      "publishedProbabilities": {
+        "1": 0.600563949911202,
+        "2": 0.14219656427316543,
+        "X": 0.25723948581563266
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.4037475031048323,
+        "btts": 0.40362513715575743,
+        "predictedScore": "1-0",
+        "topScores": [
+          {
+            "score": "1-0",
+            "probability": 0.15465872199787906
+          },
+          {
+            "score": "2-0",
+            "probability": 0.13141759412071938
+          },
+          {
+            "score": "1-1",
+            "probability": 0.1182854122602427
+          },
+          {
+            "score": "0-0",
+            "probability": 0.10807795297415226
+          },
+          {
+            "score": "2-1",
+            "probability": 0.08945875850201661
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.6184729759669751,
+        "away": 0.6807213227464836
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.5921934245327852,
+        "2": 0.14699934713471935,
+        "X": 0.2608072283324954
+      },
+      "publishedProbabilities": {
+        "1": 0.600563949911202,
+        "2": 0.14219656427316543,
+        "X": 0.25723948581563266
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.4037475031048323,
+        "btts": 0.40362513715575743,
+        "predictedScore": "1-0",
+        "topScores": [
+          {
+            "score": "1-0",
+            "probability": 0.15465872199787906
+          },
+          {
+            "score": "2-0",
+            "probability": 0.13141759412071938
+          },
+          {
+            "score": "1-1",
+            "probability": 0.1182854122602427
+          },
+          {
+            "score": "0-0",
+            "probability": 0.10807795297415226
+          },
+          {
+            "score": "2-1",
+            "probability": 0.08945875850201661
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.6184729759669751,
+        "away": 0.6807213227464836
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa.conf|espn:uefa.europa.conf:401915803",
+    "matchId": "espn:uefa.europa.conf:401915803",
+    "leagueId": "uefa.europa.conf",
+    "league": "Conference League",
+    "homeName": "CSKA Sofia",
+    "awayName": "Trabzonspor",
+    "kickoff": "2026-11-26T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.2704032548888274,
+        "2": 0.48550706602999527,
+        "X": 0.2440896790811774
+      },
+      "publishedProbabilities": {
+        "1": 0.26802142397618023,
+        "2": 0.4908774798099274,
+        "X": 0.2411010962138923
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.6051048687503413,
+        "btts": 0.6193858584503164,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.1116429876799927
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09474819935518392
+          },
+          {
+            "score": "0-1",
+            "probability": 0.07216552231015144
+          },
+          {
+            "score": "0-2",
+            "probability": 0.07216431802996076
+          },
+          {
+            "score": "2-1",
+            "probability": 0.06849614504710688
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.3129508036900854,
+        "away": 1.8161565794107635
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.2704032548888274,
+        "2": 0.48550706602999527,
+        "X": 0.2440896790811774
+      },
+      "publishedProbabilities": {
+        "1": 0.26802142397618023,
+        "2": 0.4908774798099274,
+        "X": 0.2411010962138923
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.6051048687503413,
+        "btts": 0.6193858584503164,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.1116429876799927
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09474819935518392
+          },
+          {
+            "score": "0-1",
+            "probability": 0.07216552231015144
+          },
+          {
+            "score": "0-2",
+            "probability": 0.07216431802996076
+          },
+          {
+            "score": "2-1",
+            "probability": 0.06849614504710688
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.3129508036900854,
+        "away": 1.8161565794107635
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa.conf|espn:uefa.europa.conf:401915804",
+    "matchId": "espn:uefa.europa.conf:401915804",
+    "leagueId": "uefa.europa.conf",
+    "league": "Conference League",
+    "homeName": "KAA Gent",
+    "awayName": "Red Star Belgrade",
+    "kickoff": "2026-11-26T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.33810637524615195,
+        "2": 0.37180348463018253,
+        "X": 0.2900901401236655
+      },
+      "publishedProbabilities": {
+        "1": 0.3382088830774918,
+        "2": 0.3731163943519475,
+        "X": 0.2886747225705607
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.44740930868418605,
+        "btts": 0.5107387599977748,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.1380369041615936
+          },
+          {
+            "score": "0-1",
+            "probability": 0.09867232432545532
+          },
+          {
+            "score": "0-0",
+            "probability": 0.09396316452086702
+          },
+          {
+            "score": "1-0",
+            "probability": 0.09270200492048127
+          },
+          {
+            "score": "1-2",
+            "probability": 0.08179623957043387
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.1978006257515201,
+        "away": 1.2680953238114672
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.33810637524615195,
+        "2": 0.37180348463018253,
+        "X": 0.2900901401236655
+      },
+      "publishedProbabilities": {
+        "1": 0.3382088830774918,
+        "2": 0.3731163943519475,
+        "X": 0.2886747225705607
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.44740930868418605,
+        "btts": 0.5107387599977748,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.1380369041615936
+          },
+          {
+            "score": "0-1",
+            "probability": 0.09867232432545532
+          },
+          {
+            "score": "0-0",
+            "probability": 0.09396316452086702
+          },
+          {
+            "score": "1-0",
+            "probability": 0.09270200492048127
+          },
+          {
+            "score": "1-2",
+            "probability": 0.08179623957043387
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.1978006257515201,
+        "away": 1.2680953238114672
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa.conf|espn:uefa.europa.conf:401915805",
+    "matchId": "espn:uefa.europa.conf:401915805",
+    "leagueId": "uefa.europa.conf",
+    "league": "Conference League",
+    "homeName": "Hajduk Split",
+    "awayName": "Sint-Truidense",
+    "kickoff": "2026-11-26T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.37816792967656215,
+        "2": 0.30397980606778746,
+        "X": 0.31785226425565044
+      },
+      "publishedProbabilities": {
+        "1": 0.3797287063083126,
+        "2": 0.3029822760580942,
+        "X": 0.31728901763359324
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.34868102274836993,
+        "btts": 0.42873355570939325,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.1438122914219125
+          },
+          {
+            "score": "0-0",
+            "probability": 0.13263235645168886
+          },
+          {
+            "score": "1-0",
+            "probability": 0.12849455060145623
+          },
+          {
+            "score": "0-1",
+            "probability": 0.11068939835324212
+          },
+          {
+            "score": "2-0",
+            "probability": 0.07716507827412808
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.1191224649915699,
+        "away": 0.9746283623056811
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.37816792967656215,
+        "2": 0.30397980606778746,
+        "X": 0.31785226425565044
+      },
+      "publishedProbabilities": {
+        "1": 0.3797287063083126,
+        "2": 0.3029822760580942,
+        "X": 0.31728901763359324
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.34868102274836993,
+        "btts": 0.42873355570939325,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.1438122914219125
+          },
+          {
+            "score": "0-0",
+            "probability": 0.13263235645168886
+          },
+          {
+            "score": "1-0",
+            "probability": 0.12849455060145623
+          },
+          {
+            "score": "0-1",
+            "probability": 0.11068939835324212
+          },
+          {
+            "score": "2-0",
+            "probability": 0.07716507827412808
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.1191224649915699,
+        "away": 0.9746283623056811
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa.conf|espn:uefa.europa.conf:401915806",
+    "matchId": "espn:uefa.europa.conf:401915806",
+    "leagueId": "uefa.europa.conf",
+    "league": "Conference League",
+    "homeName": "Borac Banja Luka",
+    "awayName": "Atalanta",
+    "kickoff": "2026-11-26T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.4629636562154337,
+        "2": 0.24428955302718547,
+        "X": 0.29274679075738075
+      },
+      "publishedProbabilities": {
+        "1": 0.46752401939381755,
+        "2": 0.24140509840591687,
+        "X": 0.2910708822002656
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.40317408060726395,
+        "btts": 0.45941075182119406,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.13656719959025343
+          },
+          {
+            "score": "1-0",
+            "probability": 0.12900327856290547
+          },
+          {
+            "score": "0-0",
+            "probability": 0.10949110882846436
+          },
+          {
+            "score": "2-0",
+            "probability": 0.09460710365111362
+          },
+          {
+            "score": "2-1",
+            "probability": 0.08753944052680264
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.3717378937945754,
+        "away": 0.9252945830539885
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.4629636562154337,
+        "2": 0.24428955302718547,
+        "X": 0.29274679075738075
+      },
+      "publishedProbabilities": {
+        "1": 0.46752401939381755,
+        "2": 0.24140509840591687,
+        "X": 0.2910708822002656
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.40317408060726395,
+        "btts": 0.45941075182119406,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.13656719959025343
+          },
+          {
+            "score": "1-0",
+            "probability": 0.12900327856290547
+          },
+          {
+            "score": "0-0",
+            "probability": 0.10949110882846436
+          },
+          {
+            "score": "2-0",
+            "probability": 0.09460710365111362
+          },
+          {
+            "score": "2-1",
+            "probability": 0.08753944052680264
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.3717378937945754,
+        "away": 0.9252945830539885
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa.conf|espn:uefa.europa.conf:401915807",
+    "matchId": "espn:uefa.europa.conf:401915807",
+    "leagueId": "uefa.europa.conf",
+    "league": "Conference League",
+    "homeName": "FC Nordsjælland",
+    "awayName": "Panathinaikos",
+    "kickoff": "2026-11-26T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.20094534204157977,
+        "2": 0.5831947392755228,
+        "X": 0.21585991868289747
+      },
+      "publishedProbabilities": {
+        "1": 0.19662302382649366,
+        "2": 0.5916467271536899,
+        "X": 0.2117302490198165
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.6548919168604123,
+        "btts": 0.6279140768637508,
+        "predictedScore": "1-2",
+        "topScores": [
+          {
+            "score": "1-2",
+            "probability": 0.09702411320438072
+          },
+          {
+            "score": "1-1",
+            "probability": 0.09616057815418357
+          },
+          {
+            "score": "0-2",
+            "probability": 0.07997959088644026
+          },
+          {
+            "score": "1-3",
+            "probability": 0.06983205408050415
+          },
+          {
+            "score": "0-1",
+            "probability": 0.06779113570589501
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.2131108965303568,
+        "away": 2.1592174906067942
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.20094534204157977,
+        "2": 0.5831947392755228,
+        "X": 0.21585991868289747
+      },
+      "publishedProbabilities": {
+        "1": 0.19662302382649366,
+        "2": 0.5916467271536899,
+        "X": 0.2117302490198165
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.6548919168604123,
+        "btts": 0.6279140768637508,
+        "predictedScore": "1-2",
+        "topScores": [
+          {
+            "score": "1-2",
+            "probability": 0.09702411320438072
+          },
+          {
+            "score": "1-1",
+            "probability": 0.09616057815418357
+          },
+          {
+            "score": "0-2",
+            "probability": 0.07997959088644026
+          },
+          {
+            "score": "1-3",
+            "probability": 0.06983205408050415
+          },
+          {
+            "score": "0-1",
+            "probability": 0.06779113570589501
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.2131108965303568,
+        "away": 2.1592174906067942
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa|espn:uefa.europa:401915501",
+    "matchId": "espn:uefa.europa:401915501",
+    "leagueId": "uefa.europa",
+    "league": "Europa League",
+    "homeName": "Lyon",
+    "awayName": "Lillestrom",
+    "kickoff": "2026-11-26T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.6842145507978522,
+        "2": 0.12795852720083245,
+        "X": 0.18782692200131534
+      },
+      "publishedProbabilities": {
+        "1": 0.6947248761284165,
+        "2": 0.12274319708912773,
+        "X": 0.18253192678245586
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.643891477107633,
+        "btts": 0.5604362885671903,
+        "predictedScore": "2-0",
+        "topScores": [
+          {
+            "score": "2-0",
+            "probability": 0.10187853444883062
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09643950178898648
+          },
+          {
+            "score": "1-1",
+            "probability": 0.08708175815140906
+          },
+          {
+            "score": "3-0",
+            "probability": 0.08048278143646112
+          },
+          {
+            "score": "1-0",
+            "probability": 0.08027785613353916
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 2.3699628740797496,
+        "away": 0.9466125745794278
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.6842145507978522,
+        "2": 0.12795852720083245,
+        "X": 0.18782692200131534
+      },
+      "publishedProbabilities": {
+        "1": 0.6947248761284165,
+        "2": 0.12274319708912773,
+        "X": 0.18253192678245586
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.643891477107633,
+        "btts": 0.5604362885671903,
+        "predictedScore": "2-0",
+        "topScores": [
+          {
+            "score": "2-0",
+            "probability": 0.10187853444883062
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09643950178898648
+          },
+          {
+            "score": "1-1",
+            "probability": 0.08708175815140906
+          },
+          {
+            "score": "3-0",
+            "probability": 0.08048278143646112
+          },
+          {
+            "score": "1-0",
+            "probability": 0.08027785613353916
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 2.3699628740797496,
+        "away": 0.9466125745794278
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa|espn:uefa.europa:401915502",
+    "matchId": "espn:uefa.europa:401915502",
+    "leagueId": "uefa.europa",
+    "league": "Europa League",
+    "homeName": "Juventus",
+    "awayName": "Omonia Nicosia",
+    "kickoff": "2026-11-26T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.6552527349806687,
+        "2": 0.16183829315103265,
+        "X": 0.18290897186829863
+      },
+      "publishedProbabilities": {
+        "1": 0.6653947408800784,
+        "2": 0.15673136725453093,
+        "X": 0.1778738918653906
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.7362347956878373,
+        "btts": 0.6648319433156534,
+        "predictedScore": "2-1",
+        "topScores": [
+          {
+            "score": "2-1",
+            "probability": 0.09028066394244576
+          },
+          {
+            "score": "3-1",
+            "probability": 0.07764566875396188
+          },
+          {
+            "score": "1-1",
+            "probability": 0.07487981666439097
+          },
+          {
+            "score": "2-0",
+            "probability": 0.07211663944568172
+          },
+          {
+            "score": "3-0",
+            "probability": 0.062023742997925166
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 2.5801428134199793,
+        "away": 1.251870090403272
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.6552527349806687,
+        "2": 0.16183829315103265,
+        "X": 0.18290897186829863
+      },
+      "publishedProbabilities": {
+        "1": 0.6653947408800784,
+        "2": 0.15673136725453093,
+        "X": 0.1778738918653906
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.7362347956878373,
+        "btts": 0.6648319433156534,
+        "predictedScore": "2-1",
+        "topScores": [
+          {
+            "score": "2-1",
+            "probability": 0.09028066394244576
+          },
+          {
+            "score": "3-1",
+            "probability": 0.07764566875396188
+          },
+          {
+            "score": "1-1",
+            "probability": 0.07487981666439097
+          },
+          {
+            "score": "2-0",
+            "probability": 0.07211663944568172
+          },
+          {
+            "score": "3-0",
+            "probability": 0.062023742997925166
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 2.5801428134199793,
+        "away": 1.251870090403272
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa|espn:uefa.europa:401915503",
+    "matchId": "espn:uefa.europa:401915503",
+    "leagueId": "uefa.europa",
+    "league": "Europa League",
+    "homeName": "OFI Crete",
+    "awayName": "Anderlecht",
+    "kickoff": "2026-11-26T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.3133114305446695,
+        "2": 0.3866699074764468,
+        "X": 0.3000186619788837
+      },
+      "publishedProbabilities": {
+        "1": 0.31258382788818934,
+        "2": 0.3885339831016758,
+        "X": 0.29888218901013497
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.40801352271586755,
+        "btts": 0.477766185431621,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.140997876330759
+          },
+          {
+            "score": "0-1",
+            "probability": 0.11243751915372023
+          },
+          {
+            "score": "0-0",
+            "probability": 0.10796104368610963
+          },
+          {
+            "score": "1-0",
+            "probability": 0.09771934210613983
+          },
+          {
+            "score": "1-2",
+            "probability": 0.08118451292815816
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.0831160392383397,
+        "away": 1.23218066957763
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.3133114305446695,
+        "2": 0.3866699074764468,
+        "X": 0.3000186619788837
+      },
+      "publishedProbabilities": {
+        "1": 0.31258382788818934,
+        "2": 0.3885339831016758,
+        "X": 0.29888218901013497
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.40801352271586755,
+        "btts": 0.477766185431621,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.140997876330759
+          },
+          {
+            "score": "0-1",
+            "probability": 0.11243751915372023
+          },
+          {
+            "score": "0-0",
+            "probability": 0.10796104368610963
+          },
+          {
+            "score": "1-0",
+            "probability": 0.09771934210613983
+          },
+          {
+            "score": "1-2",
+            "probability": 0.08118451292815816
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.0831160392383397,
+        "away": 1.23218066957763
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa|espn:uefa.europa:401915504",
+    "matchId": "espn:uefa.europa:401915504",
+    "leagueId": "uefa.europa",
+    "league": "Europa League",
+    "homeName": "Crystal Palace",
+    "awayName": "Real Sociedad",
+    "kickoff": "2026-11-26T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.2598174484560874,
+        "2": 0.5130838478558873,
+        "X": 0.22709870368802534
+      },
+      "publishedProbabilities": {
+        "1": 0.25700494861865636,
+        "2": 0.5193776851316856,
+        "X": 0.223617366249658
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.6694177529731183,
+        "btts": 0.6641300802642741,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.09787404504202457
+          },
+          {
+            "score": "1-2",
+            "probability": 0.0930631036887252
+          },
+          {
+            "score": "0-2",
+            "probability": 0.06585564152371379
+          },
+          {
+            "score": "2-2",
+            "probability": 0.06575549996775745
+          },
+          {
+            "score": "2-1",
+            "probability": 0.06463061848099934
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.4131379109747848,
+        "away": 2.0348095535272903
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.2598174484560874,
+        "2": 0.5130838478558873,
+        "X": 0.22709870368802534
+      },
+      "publishedProbabilities": {
+        "1": 0.25700494861865636,
+        "2": 0.5193776851316856,
+        "X": 0.223617366249658
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.6694177529731183,
+        "btts": 0.6641300802642741,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.09787404504202457
+          },
+          {
+            "score": "1-2",
+            "probability": 0.0930631036887252
+          },
+          {
+            "score": "0-2",
+            "probability": 0.06585564152371379
+          },
+          {
+            "score": "2-2",
+            "probability": 0.06575549996775745
+          },
+          {
+            "score": "2-1",
+            "probability": 0.06463061848099934
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.4131379109747848,
+        "away": 2.0348095535272903
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa|espn:uefa.europa:401915505",
+    "matchId": "espn:uefa.europa:401915505",
+    "leagueId": "uefa.europa",
+    "league": "Europa League",
+    "homeName": "NEC Nijmegen",
+    "awayName": "Stade Rennais",
+    "kickoff": "2026-11-26T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.44084757029877125,
+        "2": 0.3010977683812786,
+        "X": 0.2580546613199501
+      },
+      "publishedProbabilities": {
+        "1": 0.44463238283211753,
+        "2": 0.29978157771624164,
+        "X": 0.25558603945164077
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.5642135292727131,
+        "btts": 0.5959157169537805,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.12065731327608316
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09192011628086809
+          },
+          {
+            "score": "1-0",
+            "probability": 0.07792515685708919
+          },
+          {
+            "score": "1-2",
+            "probability": 0.07408464313100414
+          },
+          {
+            "score": "2-0",
+            "probability": 0.0699555618515539
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.6303118600938518,
+        "away": 1.313978672288032
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.44084757029877125,
+        "2": 0.3010977683812786,
+        "X": 0.2580546613199501
+      },
+      "publishedProbabilities": {
+        "1": 0.44463238283211753,
+        "2": 0.29978157771624164,
+        "X": 0.25558603945164077
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.5642135292727131,
+        "btts": 0.5959157169537805,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.12065731327608316
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09192011628086809
+          },
+          {
+            "score": "1-0",
+            "probability": 0.07792515685708919
+          },
+          {
+            "score": "1-2",
+            "probability": 0.07408464313100414
+          },
+          {
+            "score": "2-0",
+            "probability": 0.0699555618515539
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.6303118600938518,
+        "away": 1.313978672288032
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa|espn:uefa.europa:401915512",
+    "matchId": "espn:uefa.europa:401915512",
+    "leagueId": "uefa.europa",
+    "league": "Europa League",
+    "homeName": "Torreense",
+    "awayName": "Celtic",
+    "kickoff": "2026-11-26T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.47939085295555056,
+        "2": 0.2973155830093017,
+        "X": 0.2232935640351477
+      },
+      "publishedProbabilities": {
+        "1": 0.48447254871847484,
+        "2": 0.2956386720603661,
+        "X": 0.219888779221159
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.7110949609383831,
+        "btts": 0.7050738297129998,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.08997789050629337
+          },
+          {
+            "score": "2-1",
+            "probability": 0.08697111587088302
+          },
+          {
+            "score": "2-2",
+            "probability": 0.07005924176488446
+          },
+          {
+            "score": "1-2",
+            "probability": 0.06773956756665321
+          },
+          {
+            "score": "3-1",
+            "probability": 0.059966236890667685
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 2.068488013182215,
+        "away": 1.6110921669418188
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.47939085295555056,
+        "2": 0.2973155830093017,
+        "X": 0.2232935640351477
+      },
+      "publishedProbabilities": {
+        "1": 0.48447254871847484,
+        "2": 0.2956386720603661,
+        "X": 0.219888779221159
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.7110949609383831,
+        "btts": 0.7050738297129998,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.08997789050629337
+          },
+          {
+            "score": "2-1",
+            "probability": 0.08697111587088302
+          },
+          {
+            "score": "2-2",
+            "probability": 0.07005924176488446
+          },
+          {
+            "score": "1-2",
+            "probability": 0.06773956756665321
+          },
+          {
+            "score": "3-1",
+            "probability": 0.059966236890667685
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 2.068488013182215,
+        "away": 1.6110921669418188
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa|espn:uefa.europa:401915513",
+    "matchId": "espn:uefa.europa:401915513",
+    "leagueId": "uefa.europa",
+    "league": "Europa League",
+    "homeName": "Sunderland",
+    "awayName": "Jagiellonia Bialystok",
+    "kickoff": "2026-11-26T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.4345764430919821,
+        "2": 0.2542025236257621,
+        "X": 0.3112210332822558
+      },
+      "publishedProbabilities": {
+        "1": 0.4381185381561789,
+        "2": 0.2516561743166455,
+        "X": 0.3102252875271756
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.3516043741666776,
+        "btts": 0.42184722497529664,
+        "predictedScore": "1-0",
+        "topScores": [
+          {
+            "score": "1-0",
+            "probability": 0.14065467177078633
+          },
+          {
+            "score": "1-1",
+            "probability": 0.1403444576999367
+          },
+          {
+            "score": "0-0",
+            "probability": 0.13107864014050769
+          },
+          {
+            "score": "0-1",
+            "probability": 0.09752460121047066
+          },
+          {
+            "score": "2-0",
+            "probability": 0.09208926603347249
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.2292001102438457,
+        "away": 0.8753768805057605
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.4345764430919821,
+        "2": 0.2542025236257621,
+        "X": 0.3112210332822558
+      },
+      "publishedProbabilities": {
+        "1": 0.4381185381561789,
+        "2": 0.2516561743166455,
+        "X": 0.3102252875271756
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.3516043741666776,
+        "btts": 0.42184722497529664,
+        "predictedScore": "1-0",
+        "topScores": [
+          {
+            "score": "1-0",
+            "probability": 0.14065467177078633
+          },
+          {
+            "score": "1-1",
+            "probability": 0.1403444576999367
+          },
+          {
+            "score": "0-0",
+            "probability": 0.13107864014050769
+          },
+          {
+            "score": "0-1",
+            "probability": 0.09752460121047066
+          },
+          {
+            "score": "2-0",
+            "probability": 0.09208926603347249
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.2292001102438457,
+        "away": 0.8753768805057605
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa|espn:uefa.europa:401915514",
+    "matchId": "espn:uefa.europa:401915514",
+    "leagueId": "uefa.europa",
+    "league": "Europa League",
+    "homeName": "Sparta Prague",
+    "awayName": "AZ Alkmaar",
+    "kickoff": "2026-11-26T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.22193273391963889,
+        "2": 0.5265544101380167,
+        "X": 0.2515128559423444
+      },
+      "publishedProbabilities": {
+        "1": 0.21828185555092222,
+        "2": 0.5332909021922123,
+        "X": 0.2484272422568654
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.5330401286874463,
+        "btts": 0.5482643202588722,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.11957944432364288
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09767989465819131
+          },
+          {
+            "score": "0-1",
+            "probability": 0.09737022764975747
+          },
+          {
+            "score": "0-2",
+            "probability": 0.09194328606537082
+          },
+          {
+            "score": "0-0",
+            "probability": 0.06799921078846764
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.062392903694369,
+        "away": 1.7480845119398138
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.22193273391963889,
+        "2": 0.5265544101380167,
+        "X": 0.2515128559423444
+      },
+      "publishedProbabilities": {
+        "1": 0.21828185555092222,
+        "2": 0.5332909021922123,
+        "X": 0.2484272422568654
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.5330401286874463,
+        "btts": 0.5482643202588722,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.11957944432364288
+          },
+          {
+            "score": "1-2",
+            "probability": 0.09767989465819131
+          },
+          {
+            "score": "0-1",
+            "probability": 0.09737022764975747
+          },
+          {
+            "score": "0-2",
+            "probability": 0.09194328606537082
+          },
+          {
+            "score": "0-0",
+            "probability": 0.06799921078846764
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.062392903694369,
+        "away": 1.7480845119398138
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa|espn:uefa.europa:401915515",
+    "matchId": "espn:uefa.europa:401915515",
+    "leagueId": "uefa.europa",
+    "league": "Europa League",
+    "homeName": "TSG Hoffenheim",
+    "awayName": "SK Sturm Graz",
+    "kickoff": "2026-11-26T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.5268712306103044,
+        "2": 0.2116885080386589,
+        "X": 0.2614402613510367
+      },
+      "publishedProbabilities": {
+        "1": 0.5335866508125138,
+        "2": 0.20785871035955228,
+        "X": 0.25855463882793395
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.4845976174554664,
+        "btts": 0.5074145658577724,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.12465032637367007
+          },
+          {
+            "score": "1-0",
+            "probability": 0.11291542252424865
+          },
+          {
+            "score": "2-0",
+            "probability": 0.09987431353462044
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09610068610137776
+          },
+          {
+            "score": "0-0",
+            "probability": 0.08153679149012016
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.6498590436132952,
+        "away": 0.9622162365908568
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.5268712306103044,
+        "2": 0.2116885080386589,
+        "X": 0.2614402613510367
+      },
+      "publishedProbabilities": {
+        "1": 0.5335866508125138,
+        "2": 0.20785871035955228,
+        "X": 0.25855463882793395
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.4845976174554664,
+        "btts": 0.5074145658577724,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.12465032637367007
+          },
+          {
+            "score": "1-0",
+            "probability": 0.11291542252424865
+          },
+          {
+            "score": "2-0",
+            "probability": 0.09987431353462044
+          },
+          {
+            "score": "2-1",
+            "probability": 0.09610068610137776
+          },
+          {
+            "score": "0-0",
+            "probability": 0.08153679149012016
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.6498590436132952,
+        "away": 0.9622162365908568
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "uefa.europa|espn:uefa.europa:401915516",
+    "matchId": "espn:uefa.europa:401915516",
+    "leagueId": "uefa.europa",
+    "league": "Europa League",
+    "homeName": "Ferencvaros",
+    "awayName": "NK Celje",
+    "kickoff": "2026-11-26T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-18T22:11:43.746Z",
+    "forecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.7071540904025662,
+        "2": 0.12962931833877817,
+        "X": 0.16321659125865567
+      },
+      "publishedProbabilities": {
+        "1": 0.7180428958571308,
+        "2": 0.12426608089723175,
+        "X": 0.15769102324563747
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.7578335405457123,
+        "btts": 0.6534724180550967,
+        "predictedScore": "2-1",
+        "topScores": [
+          {
+            "score": "2-1",
+            "probability": 0.08656477296510329
+          },
+          {
+            "score": "3-1",
+            "probability": 0.08070929700643847
+          },
+          {
+            "score": "2-0",
+            "probability": 0.0736477929543579
+          },
+          {
+            "score": "3-0",
+            "probability": 0.06866605654725369
+          },
+          {
+            "score": "1-1",
+            "probability": 0.06622947962781572
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 2.797071865675938,
+        "away": 1.1753885553468044
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-18T22:11:43.746Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.7071540904025662,
+        "2": 0.12962931833877817,
+        "X": 0.16321659125865567
+      },
+      "publishedProbabilities": {
+        "1": 0.7180428958571308,
+        "2": 0.12426608089723175,
+        "X": 0.15769102324563747
+      },
+      "xgCoverage": null,
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 0.9672,
+        "scope": "global",
+        "sampleSize": 157,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-18T19:21:10.389Z"
+      },
+      "markets": {
+        "over25": 0.7578335405457123,
+        "btts": 0.6534724180550967,
+        "predictedScore": "2-1",
+        "topScores": [
+          {
+            "score": "2-1",
+            "probability": 0.08656477296510329
+          },
+          {
+            "score": "3-1",
+            "probability": 0.08070929700643847
+          },
+          {
+            "score": "2-0",
+            "probability": 0.0736477929543579
+          },
+          {
+            "score": "3-0",
+            "probability": 0.06866605654725369
+          },
+          {
+            "score": "1-1",
+            "probability": 0.06622947962781572
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 2.797071865675938,
+        "away": 1.1753885553468044
       }
     },
     "revisionCount": 1,
