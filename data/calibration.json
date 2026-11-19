@@ -1,49 +1,49 @@
 {
   "version": "tipster-learning-v1",
-  "updatedAt": "2026-11-19T19:25:25.166Z",
+  "updatedAt": "2026-11-19T22:10:49.670Z",
   "global": {
-    "temperature": 0.967,
-    "trained": 160,
-    "holdout": 54,
-    "improvement": 0.00336,
+    "temperature": 0.9667,
+    "trained": 164,
+    "holdout": 55,
+    "improvement": 0.002852,
     "reason": "Chronological holdout improvement; temperature shrunk toward 1"
   },
   "leagues": {},
   "markets": {
     "over25": {
       "temperature": 1,
-      "trained": 160,
-      "holdout": 54,
+      "trained": 164,
+      "holdout": 55,
       "improvement": 0,
       "reason": "No holdout gain"
     },
     "btts": {
       "temperature": 1,
-      "trained": 160,
-      "holdout": 54,
+      "trained": 164,
+      "holdout": 55,
       "improvement": 0,
       "reason": "No holdout gain"
     }
   },
   "performance": {
-    "tracked": 343,
+    "tracked": 348,
     "awaitingResult": 129,
-    "evaluated": 214,
-    "accuracy": 0.5794392523364486,
-    "brier": 0.5574654239705273,
-    "logLoss": 0.944984553814052,
-    "meanConfidence": 0.5283039540843615,
-    "actualHome": 0.4766355140186916,
-    "actualDraw": 0.18691588785046728,
-    "actualAway": 0.3364485981308411,
-    "over25Evaluated": 214,
-    "over25Brier": 0.2371181141412324,
-    "bttsEvaluated": 214,
-    "bttsBrier": 0.2459430996149761,
-    "exactScoreEvaluated": 214,
-    "exactScoreAccuracy": 0.11214953271028037,
-    "expectedGoalsEvaluated": 214,
-    "expectedGoalsMAE": 0.9174384653284713,
+    "evaluated": 219,
+    "accuracy": 0.5844748858447488,
+    "brier": 0.5536546630300448,
+    "logLoss": 0.9392490679301211,
+    "meanConfidence": 0.5312965822710171,
+    "actualHome": 0.4748858447488584,
+    "actualDraw": 0.182648401826484,
+    "actualAway": 0.3424657534246575,
+    "over25Evaluated": 219,
+    "over25Brier": 0.2358140257763706,
+    "bttsEvaluated": 219,
+    "bttsBrier": 0.2473479618926275,
+    "exactScoreEvaluated": 219,
+    "exactScoreAccuracy": 0.1095890410958904,
+    "expectedGoalsEvaluated": 219,
+    "expectedGoalsMAE": 0.9152500576900079,
     "leagues": {
       "fra.1": {
         "evaluated": 16,
@@ -62,7 +62,7 @@
         "exactScoreAccuracy": 0.125,
         "expectedGoalsEvaluated": 16,
         "expectedGoalsMAE": 0.9600304290582371,
-        "tracked": 25,
+        "tracked": 26,
         "leagueName": "Ligue 1"
       },
       "ita.1": {
@@ -82,7 +82,7 @@
         "exactScoreAccuracy": 0.10526315789473684,
         "expectedGoalsEvaluated": 19,
         "expectedGoalsMAE": 0.9319852078416426,
-        "tracked": 29,
+        "tracked": 30,
         "leagueName": "Serie A"
       },
       "eng.1": {
@@ -102,7 +102,7 @@
         "exactScoreAccuracy": 0.125,
         "expectedGoalsEvaluated": 16,
         "expectedGoalsMAE": 0.8037248990543637,
-        "tracked": 26,
+        "tracked": 27,
         "leagueName": "Premier League"
       },
       "esp.1": {
@@ -122,7 +122,7 @@
         "exactScoreAccuracy": 0.0625,
         "expectedGoalsEvaluated": 16,
         "expectedGoalsMAE": 1.0294763734285843,
-        "tracked": 40,
+        "tracked": 41,
         "leagueName": "La Liga"
       },
       "ger.1": {
@@ -142,7 +142,7 @@
         "exactScoreAccuracy": 0.09090909090909091,
         "expectedGoalsEvaluated": 11,
         "expectedGoalsMAE": 0.692380751981787,
-        "tracked": 20,
+        "tracked": 21,
         "leagueName": "Bundesliga"
       },
       "gre.1": {
@@ -226,22 +226,22 @@
         "leagueName": "Conference League"
       },
       "uefa.wchampions": {
-        "evaluated": 13,
-        "accuracy": 0.6153846153846154,
-        "brier": 0.5678010092616307,
-        "logLoss": 0.9600140823777263,
-        "meanConfidence": 0.5226010500202304,
-        "actualHome": 0.46153846153846156,
-        "actualDraw": 0.23076923076923078,
-        "actualAway": 0.3076923076923077,
-        "over25Evaluated": 13,
-        "over25Brier": 0.22198078779608185,
-        "bttsEvaluated": 13,
-        "bttsBrier": 0.22702056198193077,
-        "exactScoreEvaluated": 13,
-        "exactScoreAccuracy": 0.15384615384615385,
-        "expectedGoalsEvaluated": 13,
-        "expectedGoalsMAE": 0.9956623512766309,
+        "evaluated": 18,
+        "accuracy": 0.6666666666666666,
+        "brier": 0.5185657552382309,
+        "logLoss": 0.8860574684111018,
+        "meanConfidence": 0.5605954996423532,
+        "actualHome": 0.4444444444444444,
+        "actualDraw": 0.16666666666666666,
+        "actualAway": 0.3888888888888889,
+        "over25Evaluated": 18,
+        "over25Brier": 0.21031919223058204,
+        "bttsEvaluated": 18,
+        "bttsBrier": 0.24936931348031333,
+        "exactScoreEvaluated": 18,
+        "exactScoreAccuracy": 0.1111111111111111,
+        "expectedGoalsEvaluated": 18,
+        "expectedGoalsMAE": 0.9473078678008378,
         "tracked": 19,
         "leagueName": "Women's Champions League"
       },
