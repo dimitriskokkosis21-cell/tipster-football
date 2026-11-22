@@ -29795,7 +29795,13 @@
       }
     },
     "revisionCount": 11,
-    "result": null,
+    "result": {
+      "home": 4,
+      "away": 0,
+      "outcome": "1",
+      "completedAt": "2026-11-22T13:22:12.152Z",
+      "source": "ESPN verified final • event 401875008"
+    },
     "source": "ESPN (unofficial)"
   },
   {
