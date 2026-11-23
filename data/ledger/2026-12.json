@@ -1,0 +1,123 @@
+[
+  {
+    "key": "eng.1|espn:eng.1:401879221",
+    "matchId": "espn:eng.1:401879221",
+    "leagueId": "eng.1",
+    "league": "Premier League",
+    "homeName": "Coventry City",
+    "awayName": "Ipswich Town",
+    "kickoff": "2026-12-01T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-23T22:13:01.630Z",
+    "forecast": {
+      "recordedAt": "2026-11-23T22:13:01.630Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.4511622067307079,
+        "2": 0.3195193925905472,
+        "X": 0.22931840067874484
+      },
+      "publishedProbabilities": {
+        "1": 0.45116220673070795,
+        "2": 0.31951939259054724,
+        "X": 0.22931840067874487
+      },
+      "xgCoverage": "ESPN source match xG",
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 1,
+        "scope": "global",
+        "sampleSize": 203,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-23T19:25:46.371Z"
+      },
+      "markets": {
+        "over25": 0.6953771751615907,
+        "btts": 0.6970186788219112,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.09438685714943745
+          },
+          {
+            "score": "2-1",
+            "probability": 0.08634347270825252
+          },
+          {
+            "score": "1-2",
+            "probability": 0.07197193540329576
+          },
+          {
+            "score": "2-2",
+            "probability": 0.07044739617238152
+          },
+          {
+            "score": "3-1",
+            "probability": 0.05634300642968802
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.9576351748116412,
+        "away": 1.6317943664466097
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-23T22:13:01.630Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.4511622067307079,
+        "2": 0.3195193925905472,
+        "X": 0.22931840067874484
+      },
+      "publishedProbabilities": {
+        "1": 0.45116220673070795,
+        "2": 0.31951939259054724,
+        "X": 0.22931840067874487
+      },
+      "xgCoverage": "ESPN source match xG",
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 1,
+        "scope": "global",
+        "sampleSize": 203,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-23T19:25:46.371Z"
+      },
+      "markets": {
+        "over25": 0.6953771751615907,
+        "btts": 0.6970186788219112,
+        "predictedScore": "1-1",
+        "topScores": [
+          {
+            "score": "1-1",
+            "probability": 0.09438685714943745
+          },
+          {
+            "score": "2-1",
+            "probability": 0.08634347270825252
+          },
+          {
+            "score": "1-2",
+            "probability": 0.07197193540329576
+          },
+          {
+            "score": "2-2",
+            "probability": 0.07044739617238152
+          },
+          {
+            "score": "3-1",
+            "probability": 0.05634300642968802
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.9576351748116412,
+        "away": 1.6317943664466097
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
+  }
+]
