@@ -9,57 +9,57 @@
     "kickoff": "2026-12-01T20:00:00.000Z",
     "firstRecordedAt": "2026-11-23T22:13:01.630Z",
     "forecast": {
-      "recordedAt": "2026-11-24T22:19:03.934Z",
+      "recordedAt": "2026-11-25T16:30:36.489Z",
       "modelVersion": "elo-v2+calibration-v1",
       "rawProbabilities": {
-        "1": 0.45208757717948406,
-        "2": 0.31863615489993147,
-        "X": 0.22927626792058456
+        "1": 0.4542969134672859,
+        "2": 0.3180042043163308,
+        "X": 0.22769888221638346
       },
       "publishedProbabilities": {
-        "1": 0.45208757717948406,
-        "2": 0.31863615489993147,
-        "X": 0.22927626792058456
+        "1": 0.4542969134672859,
+        "2": 0.3180042043163308,
+        "X": 0.22769888221638346
       },
-      "xgCoverage": "ESPN source match xG",
+      "xgCoverage": null,
       "injuryCoverage": false,
       "calibration": {
         "temperature": 1,
         "scope": "global",
-        "sampleSize": 205,
+        "sampleSize": 212,
         "calibrationVersion": "tipster-learning-v1",
-        "updatedAt": "2026-11-24T19:24:47.555Z"
+        "updatedAt": "2026-11-25T13:45:09.531Z"
       },
       "markets": {
-        "over25": 0.6952102413359188,
-        "btts": 0.6967652265462944,
+        "over25": 0.7018287459892213,
+        "btts": 0.7016661918326577,
         "predictedScore": "1-1",
         "topScores": [
           {
             "score": "1-1",
-            "probability": 0.09440397206956021
+            "probability": 0.09281454473613376
           },
           {
             "score": "2-1",
-            "probability": 0.08643704665893973
+            "probability": 0.0859837114258361
           },
           {
             "score": "1-2",
-            "probability": 0.07186567991654581
+            "probability": 0.07128022864225637
           },
           {
             "score": "2-2",
-            "probability": 0.07040685875159984
+            "probability": 0.07065664472398513
           },
           {
             "score": "3-1",
-            "probability": 0.0564549582136055
+            "probability": 0.05682099759393296
           }
         ]
       },
       "expectedGoals": {
-        "home": 1.959401450966858,
-        "away": 1.6290898746091766
+        "home": 1.9825033131865804,
+        "away": 1.643489064435859
       }
     },
     "firstForecast": {
@@ -116,7 +116,7 @@
         "away": 1.6317943664466097
       }
     },
-    "revisionCount": 3,
+    "revisionCount": 4,
     "result": null,
     "source": "ESPN (unofficial)"
   },
@@ -251,57 +251,57 @@
     "kickoff": "2026-12-02T19:30:00.000Z",
     "firstRecordedAt": "2026-11-24T22:19:03.934Z",
     "forecast": {
-      "recordedAt": "2026-11-24T22:19:03.934Z",
+      "recordedAt": "2026-11-25T16:30:36.489Z",
       "modelVersion": "elo-v2+calibration-v1",
       "rawProbabilities": {
-        "1": 0.49408506050790013,
-        "2": 0.2434962837059581,
-        "X": 0.26241865578614176
+        "1": 0.47644913867418087,
+        "2": 0.26184473683681897,
+        "X": 0.26170612448900016
       },
       "publishedProbabilities": {
-        "1": 0.49408506050790013,
-        "2": 0.2434962837059581,
-        "X": 0.26241865578614176
+        "1": 0.47644913867418087,
+        "2": 0.26184473683681897,
+        "X": 0.26170612448900016
       },
-      "xgCoverage": "ESPN source match xG",
+      "xgCoverage": null,
       "injuryCoverage": false,
       "calibration": {
         "temperature": 1,
         "scope": "global",
-        "sampleSize": 205,
+        "sampleSize": 212,
         "calibrationVersion": "tipster-learning-v1",
-        "updatedAt": "2026-11-24T19:24:47.555Z"
+        "updatedAt": "2026-11-25T13:45:09.531Z"
       },
       "markets": {
-        "over25": 0.5105546670745471,
-        "btts": 0.5404669000736344,
+        "over25": 0.5271716858401964,
+        "btts": 0.5589525950354419,
         "predictedScore": "1-1",
         "topScores": [
           {
             "score": "1-1",
-            "probability": 0.12508296180885647
-          },
-          {
-            "score": "1-0",
-            "probability": 0.09981050059281005
+            "probability": 0.1242973853968358
           },
           {
             "score": "2-1",
-            "probability": 0.0955438671458652
+            "probability": 0.09474418464083503
+          },
+          {
+            "score": "1-0",
+            "probability": 0.09247249058226792
           },
           {
             "score": "2-0",
-            "probability": 0.08826449602169176
+            "probability": 0.08205215781624443
           },
           {
             "score": "0-0",
-            "probability": 0.07424917448270117
+            "probability": 0.06980691123332902
           }
         ]
       },
       "expectedGoals": {
-        "home": 1.634626113223956,
-        "away": 1.0824722448127326
+        "home": 1.631189219982968,
+        "away": 1.154682425939539
       }
     },
     "firstForecast": {
@@ -358,7 +358,7 @@
         "away": 1.0824722448127326
       }
     },
-    "revisionCount": 1,
+    "revisionCount": 2,
     "result": null,
     "source": "ESPN (unofficial)"
   },
@@ -372,57 +372,57 @@
     "kickoff": "2026-12-02T19:30:00.000Z",
     "firstRecordedAt": "2026-11-24T22:19:03.934Z",
     "forecast": {
-      "recordedAt": "2026-11-24T22:19:03.934Z",
+      "recordedAt": "2026-11-25T16:30:36.489Z",
       "modelVersion": "elo-v2+calibration-v1",
       "rawProbabilities": {
-        "1": 0.6769543031322504,
-        "2": 0.10721142205494595,
-        "X": 0.21583427481280373
+        "1": 0.6735537788804572,
+        "2": 0.10625977175559309,
+        "X": 0.22018644936394965
       },
       "publishedProbabilities": {
-        "1": 0.6769543031322504,
-        "2": 0.10721142205494595,
-        "X": 0.21583427481280373
+        "1": 0.6735537788804572,
+        "2": 0.10625977175559309,
+        "X": 0.22018644936394965
       },
-      "xgCoverage": "ESPN source match xG",
+      "xgCoverage": null,
       "injuryCoverage": false,
       "calibration": {
         "temperature": 1,
         "scope": "global",
-        "sampleSize": 205,
+        "sampleSize": 212,
         "calibrationVersion": "tipster-learning-v1",
-        "updatedAt": "2026-11-24T19:24:47.555Z"
+        "updatedAt": "2026-11-25T13:45:09.531Z"
       },
       "markets": {
-        "over25": 0.4793000674512384,
-        "btts": 0.4133372541472715,
-        "predictedScore": "2-0",
+        "over25": 0.46142033697210594,
+        "btts": 0.3993705605685999,
+        "predictedScore": "1-0",
         "topScores": [
           {
-            "score": "2-0",
-            "probability": 0.14216142630552422
+            "score": "1-0",
+            "probability": 0.14626090615965853
           },
           {
-            "score": "1-0",
-            "probability": 0.13940420691138192
+            "score": "2-0",
+            "probability": 0.14532565213892112
           },
           {
             "score": "1-1",
-            "probability": 0.10047181312490398
+            "probability": 0.10132794117576034
           },
           {
             "score": "3-0",
-            "probability": 0.09229697478835797
+            "probability": 0.09209046896814327
           },
           {
             "score": "2-1",
-            "probability": 0.09144446330519793
+            "probability": 0.09001380163423314
           }
         ]
       },
       "expectedGoals": {
-        "home": 1.9477219071367342,
-        "away": 0.6432438508929373
+        "home": 1.9010505223147647,
+        "away": 0.6193937567758944
       }
     },
     "firstForecast": {
@@ -479,7 +479,7 @@
         "away": 0.6432438508929373
       }
     },
-    "revisionCount": 1,
+    "revisionCount": 2,
     "result": null,
     "source": "ESPN (unofficial)"
   },
@@ -493,57 +493,57 @@
     "kickoff": "2026-12-02T19:30:00.000Z",
     "firstRecordedAt": "2026-11-24T22:19:03.934Z",
     "forecast": {
-      "recordedAt": "2026-11-24T22:19:03.934Z",
+      "recordedAt": "2026-11-25T16:30:36.489Z",
       "modelVersion": "elo-v2+calibration-v1",
       "rawProbabilities": {
-        "1": 0.42848835050082196,
-        "2": 0.2819291489462282,
-        "X": 0.2895825005529498
+        "1": 0.46240691579249005,
+        "2": 0.23904201521139132,
+        "X": 0.2985510689961186
       },
       "publishedProbabilities": {
-        "1": 0.42848835050082196,
-        "2": 0.2819291489462282,
-        "X": 0.2895825005529498
+        "1": 0.46240691579249005,
+        "2": 0.23904201521139132,
+        "X": 0.2985510689961186
       },
-      "xgCoverage": "ESPN source match xG",
+      "xgCoverage": null,
       "injuryCoverage": false,
       "calibration": {
         "temperature": 1,
         "scope": "global",
-        "sampleSize": 205,
+        "sampleSize": 212,
         "calibrationVersion": "tipster-learning-v1",
-        "updatedAt": "2026-11-24T19:24:47.555Z"
+        "updatedAt": "2026-11-25T13:45:09.531Z"
       },
       "markets": {
-        "over25": 0.4342307535146746,
-        "btts": 0.4935486360999549,
+        "over25": 0.38134677047470605,
+        "btts": 0.4406715791829609,
         "predictedScore": "1-1",
         "topScores": [
           {
             "score": "1-1",
-            "probability": 0.13720974252465085
+            "probability": 0.13736203338318148
           },
           {
             "score": "1-0",
-            "probability": 0.11251920641706269
+            "probability": 0.136402628416154
           },
           {
             "score": "0-0",
-            "probability": 0.0983349570352589
+            "probability": 0.11812303430512618
           },
           {
-            "score": "2-1",
-            "probability": 0.0871756273596382
+            "score": "2-0",
+            "probability": 0.09684155039937932
           },
           {
             "score": "0-1",
-            "probability": 0.085337901005246
+            "probability": 0.08737941270807158
           }
         ]
       },
       "expectedGoals": {
-        "home": 1.3596399141708868,
-        "away": 1.0554576674518426
+        "home": 1.3321722722929612,
+        "away": 0.882981478914201
       }
     },
     "firstForecast": {
@@ -600,7 +600,7 @@
         "away": 1.0554576674518426
       }
     },
-    "revisionCount": 1,
+    "revisionCount": 2,
     "result": null,
     "source": "ESPN (unofficial)"
   },
@@ -614,57 +614,57 @@
     "kickoff": "2026-12-02T19:30:00.000Z",
     "firstRecordedAt": "2026-11-24T22:19:03.934Z",
     "forecast": {
-      "recordedAt": "2026-11-24T22:19:03.934Z",
+      "recordedAt": "2026-11-25T16:30:36.489Z",
       "modelVersion": "elo-v2+calibration-v1",
       "rawProbabilities": {
-        "1": 0.747715453052272,
-        "2": 0.10086753604611222,
-        "X": 0.1514170109016157
+        "1": 0.7607407308658645,
+        "2": 0.09728073222407331,
+        "X": 0.1419785369100622
       },
       "publishedProbabilities": {
-        "1": 0.747715453052272,
-        "2": 0.10086753604611222,
-        "X": 0.1514170109016157
+        "1": 0.7607407308658645,
+        "2": 0.09728073222407331,
+        "X": 0.1419785369100622
       },
-      "xgCoverage": "ESPN source match xG",
+      "xgCoverage": null,
       "injuryCoverage": false,
       "calibration": {
         "temperature": 1,
         "scope": "global",
-        "sampleSize": 205,
+        "sampleSize": 212,
         "calibrationVersion": "tipster-learning-v1",
-        "updatedAt": "2026-11-24T19:24:47.555Z"
+        "updatedAt": "2026-11-25T13:45:09.531Z"
       },
       "markets": {
-        "over25": 0.736440515075771,
-        "btts": 0.5994045579988297,
-        "predictedScore": "2-1",
+        "over25": 0.7698292294632375,
+        "btts": 0.6231188378744724,
+        "predictedScore": "3-1",
         "topScores": [
           {
-            "score": "2-1",
-            "probability": 0.0868648346323231
-          },
-          {
-            "score": "2-0",
-            "probability": 0.0868167615756807
-          },
-          {
             "score": "3-1",
-            "probability": 0.08202221201332463
+            "probability": 0.08230130703368965
+          },
+          {
+            "score": "2-1",
+            "probability": 0.08229757546582085
           },
           {
             "score": "3-0",
-            "probability": 0.08197681897872391
+            "probability": 0.07802902752513917
           },
           {
-            "score": "1-1",
-            "probability": 0.065621935507651
+            "score": "2-0",
+            "probability": 0.0780254896638045
+          },
+          {
+            "score": "4-1",
+            "probability": 0.061728779078067474
           }
         ]
       },
       "expectedGoals": {
-        "home": 2.832753174302487,
-        "away": 1.000553730129642
+        "home": 3.00013602713741,
+        "away": 1.0547524382150484
       }
     },
     "firstForecast": {
@@ -721,7 +721,7 @@
         "away": 1.000553730129642
       }
     },
-    "revisionCount": 1,
+    "revisionCount": 2,
     "result": null,
     "source": "ESPN (unofficial)"
   },
@@ -735,57 +735,57 @@
     "kickoff": "2026-12-02T20:15:00.000Z",
     "firstRecordedAt": "2026-11-24T22:19:03.934Z",
     "forecast": {
-      "recordedAt": "2026-11-24T22:19:03.934Z",
+      "recordedAt": "2026-11-25T16:30:36.489Z",
       "modelVersion": "elo-v2+calibration-v1",
       "rawProbabilities": {
-        "1": 0.31433459734949026,
-        "2": 0.39584665020444654,
-        "X": 0.28981875244606314
+        "1": 0.3268415523580446,
+        "2": 0.38812107787612504,
+        "X": 0.2850373697658304
       },
       "publishedProbabilities": {
-        "1": 0.3143345973494903,
-        "2": 0.3958466502044466,
-        "X": 0.2898187524460632
+        "1": 0.3268415523580446,
+        "2": 0.38812107787612504,
+        "X": 0.2850373697658304
       },
-      "xgCoverage": "ESPN source match xG",
+      "xgCoverage": null,
       "injuryCoverage": false,
       "calibration": {
         "temperature": 1,
         "scope": "global",
-        "sampleSize": 205,
+        "sampleSize": 212,
         "calibrationVersion": "tipster-learning-v1",
-        "updatedAt": "2026-11-24T19:24:47.555Z"
+        "updatedAt": "2026-11-25T13:45:09.531Z"
       },
       "markets": {
-        "over25": 0.4443557691939316,
-        "btts": 0.5065232922441386,
+        "over25": 0.46480567745703766,
+        "btts": 0.5236455138452932,
         "predictedScore": "1-1",
         "topScores": [
           {
             "score": "1-1",
-            "probability": 0.13779128440883529
+            "probability": 0.13593348093408392
           },
           {
             "score": "0-1",
-            "probability": 0.10373925792072479
+            "probability": 0.09678485440367168
           },
           {
             "score": "0-0",
-            "probability": 0.09495627948762683
+            "probability": 0.08825648679736721
           },
           {
             "score": "1-0",
-            "probability": 0.08914059453574087
+            "probability": 0.08651430111911898
           },
           {
             "score": "1-2",
-            "probability": 0.08447605365256544
+            "probability": 0.08458131296620874
           }
         ]
       },
       "expectedGoals": {
-        "home": 1.1421085843422556,
-        "away": 1.3119752500463546
+        "home": 1.2021518035341283,
+        "away": 1.3315631182538328
       }
     },
     "firstForecast": {
@@ -842,7 +842,7 @@
         "away": 1.3119752500463546
       }
     },
-    "revisionCount": 1,
+    "revisionCount": 2,
     "result": null,
     "source": "ESPN (unofficial)"
   },
@@ -856,57 +856,57 @@
     "kickoff": "2026-12-02T20:15:00.000Z",
     "firstRecordedAt": "2026-11-24T22:19:03.934Z",
     "forecast": {
-      "recordedAt": "2026-11-24T22:19:03.934Z",
+      "recordedAt": "2026-11-25T16:30:36.489Z",
       "modelVersion": "elo-v2+calibration-v1",
       "rawProbabilities": {
-        "1": 0.5031325473331026,
-        "2": 0.21579797724231642,
-        "X": 0.28106947542458083
+        "1": 0.5039791548602501,
+        "2": 0.21497543927094914,
+        "X": 0.28104540586880067
       },
       "publishedProbabilities": {
-        "1": 0.5031325473331028,
-        "2": 0.21579797724231645,
-        "X": 0.2810694754245809
+        "1": 0.5039791548602501,
+        "2": 0.21497543927094914,
+        "X": 0.28104540586880067
       },
-      "xgCoverage": "ESPN source match xG",
+      "xgCoverage": null,
       "injuryCoverage": false,
       "calibration": {
         "temperature": 1,
         "scope": "global",
-        "sampleSize": 205,
+        "sampleSize": 212,
         "calibrationVersion": "tipster-learning-v1",
-        "updatedAt": "2026-11-24T19:24:47.555Z"
+        "updatedAt": "2026-11-25T13:45:09.531Z"
       },
       "markets": {
-        "over25": 0.4198266775039038,
-        "btts": 0.4608563047918876,
+        "over25": 0.4191731000491658,
+        "btts": 0.45997825372358636,
         "predictedScore": "1-1",
         "topScores": [
           {
             "score": "1-1",
-            "probability": 0.1316534354693256
+            "probability": 0.13158366390304405
           },
           {
             "score": "1-0",
-            "probability": 0.1310075007652878
+            "probability": 0.13139865003473086
           },
           {
             "score": "2-0",
-            "probability": 0.10323703425017143
+            "probability": 0.10355185013702162
           },
           {
             "score": "0-0",
-            "probability": 0.10302585980880595
+            "probability": 0.10325622210988254
           },
           {
             "score": "2-1",
-            "probability": 0.0909777600709961
+            "probability": 0.09095499122583181
           }
         ]
       },
       "expectedGoals": {
-        "home": 1.4788251127506182,
-        "away": 0.8812511976131765
+        "home": 1.4792389529957237,
+        "away": 0.8783521598646338
       }
     },
     "firstForecast": {
@@ -963,7 +963,7 @@
         "away": 0.8812511976131765
       }
     },
-    "revisionCount": 1,
+    "revisionCount": 2,
     "result": null,
     "source": "ESPN (unofficial)"
   },
@@ -977,57 +977,57 @@
     "kickoff": "2026-12-02T20:15:00.000Z",
     "firstRecordedAt": "2026-11-24T22:19:03.934Z",
     "forecast": {
-      "recordedAt": "2026-11-24T22:19:03.934Z",
+      "recordedAt": "2026-11-25T16:30:36.489Z",
       "modelVersion": "elo-v2+calibration-v1",
       "rawProbabilities": {
-        "1": 0.5157494543750034,
-        "2": 0.24233250664610412,
-        "X": 0.24191803897889255
+        "1": 0.5270232655331877,
+        "2": 0.23387938914269696,
+        "X": 0.23909734532411536
       },
       "publishedProbabilities": {
-        "1": 0.5157494543750034,
-        "2": 0.24233250664610412,
-        "X": 0.24191803897889255
+        "1": 0.5270232655331877,
+        "2": 0.23387938914269696,
+        "X": 0.23909734532411536
       },
-      "xgCoverage": "ESPN source match xG",
+      "xgCoverage": null,
       "injuryCoverage": false,
       "calibration": {
         "temperature": 1,
         "scope": "global",
-        "sampleSize": 205,
+        "sampleSize": 212,
         "calibrationVersion": "tipster-learning-v1",
-        "updatedAt": "2026-11-24T19:24:47.555Z"
+        "updatedAt": "2026-11-25T13:45:09.531Z"
       },
       "markets": {
-        "over25": 0.5916333896843008,
-        "btts": 0.6001976952291755,
+        "over25": 0.5952921535671952,
+        "btts": 0.5995554398922105,
         "predictedScore": "1-1",
         "topScores": [
           {
             "score": "1-1",
-            "probability": 0.11209579307166048
+            "probability": 0.11069467141752382
           },
           {
             "score": "2-1",
-            "probability": 0.09702577737008855
+            "probability": 0.09752286636842296
           },
           {
             "score": "2-0",
-            "probability": 0.07988196591668945
+            "probability": 0.08138333507702114
           },
           {
             "score": "1-0",
-            "probability": 0.0789182282829026
+            "probability": 0.07909032461761097
           },
           {
             "score": "1-2",
-            "probability": 0.06362296831310185
+            "probability": 0.061984616189215885
           }
         ]
       },
       "expectedGoals": {
-        "home": 1.8523011246216234,
-        "away": 1.214614290680812
+        "home": 1.8853566423377675,
+        "away": 1.19831494096583
       }
     },
     "firstForecast": {
@@ -1084,7 +1084,7 @@
         "away": 1.214614290680812
       }
     },
-    "revisionCount": 1,
+    "revisionCount": 2,
     "result": null,
     "source": "ESPN (unofficial)"
   },
@@ -1098,57 +1098,57 @@
     "kickoff": "2026-12-02T20:15:00.000Z",
     "firstRecordedAt": "2026-11-24T22:19:03.934Z",
     "forecast": {
-      "recordedAt": "2026-11-24T22:19:03.934Z",
+      "recordedAt": "2026-11-25T16:30:36.489Z",
       "modelVersion": "elo-v2+calibration-v1",
       "rawProbabilities": {
-        "1": 0.33776665487047597,
-        "2": 0.4008466169577505,
-        "X": 0.26138672817177355
+        "1": 0.3786259435896004,
+        "2": 0.34427615576025955,
+        "X": 0.2770979006501401
       },
       "publishedProbabilities": {
-        "1": 0.33776665487047597,
-        "2": 0.4008466169577505,
-        "X": 0.26138672817177355
+        "1": 0.3786259435896004,
+        "2": 0.34427615576025955,
+        "X": 0.2770979006501401
       },
-      "xgCoverage": "ESPN source match xG",
+      "xgCoverage": null,
       "injuryCoverage": false,
       "calibration": {
         "temperature": 1,
         "scope": "global",
-        "sampleSize": 205,
+        "sampleSize": 212,
         "calibrationVersion": "tipster-learning-v1",
-        "updatedAt": "2026-11-24T19:24:47.555Z"
+        "updatedAt": "2026-11-25T13:45:09.531Z"
       },
       "markets": {
-        "over25": 0.5619725690109162,
-        "btts": 0.5988642954044391,
+        "over25": 0.49826627348451186,
+        "btts": 0.5506379057879545,
         "predictedScore": "1-1",
         "topScores": [
           {
             "score": "1-1",
-            "probability": 0.12216227549836148
-          },
-          {
-            "score": "1-2",
-            "probability": 0.08781440052776984
-          },
-          {
-            "score": "2-1",
-            "probability": 0.0797011399860962
-          },
-          {
-            "score": "0-1",
-            "probability": 0.073781491940707
+            "probability": 0.13205861622305368
           },
           {
             "score": "1-0",
-            "probability": 0.06622636397184575
+            "probability": 0.08655892105230847
+          },
+          {
+            "score": "2-1",
+            "probability": 0.08457869287253264
+          },
+          {
+            "score": "0-1",
+            "probability": 0.08140883641759557
+          },
+          {
+            "score": "1-2",
+            "probability": 0.0800031115346947
           }
         ]
       },
       "expectedGoals": {
-        "home": 1.3961792940942195,
-        "away": 1.5383048192479682
+        "home": 1.3705913928516744,
+        "away": 1.2964444394530832
       }
     },
     "firstForecast": {
@@ -1205,7 +1205,7 @@
         "away": 1.5383048192479682
       }
     },
-    "revisionCount": 1,
+    "revisionCount": 2,
     "result": null,
     "source": "ESPN (unofficial)"
   },
