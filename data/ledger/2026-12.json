@@ -1329,5 +1329,126 @@
     "revisionCount": 1,
     "result": null,
     "source": "ESPN (unofficial)"
+  },
+  {
+    "key": "eng.1|espn:eng.1:401878749",
+    "matchId": "espn:eng.1:401878749",
+    "leagueId": "eng.1",
+    "league": "Premier League",
+    "homeName": "Tottenham Hotspur",
+    "awayName": "Fulham",
+    "kickoff": "2026-12-03T20:00:00.000Z",
+    "firstRecordedAt": "2026-11-25T22:18:05.696Z",
+    "forecast": {
+      "recordedAt": "2026-11-25T22:18:05.696Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.4634643456339058,
+        "2": 0.20668783208582026,
+        "X": 0.3298478222802738
+      },
+      "publishedProbabilities": {
+        "1": 0.4634643456339058,
+        "2": 0.20668783208582026,
+        "X": 0.3298478222802738
+      },
+      "xgCoverage": "ESPN source match xG",
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 1,
+        "scope": "global",
+        "sampleSize": 212,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-25T19:20:33.323Z"
+      },
+      "markets": {
+        "over25": 0.2769694610711716,
+        "btts": 0.3446962190719009,
+        "predictedScore": "1-0",
+        "topScores": [
+          {
+            "score": "1-0",
+            "probability": 0.17656094337113531
+          },
+          {
+            "score": "0-0",
+            "probability": 0.16944236583970265
+          },
+          {
+            "score": "1-1",
+            "probability": 0.133848290477599
+          },
+          {
+            "score": "2-0",
+            "probability": 0.10686227397934957
+          },
+          {
+            "score": "0-1",
+            "probability": 0.09970885943662451
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.1532893210129327,
+        "away": 0.6750142085256903
+      }
+    },
+    "firstForecast": {
+      "recordedAt": "2026-11-25T22:18:05.696Z",
+      "modelVersion": "elo-v2+calibration-v1",
+      "rawProbabilities": {
+        "1": 0.4634643456339058,
+        "2": 0.20668783208582026,
+        "X": 0.3298478222802738
+      },
+      "publishedProbabilities": {
+        "1": 0.4634643456339058,
+        "2": 0.20668783208582026,
+        "X": 0.3298478222802738
+      },
+      "xgCoverage": "ESPN source match xG",
+      "injuryCoverage": false,
+      "calibration": {
+        "temperature": 1,
+        "scope": "global",
+        "sampleSize": 212,
+        "calibrationVersion": "tipster-learning-v1",
+        "updatedAt": "2026-11-25T19:20:33.323Z"
+      },
+      "markets": {
+        "over25": 0.2769694610711716,
+        "btts": 0.3446962190719009,
+        "predictedScore": "1-0",
+        "topScores": [
+          {
+            "score": "1-0",
+            "probability": 0.17656094337113531
+          },
+          {
+            "score": "0-0",
+            "probability": 0.16944236583970265
+          },
+          {
+            "score": "1-1",
+            "probability": 0.133848290477599
+          },
+          {
+            "score": "2-0",
+            "probability": 0.10686227397934957
+          },
+          {
+            "score": "0-1",
+            "probability": 0.09970885943662451
+          }
+        ]
+      },
+      "expectedGoals": {
+        "home": 1.1532893210129327,
+        "away": 0.6750142085256903
+      }
+    },
+    "revisionCount": 1,
+    "result": null,
+    "source": "ESPN (unofficial)"
   }
 ]
